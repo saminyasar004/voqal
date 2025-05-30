@@ -21,6 +21,6 @@ A boilerplate for building modern web applications with React, TypeScript, Tailw
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/your-username/react-ts-tailwind-boilerplate.git
+    git clone https://github.com/saminyasar004/react-ts-tailwind-boilerplate.git
     cd react-ts-tailwind-boilerplate
     ```
