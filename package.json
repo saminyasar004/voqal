@@ -1,8 +1,13 @@
 {
-	"name": "vite_react_shadcn_ts",
+	"name": "react-ts-tailwind-boilerplate",
 	"private": true,
 	"version": "0.0.0",
 	"type": "module",
+	"author": {
+		"name": "Samin Yasar",
+		"email": "yasarsamin57@gmail.com",
+		"url": "https://github.com/saminyasar004"
+	},
 	"scripts": {
 		"dev": "vite",
 		"build": "vite build",
