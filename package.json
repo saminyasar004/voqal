@@ -8,6 +8,10 @@
 		"email": "yasarsamin57@gmail.com",
 		"url": "https://github.com/saminyasar004"
 	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/saminyasar004/react-ts-tailwind-boilerplate"
+	},
 	"scripts": {
 		"dev": "vite",
 		"build": "vite build",
