@@ -1,65 +1,70 @@
-import {
-	MobileNav,
-	MobileNavHeader,
-	MobileNavMenu,
-	MobileNavToggle,
-	Navbar,
-	NavbarButton,
-	NavbarLogo,
-	NavBody,
-	NavItems,
-} from "@/components/ui/resizable-navbar";
 import LogoImg from "@/assets/images/voqal-black.svg";
-import { Sheet, SheetContent, SheetFooter } from "@/components/ui/sheet";
-import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Link, useLocation } from "react-router-dom";
+import { Sheet, SheetContent, SheetFooter } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import { AlignRight } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 interface NavItemProps {
 	name: string;
 	link: string;
-	type: "self" | "external";
+	type: "route" | "hash";
 }
 
 export default function Header() {
 	const location = useLocation();
 	const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+	const [activeNavItemIndex, setActiveNavItemIndex] = useState(0);
 
 	const navItems: NavItemProps[] = [
 		{
 			name: "Home",
-			link: "",
-			type: "external",
+			link: "/",
+			type: "route",
 		},
 		{
 			name: "What We Do",
 			link: "#what-we-do",
-			type: "self",
+			type: "hash",
 		},
 		{
 			name: "About Us",
 			link: "#about-us",
-			type: "self",
+			type: "hash",
 		},
 		{
 			name: "Pricing",
 			link: "#pricing",
-			type: "self",
+			type: "hash",
 		},
 		{
 			name: "Contact Us",
 			link: "/contact-us",
-			type: "external",
+			type: "route",
 		},
 	];
 
 	useEffect(() => {
-		console.log(location);
+		console.log(location.pathname);
+		if (location.pathname === "/") {
+			if (location.hash) {
+				setActiveNavItemIndex(
+					navItems.findIndex((item) => item.link === location.hash)
+				);
+			} else {
+				setActiveNavItemIndex(0);
+			}
+		} else {
+			setActiveNavItemIndex(
+				navItems.findIndex((item) => item.link === location.pathname)
+			);
+		}
+
 		if (isMobileNavOpen) {
 			setIsMobileNavOpen(false);
 		}
+		window.scrollTo(0, 0);
 	}, [location]);
 
 	return (
@@ -77,23 +82,37 @@ export default function Header() {
 
 				<div className="col-span-2 hidden lg:block">
 					<div className="w-full flex gap-6 items-center">
-						{navItems.map((menu, index) => (
-							<a
-								key={index}
-								href={`/${menu.link}`}
-								className={cn(
-									"font-medium py-1 transition-all duration-300 hover:text-primary relative after:w-0 hover:after:w-full after:transition-all after:duration-300 after:h-0.5 after:contents-[''] after:absolute after:left-0 after:bottom-0 after:bg-primary",
-									location.hash === menu.link &&
-										"text-primary after:w-full",
-									location.hash === "" &&
-										location.pathname === "/" &&
-										menu.link === "#home" &&
-										"text-primary after:w-full"
-								)}
-							>
-								{menu.name}
-							</a>
-						))}
+						{navItems.map((menu, index) => {
+							if (menu.type === "route") {
+								return (
+									<Link
+										key={index}
+										to={`${menu.link}`}
+										className={cn(
+											"font-medium py-1 transition-all duration-300 hover:text-primary relative after:w-0 hover:after:w-full after:transition-all after:duration-300 after:h-0.5 after:contents-[''] after:absolute after:left-0 after:bottom-0 after:bg-primary",
+											index === activeNavItemIndex &&
+												"text-primary after:w-full"
+										)}
+									>
+										{menu.name}
+									</Link>
+								);
+							} else {
+								return (
+									<a
+										key={index}
+										href={`/${menu.link}`}
+										className={cn(
+											"font-medium py-1 transition-all duration-300 hover:text-primary relative after:w-0 hover:after:w-full after:transition-all after:duration-300 after:h-0.5 after:contents-[''] after:absolute after:left-0 after:bottom-0 after:bg-primary",
+											index === activeNavItemIndex &&
+												"text-primary after:w-full"
+										)}
+									>
+										{menu.name}
+									</a>
+								);
+							}
+						})}
 					</div>
 				</div>
 
