@@ -1,12 +1,11 @@
-import LogoWhiteImg from "@/assets/images/voqal-white.svg";
 import FacebookImg from "@/assets/images/facebook.svg";
 import InstagramImg from "@/assets/images/instagram.svg";
-import TwitterImg from "@/assets/images/twitter.svg";
 import LinkedinImg from "@/assets/images/linkedin.svg";
+import TwitterImg from "@/assets/images/twitter.svg";
+import LogoWhiteImg from "@/assets/images/voqal-white.svg";
+import { MoveRight } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { Input } from "../ui/input";
-import { Button } from "../ui/button";
-import { MoveRight } from "lucide-react";
 
 interface SocialLinksProps {
 	img: string;

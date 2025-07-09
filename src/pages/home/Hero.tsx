@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import HeroCarousel from "./HeroCarousel";
-import Header from "@/components/common/header";
 
 export default function Hero() {
 	return (
