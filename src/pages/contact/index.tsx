@@ -22,7 +22,7 @@ export default function Contact() {
 					<h4 className="text-2xl font-semibold">Send a message</h4>
 				</div>
 
-				<div className="flex flex-col gap-6 lg:px-24">
+				<div className="flex flex-col gap-6">
 					<div className="form-group flex flex-col lg:flex-row gap-5 items-center">
 						<Input
 							type="name"
