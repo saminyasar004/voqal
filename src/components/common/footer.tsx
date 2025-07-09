@@ -3,7 +3,7 @@ import FacebookImg from "@/assets/images/facebook.svg";
 import InstagramImg from "@/assets/images/instagram.svg";
 import TwitterImg from "@/assets/images/twitter.svg";
 import LinkedinImg from "@/assets/images/linkedin.svg";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { MoveRight } from "lucide-react";
@@ -16,7 +16,7 @@ interface SocialLinksProps {
 interface NavItemProps {
 	name: string;
 	link: string;
-	type: "self" | "external";
+	type: "route" | "hash";
 }
 
 const socialLinks: SocialLinksProps[] = [
@@ -42,44 +42,46 @@ const productNavItems: NavItemProps[] = [
 	{
 		name: "What We Do",
 		link: "#what-we-do",
-		type: "self",
+		type: "hash",
 	},
 	{
 		name: "How it Works",
 		link: "#how-it-works",
-		type: "self",
+		type: "hash",
 	},
 	{
 		name: "Pricing",
 		link: "#pricing",
-		type: "self",
+		type: "hash",
 	},
 	{
 		name: "FAQ",
 		link: "#faq",
-		type: "self",
+		type: "hash",
 	},
 ];
 
 const companyNavItems: NavItemProps[] = [
 	{
 		name: "About",
-		link: "#about",
-		type: "self",
+		link: "#about-us",
+		type: "hash",
 	},
 	{
 		name: "Contact Us",
-		link: "#contact-us",
-		type: "self",
+		link: "/contact-us",
+		type: "route",
 	},
 	{
 		name: "Privacy Policy",
-		link: "#privacy-policy",
-		type: "self",
+		link: "/privacy-policy",
+		type: "route",
 	},
 ];
 
 const Footer: React.FC = () => {
+	const location = useLocation();
+
 	return (
 		<footer className="bg-primary text-white">
 			<div className="container px-4 grid grid-cols-1 lg:grid-cols-4 gap-8 p-10">
@@ -117,15 +119,33 @@ const Footer: React.FC = () => {
 				<div className="flex flex-col gap-5 items-center text-center lg:items-start lg:text-start">
 					<h4 className="text-lg font-semibold">Product</h4>
 					<div className="flex flex-col gap-3">
-						{productNavItems.map((item, idx) => (
-							<a
-								className="relative text-sm text-[#B2B2B2] hover:underline"
-								key={`link-${idx}`}
-								href={item.link}
-							>
-								{item.name}
-							</a>
-						))}
+						{productNavItems.map((item, idx) => {
+							if (item.type === "route") {
+								return (
+									<Link
+										className="relative text-sm text-[#B2B2B2] hover:underline"
+										key={`link-${idx}`}
+										to={item.link}
+									>
+										{item.name}
+									</Link>
+								);
+							} else {
+								return (
+									<a
+										className="relative text-sm text-[#B2B2B2] hover:underline"
+										key={`link-${idx}`}
+										href={`${
+											location.pathname === "/"
+												? item.link
+												: `/${item.link}`
+										}`}
+									>
+										{item.name}
+									</a>
+								);
+							}
+						})}
 					</div>
 				</div>
 
@@ -133,15 +153,33 @@ const Footer: React.FC = () => {
 				<div className="flex flex-col gap-5 items-center text-center lg:items-start lg:text-start">
 					<h4 className="text-lg font-semibold">Company</h4>
 					<div className="flex flex-col gap-3">
-						{companyNavItems.map((item, idx) => (
-							<a
-								className="relative text-sm text-[#B2B2B2] hover:underline"
-								key={`link-${idx}`}
-								href={item.link}
-							>
-								{item.name}
-							</a>
-						))}
+						{companyNavItems.map((item, idx) => {
+							if (item.type === "route") {
+								return (
+									<Link
+										className="relative text-sm text-[#B2B2B2] hover:underline"
+										key={`link-${idx}`}
+										to={item.link}
+									>
+										{item.name}
+									</Link>
+								);
+							} else {
+								return (
+									<a
+										className="relative text-sm text-[#B2B2B2] hover:underline"
+										key={`link-${idx}`}
+										href={`${
+											location.pathname === "/"
+												? item.link
+												: `/${item.link}`
+										}`}
+									>
+										{item.name}
+									</a>
+								);
+							}
+						})}
 					</div>
 				</div>
 
