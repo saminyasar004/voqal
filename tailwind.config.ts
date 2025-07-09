@@ -29,7 +29,7 @@ export default {
 				"primary-gray": "#5C5A5A",
 				"secondary-gray": "#B2B2B2",
 				"golden-olive": "#929208",
-				warning: "#F63232",
+				warning: "#F05F5F",
 				success: "#599862",
 			},
 
