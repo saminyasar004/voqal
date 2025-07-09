@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages";
 import NotFound from "./pages/NotFound";
+import { routes } from "./routes";
 
 const queryClient = new QueryClient();
 
@@ -15,8 +16,17 @@ const App = () => (
 			<Sonner />
 			<BrowserRouter>
 				<Routes>
-					<Route path="/" element={<Index />} />
-					{/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+					{routes.map((route, index) => (
+						<Route
+							key={index}
+							path={route.path}
+							element={
+								<route.layout>
+									<route.element />
+								</route.layout>
+							}
+						/>
+					))}
 					<Route path="*" element={<NotFound />} />
 				</Routes>
 			</BrowserRouter>
