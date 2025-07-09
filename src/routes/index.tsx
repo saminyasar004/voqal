@@ -1,6 +1,7 @@
 import Layout from "@/components/common/layout";
 import Contact from "@/pages/contact";
 import Home from "@/pages/home";
+import PrivacyPolicy from "@/pages/privacy-policy";
 
 export interface Route {
 	path: string;
@@ -17,6 +18,11 @@ export const routes = [
 	{
 		path: "/contact-us",
 		element: Contact,
+		layout: Layout,
+	},
+	{
+		path: "/privacy-policy",
+		element: PrivacyPolicy,
 		layout: Layout,
 	},
 ];
