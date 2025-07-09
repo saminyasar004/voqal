@@ -9,6 +9,7 @@ export default {
 		"./src/**/*.{ts,tsx}",
 	],
 	prefix: "",
+
 	theme: {
 		container: {
 			center: true,
@@ -18,11 +19,24 @@ export default {
 			},
 		},
 		extend: {
-			colors: {
-				primary: "#1dd881",
-				secondary: "#033333",
-				warning: "#ff523b",
+			fontFamily: {
+				poppins: ["Poppins", "sans-serif"],
 			},
+
+			colors: {
+				primary: "#141414",
+				"primary-foreground": "#fff",
+				"primary-gray": "#5C5A5A",
+				"secondary-gray": "#B2B2B2",
+				"golden-olive": "#929208",
+				warning: "#F63232",
+				success: "#599862",
+			},
+
+			backgroundImage: {
+				hero: "url('./assets/images/hero-bg-pattern.png')",
+			},
+
 			keyframes: {
 				"accordion-down": {
 					from: {
