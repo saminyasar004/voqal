@@ -1,4 +1,5 @@
 import Layout from "@/components/common/layout";
+import UserDashboardLayout from "@/components/common/UserDashboardLayout";
 import ForgotPassword from "@/pages/auth/forgotPassword";
 import Login from "@/pages/auth/login";
 import ResetPassword from "@/pages/auth/ResetPassword";
@@ -7,6 +8,7 @@ import VerifyOtp from "@/pages/auth/verifyOtp";
 import Contact from "@/pages/contact";
 import Home from "@/pages/home";
 import PrivacyPolicy from "@/pages/privacy-policy";
+import Dashboard from "@/pages/user/dashboard";
 
 export interface Route {
 	path: string;
@@ -54,5 +56,10 @@ export const routes = [
 		path: "/reset-password",
 		element: ResetPassword,
 		layout: Layout,
+	},
+	{
+		path: "/user/dashboard",
+		element: Dashboard,
+		layout: UserDashboardLayout,
 	},
 ];
