@@ -1,0 +1,30 @@
+export interface DashboardItem {
+	id: number;
+	title: string;
+	value: number | string;
+	suffix?: string;
+	icon?: string; // Optional for the main stat icon
+}
+
+export interface BookingItemProps {
+	time: string;
+	date: string;
+	client: string;
+	type: string;
+	phone: string;
+	duration: string;
+	price: number;
+	status: "Manual" | "AI Call";
+	confirmed: boolean;
+}
+
+export interface SocialLinksProps {
+	img: string;
+	url: string;
+}
+
+export interface NavItemProps {
+	name: string;
+	link: string;
+	type: "route" | "hash";
+}

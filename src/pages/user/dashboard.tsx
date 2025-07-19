@@ -1,28 +1,32 @@
-import DashboardHeader from "@/components/common/dashboardHeader";
-import {
-	BotMessageSquareIcon,
-	CalendarDays,
-	CircleCheckBig,
-	DollarSign,
-	LucideProps,
-	MessageSquareMore,
-	Users,
-} from "lucide-react";
-import { Switch } from "@/components/ui/switch";
-import { Label } from "@/components/ui/label";
-import { ForwardRefExoticComponent, RefAttributes } from "react";
+import AIBlackImg from "@/assets/images/ai-black.svg";
+import AIWhiteImg from "@/assets/images/ai-white.svg";
 import Avatar from "@/assets/images/avatar.jpg";
+import CalendarDaysBlackImg from "@/assets/images/calendar-days-black.svg";
+import CalendarDaysWhiteImg from "@/assets/images/calendar-days-white.svg";
+import CheckSuccessImg from "@/assets/images/check-success.svg";
+import CheckImg from "@/assets/images/check.svg";
+import CirclePlusImg from "@/assets/images/circle-plus.svg";
+import GrowthImg from "@/assets/images/growth.svg";
+import SubscriptionsImg from "@/assets/images/subscriptions.svg";
+import TeamsImg from "@/assets/images/teams.svg";
+import DashboardHeader from "@/components/common/dashboard-header";
 import { Badge } from "@/components/ui/badge";
-
-interface DashboardItem {
-	id: number;
-	title: string;
-	value: number | string;
-	suffix?: string;
-	icon?: ForwardRefExoticComponent<
-		Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
-	>; // Optional for the main stat icon
-}
+import { Label } from "@/components/ui/label";
+import {
+	Select,
+	SelectContent,
+	SelectGroup,
+	SelectItem,
+	SelectTrigger,
+	SelectValue,
+} from "@/components/ui/select";
+import { Switch } from "@/components/ui/switch";
+import { BookingItemProps, DashboardItem } from "@/interfaces";
+import { Phone } from "lucide-react";
+import { useState } from "react";
+import BookingCard from "./booking-card";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 const dashboardData: DashboardItem[] = [
 	{
@@ -30,32 +34,105 @@ const dashboardData: DashboardItem[] = [
 		title: "Appointments",
 		value: 14,
 		suffix: "Today",
-		icon: CalendarDays,
+		icon: CalendarDaysWhiteImg,
 	},
 	{
 		id: 2,
 		title: "Completed",
 		value: 89,
 		suffix: "Today",
-		icon: CircleCheckBig,
+		icon: CheckImg,
 	},
 	{
 		id: 3,
 		title: "Revenue",
 		value: "$12,450",
 		suffix: "Today",
-		icon: DollarSign,
+		icon: GrowthImg,
+	},
+];
+
+const bookingData: BookingItemProps[] = [
+	{
+		time: "09:00 AM",
+		date: "02.10.2024",
+		client: "David Brown",
+		type: "Haircut & Color with John Smith",
+		phone: "+1 (555) 123-4567",
+		duration: "90 min",
+		price: 1205,
+		status: "AI Call",
+		confirmed: true,
+	},
+	{
+		time: "09:00 AM",
+		date: "02.10.2024",
+		client: "Mike Chen",
+		type: "Haircut & Color with John Smith",
+		phone: "+1 (555) 123-4567",
+		duration: "90 min",
+		price: 1205,
+		status: "Manual",
+		confirmed: false,
+	},
+	{
+		time: "09:00 AM",
+		date: "02.10.2024",
+		client: "Mike Chen",
+		type: "Haircut & Color with John Smith",
+		phone: "+1 (555) 123-4567",
+		duration: "90 min",
+		price: 1205,
+		status: "Manual",
+		confirmed: false,
 	},
 ];
 
 export default function Dashboard() {
+	const [filteredTime, setFilteredTime] = useState<
+		"today" | "this-week" | "this-month"
+	>("today");
+	const [isAIActive, setIsAIActive] = useState<boolean>(false);
+
 	return (
-		<section className="w-full">
+		<section className="w-full pb-8">
 			{/* dashboard header */}
-			<DashboardHeader
-				title="Dashboard Overview"
-				description="Welcome back! Here's what's happening with your business today."
-			/>
+			<DashboardHeader />
+
+			<div className="flex justify-between gap-1 flex-1 px-6 py-4">
+				<div className="flex flex-col gap-1">
+					<h3 className="text-xl text-primary font-semibold">
+						Dashboard Overview
+					</h3>
+					<p className="text-sm text-foreground">
+						Welcome back! Here's what's happening with your business
+						today.
+					</p>
+				</div>
+				<div className="flex items-center">
+					<Select
+						value={filteredTime}
+						onValueChange={(e) =>
+							setFilteredTime((e as any).target.value)
+						}
+					>
+						<SelectTrigger className="w-[180px]">
+							<SelectValue placeholder="" />
+						</SelectTrigger>
+						<SelectContent>
+							<SelectGroup>
+								<SelectItem value="today">Today</SelectItem>
+								<SelectItem value="this-week">
+									This Week
+								</SelectItem>
+								<SelectItem value="this-month">
+									This Month
+								</SelectItem>
+							</SelectGroup>
+						</SelectContent>
+					</Select>
+				</div>
+			</div>
 
 			<div className="w-full grid grid-cols-4 gap-5 px-5 py-8">
 				{dashboardData.map((data, index) => (
@@ -67,7 +144,12 @@ export default function Dashboard() {
 							<h3 className="">AI Calls Today</h3>
 
 							<div className="flex gap-3 items-center py-5">
-								<div className="w-4 h-4 bg-success rounded-full"></div>
+								<div
+									className={cn(
+										"w-4 h-4 rounded-full",
+										isAIActive ? "bg-success" : "bg-warning"
+									)}
+								></div>
 								<Label
 									htmlFor="ai-status"
 									className="cursor-pointer text-3xl font-medium"
@@ -75,30 +157,58 @@ export default function Dashboard() {
 									Active
 								</Label>
 							</div>
-							<Switch id="ai-status" />
+							<Switch
+								checked={isAIActive}
+								onCheckedChange={() =>
+									setIsAIActive(!isAIActive)
+								}
+								id="ai-status"
+							/>
 						</div>
 
-						<div className="w-10 h-10 flex items-center justify-center bg-secondary rounded-lg p-1 bg-primary text-white">
-							<BotMessageSquareIcon />
+						<div className="w-10 h-10 flex items-center justify-center bg-secondary rounded-lg p-1 bg-primary text-primary-foreground">
+							<img
+								src={AIWhiteImg}
+								alt="icon"
+								className="w-full"
+							/>
 						</div>
 					</div>
 				</div>
 			</div>
 
-			<div className="w-full px-5 grid grid-cols-5 gap-8">
-				<div className="col-span-3 w-full border rounded-lg border-primary/10 my-5 px-5 py-6">
+			<div className="w-full px-5 grid grid-cols-2 gap-8">
+				<div className="w-full border rounded-lg border-primary/10 my-5 px-5 py-6">
+					<div className="space-y-4">
+						<div className="w-full flex items-center justify-between">
+							<h3 className="text-primary font-semibold text-2xl">
+								Today's Bookings
+							</h3>
+
+							<Button variant="transparent" size="sm">
+								View All
+							</Button>
+						</div>
+
+						{bookingData.map((booking, index) => (
+							<BookingCard key={index} data={booking} />
+						))}
+					</div>
+				</div>
+
+				<div className="w-full border rounded-lg border-primary/10 my-5 px-5 py-6">
 					<div className="space-y-4">
 						<h3 className="text-primary font-semibold text-2xl">
-							Live Conversations
+							Top Performing Staff - Today
 						</h3>
 
 						{Array.from({ length: 6 }).map((_, index) => (
 							<div
 								key={index}
-								className="w-full p-4 rounded-lg border border-primary/10 flex items-start justify-between transition-all duration-150 group hover:bg-primary hover:text-white"
+								className="bg-secondary p-4 px-6 rounded-md w-full flex items-center justify-between gap-1 border border-primary-gray/10"
 							>
-								<div className="flex gap-3">
-									<div className="w-14 h-14 flex items-center justify-center overflow-hidden relative">
+								<div className="flex-1 flex gap-3">
+									<div className="w-14 h-14 flex items-center justify-center overflow-hidden">
 										<div className="w-full h-full flex items-center justify-center overflow-hidden rounded-full border border-primary">
 											<img
 												src={Avatar}
@@ -106,67 +216,205 @@ export default function Dashboard() {
 												className="max-w-full rounded-full"
 											/>
 										</div>
-										{/* <img
-											src={WhatsappIcon}
-											alt="whatsapp"
-											className="absolute bottom-0 right-0"
-										/> */}
 									</div>
-									<div className="flex flex-col justify-center gap-1">
-										<h5 className="font-semibold">
-											Pappu Don
-										</h5>
-										<p className="text-xs font-medium text-gray-500 group-hover:text-white transition-all duration-150">
-											Hi! Can I book a facial for
-											tomorrow?
-										</p>
+									<div className="flex flex-col items-start justify-center">
+										<h5 className="text-xl">Sarah Chen</h5>
+										<span className="text-primary-gray text-sm">
+											8 bookings completed
+										</span>
 									</div>
 								</div>
-								<div className="flex flex-col gap-2 items-end">
-									<span className="text-xs text-gray-500 group-hover:text-white transition-all duration-150">
-										2 min ago
-									</span>
-									<Badge variant={"success"}>Active</Badge>
+
+								<div className="flex flex-col gap-1 items-center justify-between">
+									<h5 className="text-xl font-medium">
+										$500
+									</h5>
+									<span className="text-sm">Revenue</span>
 								</div>
 							</div>
 						))}
 					</div>
 				</div>
-				<div className="col-span-2 w-full border rounded-lg border-primary/10 my-5 px-5 py-6">
+
+				<div className="w-full border rounded-lg border-primary/10 px-5 py-6">
 					<div className="space-y-4">
 						<h3 className="text-primary font-semibold text-2xl">
-							Today's Schedule
+							Recent Activity Feed
 						</h3>
 
-						{Array.from({ length: 6 }).map((_, index) => (
-							<div
-								key={index}
-								className="bg-secondary p-3 px-6 rounded-md flex flex-col gap-1"
-							>
-								<div className="w-full flex items-center justify-between">
-									<h5 className="font-semibold text-lg">
-										Sarah Chen
-									</h5>
-
-									{/* <img src={FacebookIcon} alt="Facebook" /> */}
-								</div>
-
-								<h4 className="text-primary">
-									Hydrating Facial
-								</h4>
-
-								<div className="w-full flex items-center justify-between">
-									<div className="flex gap-1 items-center text-gray-500">
-										<span>Today</span>
-										<div className="w-1 h-1 bg-gray-500 rounded-full"></div>
-										<span>2:00 PM</span>
+						<div className="bg-secondary p-4 px-6 rounded-md w-full flex items-start justify-between gap-1 border border-primary-gray/10">
+							<div className="flex-1 flex gap-3">
+								<div className="w-12 h-12 flex items-center justify-center overflow-hidden">
+									<div className="w-full h-full flex items-center justify-center overflow-hidden rounded-full border border-primary bg-primary text-primary-foreground p-2">
+										{/* <Bot size={26} /> */}
+										<img
+											src={AIWhiteImg}
+											alt="AI"
+											className="w-full h-full"
+										/>
 									</div>
-									<h5 className="text-xl font-semibold text-warning">
-										$500
+								</div>
+								<div className="flex flex-col items-start justify-center">
+									<h5 className="text-xl font-medium">
+										AI Booking
 									</h5>
+									<span className="text-primary-gray text-sm">
+										8 bookings completed
+									</span>
 								</div>
 							</div>
-						))}
+
+							<div className="flex flex-col gap-1 items-center">
+								<span className="text-sm text-primary-gray">
+									5 minutes ago
+								</span>
+							</div>
+						</div>
+
+						<div className="bg-secondary p-4 px-6 rounded-md w-full flex items-start justify-between gap-1 border border-primary-gray/10">
+							<div className="flex-1 flex gap-3">
+								<div className="w-12 h-12 flex items-center justify-center overflow-hidden">
+									<div className="w-full h-full flex items-center justify-center overflow-hidden rounded-full border border-transparent bg-[#D2F2DD] p-2">
+										{/* <CircleCheckBig size={26} /> */}
+										<img
+											src={CheckSuccessImg}
+											alt="check"
+											className="w-full h-full"
+										/>
+									</div>
+								</div>
+								<div className="flex flex-col items-start justify-center">
+									<h5 className="text-xl font-medium">
+										Appointment Completed
+									</h5>
+									<span className="text-primary-gray text-sm">
+										Mike Chen - Beard Trim with Sarah Wilson
+									</span>
+								</div>
+							</div>
+
+							<div className="flex flex-col gap-1 items-center">
+								<span className="text-sm text-primary-gray">
+									15 minutes ago
+								</span>
+							</div>
+						</div>
+
+						<div className="bg-secondary p-4 px-6 rounded-md w-full flex items-start justify-between gap-1 border border-primary-gray/10">
+							<div className="flex-1 flex gap-3">
+								<div className="w-12 h-12 flex items-center justify-center overflow-hidden">
+									<div className="w-full h-full flex items-center justify-center overflow-hidden rounded-full border border-transparent bg-[#FFEDD5] text-[#EC5D14]">
+										<Phone size={26} />
+									</div>
+								</div>
+								<div className="flex flex-col items-start justify-center">
+									<h5 className="text-xl font-medium">
+										Call Escalated to Human
+									</h5>
+									<span className="text-primary-gray text-sm">
+										Customer inquiry about special
+										treatments
+									</span>
+								</div>
+							</div>
+
+							<div className="flex flex-col gap-1 items-center">
+								<span className="text-sm text-primary-gray">
+									15 minutes ago
+								</span>
+							</div>
+						</div>
+
+						<div className="bg-secondary p-4 px-6 rounded-md w-full flex items-start justify-between gap-1 border border-primary-gray/10">
+							<div className="flex-1 flex gap-3">
+								<div className="w-12 h-12 flex items-center justify-center overflow-hidden">
+									<div className="w-full h-full flex items-center justify-center overflow-hidden rounded-full border border-transparent bg-[#FFEDD5] text-[#EC5D14]">
+										<Phone size={26} />
+									</div>
+								</div>
+								<div className="flex flex-col items-start justify-center">
+									<h5 className="text-xl font-medium">
+										Manual Booking Added
+									</h5>
+									<span className="text-primary-gray text-sm">
+										Customer inquiry about special
+										treatments
+									</span>
+								</div>
+							</div>
+
+							<div className="flex flex-col gap-1 items-center">
+								<span className="text-sm text-primary-gray">
+									15 minutes ago
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div className="w-full border rounded-lg border-primary/10 px-5 py-6">
+					<div className="space-y-4">
+						<h3 className="text-primary font-semibold text-2xl">
+							Quick Actions
+						</h3>
+
+						<div className="grid grid-cols-3 gap-4">
+							<div className="w-full h-full rounded-lg border border-primary-gray/10 flex items-center gap-5 flex-col p-6 group group-hover:bg-primary group-hover:text-primary-foreground">
+								<img
+									src={CirclePlusImg}
+									alt="circle-plus"
+									className="w-12 h-12"
+								/>
+
+								<h5 className="font-semibold">New Booking</h5>
+							</div>
+
+							<div className="w-full h-full rounded-lg border border-primary-gray/10 flex items-center gap-5 flex-col p-6">
+								<img
+									src={CalendarDaysBlackImg}
+									alt="calendar"
+									className="w-12 h-12"
+								/>
+
+								<h5 className="font-semibold">Open Calendar</h5>
+							</div>
+
+							<div className="w-full h-full rounded-lg border border-primary-gray/10 flex items-center gap-5 flex-col p-6">
+								<img
+									src={AIBlackImg}
+									alt="ai"
+									className="w-12 h-12"
+								/>
+
+								<h5 className="font-semibold">AI Settings</h5>
+							</div>
+
+							<div className="w-full h-full rounded-lg border border-primary-gray/10 flex items-center gap-5 flex-col p-6">
+								<img
+									src={TeamsImg}
+									alt="teams"
+									className="w-12 h-12"
+								/>
+
+								<h5 className="font-semibold">Manage Staff</h5>
+							</div>
+
+							<div className="w-full h-full rounded-lg border border-primary-gray/10 flex items-center gap-5 flex-col p-6">
+								<Phone size={40} />
+
+								<h5 className="font-semibold">Call Logs</h5>
+							</div>
+
+							<div className="w-full h-full rounded-lg border border-primary-gray/10 flex items-center gap-5 flex-col p-6">
+								<img
+									src={SubscriptionsImg}
+									alt="subscriptions"
+									className="w-12 h-12"
+								/>
+
+								<h5 className="font-semibold">New Booking</h5>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -186,8 +434,8 @@ const DashboardDataCard = ({ data }: { data: DashboardItem }) => {
 					<span className="text-sm font-medium">{data.suffix}</span>
 				</div>
 
-				<div className="w-10 h-10 flex items-center justify-center bg-secondary rounded-lg p-1 bg-primary text-white">
-					<data.icon />
+				<div className="w-10 h-10 flex items-center justify-center bg-secondary rounded-lg p-1 bg-primary text-primary-foreground">
+					<img src={data.icon} alt="icon" className="max-w-full" />
 				</div>
 			</div>
 		</div>

@@ -171,7 +171,7 @@ export const SidebarLink = ({
 			to={link.href}
 			className={cn(
 				"flex items-center justify-start gap-2 group/sidebar py-2 hover:bg-neutral-50 hover:text-primary px-1 rounded-md transition-all duration-75",
-				isActive ? "bg-white text-primary" : "text-white",
+				isActive ? "bg-white text-primary" : "text-primary-foreground",
 				className
 			)}
 			{...props}

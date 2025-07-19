@@ -1,16 +1,11 @@
 import LogoImg from "@/assets/images/voqal-black.svg";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetFooter } from "@/components/ui/sheet";
+import { NavItemProps } from "@/interfaces";
 import { cn } from "@/lib/utils";
 import { AlignRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-
-interface NavItemProps {
-	name: string;
-	link: string;
-	type: "route" | "hash";
-}
 
 export default function Header() {
 	const location = useLocation();

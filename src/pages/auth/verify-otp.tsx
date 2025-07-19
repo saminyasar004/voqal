@@ -130,7 +130,7 @@ export default function VerifyOtp() {
 							className={cn(
 								"w-12 h-12 lg:w-16 lg:h-16 text-center text-xl font-semibold border-2 border-primary-gray/20 rounded-lg focus:border-primary outline-none transition-all duration-200 hover:border-primary",
 								digit
-									? "bg-primary text-white"
+									? "bg-primary text-primary-foreground"
 									: "bg-white text-black"
 							)}
 						/>

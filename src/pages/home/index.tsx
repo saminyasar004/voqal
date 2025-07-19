@@ -1,10 +1,10 @@
-import About from "./About";
-import CountingGlimps from "./CountingGlimps";
-import Faq from "./FAQ";
-import Hero from "./Hero";
-import HowVoqualWorks from "./HowVoqualWorks";
-import Pricing from "./Pricing";
-import WhatWeDo from "./WhatWeDo";
+import About from "./about";
+import CountingGlimps from "./counting-glimps";
+import Faq from "./faq";
+import Hero from "./hero";
+import HowVoqualWorks from "./how-voqal-works";
+import Pricing from "./pricing";
+import WhatWeDo from "./what-we-do";
 
 export default function Home() {
 	return (

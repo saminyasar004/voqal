@@ -6,17 +6,7 @@ import LogoWhiteImg from "@/assets/images/voqal-white.svg";
 import { MoveRight } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { Input } from "../ui/input";
-
-interface SocialLinksProps {
-	img: string;
-	url: string;
-}
-
-interface NavItemProps {
-	name: string;
-	link: string;
-	type: "route" | "hash";
-}
+import { NavItemProps, SocialLinksProps } from "@/interfaces";
 
 const socialLinks: SocialLinksProps[] = [
 	{
@@ -82,7 +72,7 @@ const Footer: React.FC = () => {
 	const location = useLocation();
 
 	return (
-		<footer className="bg-primary text-white">
+		<footer className="bg-primary text-primary-foreground">
 			<div className="container px-4 grid grid-cols-1 lg:grid-cols-4 gap-8 p-10">
 				{/* Voqual Section */}
 				<div className="flex flex-col gap-5 text-center lg:text-left items-center lg:items-start">

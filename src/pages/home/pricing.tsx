@@ -82,7 +82,7 @@ const PricingCard = ({ plan }) => {
 			)}
 		>
 			{plan.isPopular && (
-				<div className="w-60 bg-primary text-white text-xs font-medium px-2 py-1.5 text-center rounded-full absolute -top-4 left-1/2 -translate-x-1/2">
+				<div className="w-60 bg-primary text-primary-foreground text-xs font-medium px-2 py-1.5 text-center rounded-full absolute -top-4 left-1/2 -translate-x-1/2">
 					Most Popular (50% Discount)
 				</div>
 			)}

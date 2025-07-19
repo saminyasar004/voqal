@@ -1,12 +1,13 @@
 import Layout from "@/components/common/layout";
-import UserDashboardLayout from "@/components/common/UserDashboardLayout";
-import ForgotPassword from "@/pages/auth/forgotPassword";
+import UserDashboardLayout from "@/components/common/user-dashboard-layout";
+import ForgotPassword from "@/pages/auth/forgot-password";
 import Login from "@/pages/auth/login";
-import ResetPassword from "@/pages/auth/ResetPassword";
+import ResetPassword from "@/pages/auth/reset-password";
 import Signup from "@/pages/auth/signup";
-import VerifyOtp from "@/pages/auth/verifyOtp";
+import VerifyOtp from "@/pages/auth/verify-otp";
 import Contact from "@/pages/contact";
 import Home from "@/pages/home";
+import Onboarding from "@/pages/on-boarding";
 import PrivacyPolicy from "@/pages/privacy-policy";
 import Dashboard from "@/pages/user/dashboard";
 
@@ -30,6 +31,11 @@ export const routes = [
 	{
 		path: "/privacy-policy",
 		element: PrivacyPolicy,
+		layout: Layout,
+	},
+	{
+		path: "/on-boarding",
+		element: Onboarding,
 		layout: Layout,
 	},
 	{

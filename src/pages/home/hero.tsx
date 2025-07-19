@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import HeroCarousel from "./HeroCarousel";
+import HeroCarousel from "./hero-carousel";
 
 export default function Hero() {
 	return (
