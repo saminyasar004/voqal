@@ -11,6 +11,8 @@ const buttonVariants = cva(
 			variant: {
 				default:
 					"bg-primary text-primary-foreground hover:bg-primary/90",
+				warning:
+					"bg-warning/10 text-warning hover:bg-warning/30 border-transparent",
 				transparent:
 					"bg-transparent border border-primary text-primary hover:bg-primary hover:text-primary-foreground",
 				destructive:
@@ -23,7 +25,7 @@ const buttonVariants = cva(
 			},
 			size: {
 				default: "h-9 px-8 py-1",
-				sm: "h-8 px-6",
+				sm: "h-7 px-4 text-xs",
 				lg: "h-11 px-10",
 				icon: "h-10 w-10",
 			},

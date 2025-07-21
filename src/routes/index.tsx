@@ -9,6 +9,8 @@ import Contact from "@/pages/contact";
 import Home from "@/pages/home";
 import Onboarding from "@/pages/on-boarding";
 import PrivacyPolicy from "@/pages/privacy-policy";
+import Bookings from "@/pages/user/bookings/bookings";
+import CallLogs from "@/pages/user/call-logs/call-logs";
 import Dashboard from "@/pages/user/dashboard";
 
 export interface Route {
@@ -66,6 +68,16 @@ export const routes = [
 	{
 		path: "/user/dashboard",
 		element: Dashboard,
+		layout: UserDashboardLayout,
+	},
+	{
+		path: "/user/bookings",
+		element: Bookings,
+		layout: UserDashboardLayout,
+	},
+	{
+		path: "/user/call-logs",
+		element: CallLogs,
 		layout: UserDashboardLayout,
 	},
 ];

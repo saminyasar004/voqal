@@ -10,7 +10,7 @@ import GrowthImg from "@/assets/images/growth.svg";
 import SubscriptionsImg from "@/assets/images/subscriptions.svg";
 import TeamsImg from "@/assets/images/teams.svg";
 import DashboardHeader from "@/components/common/dashboard-header";
-import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import {
 	Select,
@@ -22,11 +22,11 @@ import {
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { BookingItemProps, DashboardItem } from "@/interfaces";
+import { cn } from "@/lib/utils";
 import { Phone } from "lucide-react";
 import { useState } from "react";
-import BookingCard from "./booking-card";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import BookingCard from "./bookings/booking-card";
+import { Link } from "react-router-dom";
 
 const dashboardData: DashboardItem[] = [
 	{
@@ -95,7 +95,7 @@ export default function Dashboard() {
 	const [isAIActive, setIsAIActive] = useState<boolean>(false);
 
 	return (
-		<section className="w-full pb-8">
+		<section className="w-full pb-8 bg-[#F5F5F5]">
 			{/* dashboard header */}
 			<DashboardHeader />
 
@@ -185,9 +185,11 @@ export default function Dashboard() {
 								Today's Bookings
 							</h3>
 
-							<Button variant="transparent" size="sm">
-								View All
-							</Button>
+							<Link to={"/user/bookings"}>
+								<Button variant="transparent" size="sm">
+									View All
+								</Button>
+							</Link>
 						</div>
 
 						{bookingData.map((booking, index) => (
@@ -399,11 +401,13 @@ export default function Dashboard() {
 								<h5 className="font-semibold">Manage Staff</h5>
 							</div>
 
-							<div className="w-full h-full rounded-lg border border-primary-gray/10 flex items-center gap-5 flex-col p-6">
-								<Phone size={40} />
+							<Link to={"/user/call-logs"}>
+								<div className="w-full h-full rounded-lg border border-primary-gray/10 flex items-center gap-5 flex-col p-6">
+									<Phone size={40} />
 
-								<h5 className="font-semibold">Call Logs</h5>
-							</div>
+									<h5 className="font-semibold">Call Logs</h5>
+								</div>
+							</Link>
 
 							<div className="w-full h-full rounded-lg border border-primary-gray/10 flex items-center gap-5 flex-col p-6">
 								<img
@@ -424,7 +428,7 @@ export default function Dashboard() {
 
 const DashboardDataCard = ({ data }: { data: DashboardItem }) => {
 	return (
-		<div className="w-full bg-background border border-primary/10 rounded-lg flex flex-col gap-3 p-5 shadow-md">
+		<div className="w-full bg-background border border-primary/10 rounded-lg flex flex-col gap-3 p-5">
 			<div className="w-full flex items-start justify-between">
 				<div className="flex flex-col gap-1">
 					<h3 className="">{data.title}</h3>
