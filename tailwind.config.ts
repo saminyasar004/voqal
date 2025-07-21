@@ -29,6 +29,7 @@ export default {
 				"secondary-gray": "#B2B2B2",
 				"golden-olive": "#929208",
 				warning: "#F05F5F",
+				olive: "#599862",
 				success: "#16A34A",
 				sidebar: {
 					DEFAULT: "hsl(var(--sidebar-background))",
