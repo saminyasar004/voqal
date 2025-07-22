@@ -24,6 +24,7 @@ export default {
 			},
 			colors: {
 				primary: "#141414",
+				background: "#f5f5f5",
 				"primary-foreground": "#fff",
 				"primary-gray": "#5C5A5A",
 				"theme-gray": "#666666",
