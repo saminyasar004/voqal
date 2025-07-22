@@ -49,7 +49,7 @@ export default function UserDashboardLayout({ children }) {
 		},
 		{
 			label: "Subscriptions",
-			href: "/user/customers",
+			href: "/user/subscriptions",
 			icon: <Tags size={20} className="shrink-0" />,
 		},
 		{

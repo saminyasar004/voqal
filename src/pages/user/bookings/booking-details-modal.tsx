@@ -363,7 +363,7 @@ export default function BookingDetailsModal({
 										onClick={() =>
 											handlePlayPause("ai-call")
 										}
-										className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded flex items-center gap-2"
+										className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 flex items-center gap-2"
 									>
 										{playingRecording === "ai-call" &&
 										isPlaying ? (
@@ -413,7 +413,7 @@ export default function BookingDetailsModal({
 										onClick={() =>
 											handlePlayPause("follow-up")
 										}
-										className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded flex items-center gap-2"
+										className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 flex items-center gap-2"
 									>
 										{playingRecording === "follow-up" &&
 										isPlaying ? (
@@ -457,9 +457,7 @@ export default function BookingDetailsModal({
 									<h3 className="text-lg font-semibold text-gray-900">
 										Incoming Call
 									</h3>
-									<Badge className="bg-green-600 text-white text-xs px-3 py-1 rounded">
-										Confirm
-									</Badge>
+									<Badge variant="success">Confirm</Badge>
 								</div>
 
 								<div className="space-y-3 mb-4">
@@ -503,9 +501,7 @@ export default function BookingDetailsModal({
 									<h3 className="text-lg font-semibold text-gray-900">
 										Incoming Call
 									</h3>
-									<Badge className="bg-purple-600 text-white text-xs px-3 py-1 rounded">
-										Confirmation
-									</Badge>
+									<Badge variant="indigo">Confirmation</Badge>
 								</div>
 
 								<div className="space-y-3 mb-4">

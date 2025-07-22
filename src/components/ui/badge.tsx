@@ -8,17 +8,31 @@ const badgeVariants = cva(
 	{
 		variants: {
 			variant: {
-				default:
+				"default-outlined":
 					"border-transparent text-primary hover:bg-primary hover:text-primary-foreground border border-primary",
-				success:
+				default:
+					"border-primary bg-primary text-white hover:bg-transparent hover:text-primary border border-primary",
+
+				"success-outlined":
 					"border-transparent text-success hover:bg-success hover:text-primary-foreground border border-success",
+				success:
+					"border-success text-white bg-success hover:bg-transparent hover:text-success border border-success",
+				"indigo-outlined":
+					"border-transparent text-indigo-500 hover:bg-indigo-500 hover:text-primary-foreground border border-indigo-500",
+				indigo: "border-indigo-500 text-white bg-indigo-500 hover:bg-transparent hover:text-indigo-500 border border-indigo-500",
+				"warning-outlined":
+					"border-transparent text-warning hover:bg-warning hover:text-primary-foreground border border-warning",
 				warning:
-					"border-transparent text-warning hover:bg-warning hover:text-foreground border border-warning",
-				info: "border-transparent text-blue-500 hover:bg-blue-500 hover:text-primary-foreground border border-blue-500",
+					"bg-warning text-white hover:bg-transparent hover:text-warning border border-warning",
+				"info-outlined":
+					"border-transparent text-blue-500 hover:bg-blue-500 hover:text-primary-foreground border border-blue-500",
+				info: "bg-blue-500 text-white hover:bg-transparent hover:text-blue-500 border border-blue-500",
 				secondary:
-					"border-transparent text-slate-900 hover:bg-slate-100/80 dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-800/80",
+					"border border-primary-gray text-primary-foreground hover:bg-transparent bg-primary-gray hover:text-primary-gray",
+				"destructive-outlined":
+					"border-transparent text-rose-500 hover:bg-rose-500 hover:text-primary-foreground border border-rose-500",
 				destructive:
-					"border-transparent text-danger hover:bg-danger hover:text-primary-foreground border border-danger",
+					"bg-rose-500 text-white hover:bg-transparent hover:text-rose-500 border border-rose-500",
 				outline: "text-slate-950 dark:text-slate-50",
 			},
 		},

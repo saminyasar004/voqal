@@ -222,7 +222,7 @@ function CallDetailsDialog({
 							<Button
 								size="sm"
 								onClick={handlePlayRecording}
-								className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded flex items-center gap-2"
+								className="bg-theme-gray"
 							>
 								<Play className="h-4 w-4" />
 								Play Recording
@@ -355,29 +355,13 @@ export default function CallLogs() {
 	const getStatusBadge = (status: string) => {
 		switch (status) {
 			case "booking-made":
-				return (
-					<Badge className="bg-green-600 text-white text-xs px-2 py-1 rounded">
-						Booking Made
-					</Badge>
-				);
+				return <Badge variant="success">Booking Made</Badge>;
 			case "ai-filtered":
-				return (
-					<Badge className="bg-gray-600 text-white text-xs px-2 py-1 rounded">
-						AI Filtered
-					</Badge>
-				);
+				return <Badge variant="default">AI Filtered</Badge>;
 			case "call-drop":
-				return (
-					<Badge className="bg-red-600 text-white text-xs px-2 py-1 rounded">
-						Call Drop
-					</Badge>
-				);
+				return <Badge variant="warning">Call Drop</Badge>;
 			default:
-				return (
-					<Badge className="bg-gray-600 text-white text-xs px-2 py-1 rounded">
-						Unknown
-					</Badge>
-				);
+				return <Badge variant="indigo">Unknown</Badge>;
 		}
 	};
 
@@ -514,7 +498,6 @@ export default function CallLogs() {
 												onClick={() =>
 													handleViewDetails(call)
 												}
-												className="bg-black hover:bg-gray-800 text-white text-sm px-4 py-2 rounded"
 											>
 												View Details
 											</Button>

@@ -27,6 +27,7 @@ import { Phone } from "lucide-react";
 import { useState } from "react";
 import BookingCard from "./bookings/booking-card";
 import { Link } from "react-router-dom";
+import { BookingAddDialog } from "./bookings/bookings";
 
 const dashboardData: DashboardItem[] = [
 	{
@@ -93,6 +94,9 @@ export default function Dashboard() {
 		"today" | "this-week" | "this-month"
 	>("today");
 	const [isAIActive, setIsAIActive] = useState<boolean>(false);
+
+	const [showBookingDetails, setShowBookingDetails] = useState(false);
+	const [showAddBooking, setShowAddBooking] = useState(false);
 
 	return (
 		<section className="w-full pb-8 bg-[#F5F5F5]">
@@ -361,7 +365,10 @@ export default function Dashboard() {
 						</h3>
 
 						<div className="grid grid-cols-3 gap-4">
-							<div className="w-full h-full rounded-lg border border-primary-gray/10 flex items-center gap-5 flex-col p-6 group group-hover:bg-primary group-hover:text-primary-foreground">
+							<div
+								onClick={() => setShowAddBooking(true)}
+								className="w-full h-full rounded-lg border border-primary-gray/10 flex items-center gap-5 flex-col p-6 cursor-pointer hover:bg-white transition-all duration-300"
+							>
 								<img
 									src={CirclePlusImg}
 									alt="circle-plus"
@@ -371,7 +378,7 @@ export default function Dashboard() {
 								<h5 className="font-semibold">New Booking</h5>
 							</div>
 
-							<div className="w-full h-full rounded-lg border border-primary-gray/10 flex items-center gap-5 flex-col p-6">
+							<div className="w-full h-full rounded-lg border border-primary-gray/10 flex items-center gap-5 flex-col p-6 cursor-pointer hover:bg-white transition-all duration-300">
 								<img
 									src={CalendarDaysBlackImg}
 									alt="calendar"
@@ -381,7 +388,7 @@ export default function Dashboard() {
 								<h5 className="font-semibold">Open Calendar</h5>
 							</div>
 
-							<div className="w-full h-full rounded-lg border border-primary-gray/10 flex items-center gap-5 flex-col p-6">
+							<div className="w-full h-full rounded-lg border border-primary-gray/10 flex items-center gap-5 flex-col p-6 cursor-pointer hover:bg-white transition-all duration-300">
 								<img
 									src={AIBlackImg}
 									alt="ai"
@@ -391,7 +398,7 @@ export default function Dashboard() {
 								<h5 className="font-semibold">AI Settings</h5>
 							</div>
 
-							<div className="w-full h-full rounded-lg border border-primary-gray/10 flex items-center gap-5 flex-col p-6">
+							<div className="w-full h-full rounded-lg border border-primary-gray/10 flex items-center gap-5 flex-col p-6 cursor-pointer hover:bg-white transition-all duration-300">
 								<img
 									src={TeamsImg}
 									alt="teams"
@@ -402,14 +409,14 @@ export default function Dashboard() {
 							</div>
 
 							<Link to={"/user/call-logs"}>
-								<div className="w-full h-full rounded-lg border border-primary-gray/10 flex items-center gap-5 flex-col p-6">
+								<div className="w-full h-full rounded-lg border border-primary-gray/10 flex items-center gap-5 flex-col p-6 cursor-pointer hover:bg-white transition-all duration-300">
 									<Phone size={40} />
 
 									<h5 className="font-semibold">Call Logs</h5>
 								</div>
 							</Link>
 
-							<div className="w-full h-full rounded-lg border border-primary-gray/10 flex items-center gap-5 flex-col p-6">
+							<div className="w-full h-full rounded-lg border border-primary-gray/10 flex items-center gap-5 flex-col p-6 cursor-pointer hover:bg-white transition-all duration-300">
 								<img
 									src={SubscriptionsImg}
 									alt="subscriptions"
@@ -422,6 +429,10 @@ export default function Dashboard() {
 					</div>
 				</div>
 			</div>
+
+			{showAddBooking && (
+				<BookingAddDialog onClose={() => setShowAddBooking(false)} />
+			)}
 		</section>
 	);
 }

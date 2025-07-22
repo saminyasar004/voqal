@@ -14,7 +14,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { Calendar, Clock, Plus, Search } from "lucide-react";
 import { useState } from "react";
-import BookingDetailsModal from "./booking-details-card";
+import BookingDetailsModal from "./booking-details-modal";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
@@ -45,7 +45,7 @@ export const bookings: Booking[] = [
 		phone: "+1 (555) 123-4567",
 		duration: "1:00",
 		status: "confirmed",
-		tags: ["Haircut", "Color"],
+		tags: ["Haircut", "Confirm"],
 		actionType: "complete",
 	},
 	{
@@ -58,7 +58,7 @@ export const bookings: Booking[] = [
 		phone: "+1 (555) 123-4567",
 		duration: "1:00",
 		status: "confirmed",
-		tags: ["Haircut", "Color"],
+		tags: ["Haircut", "Confirm"],
 		actionType: "confirm",
 		specialNote:
 			"Rescheduled to: Live (Postponed) / Reason: Customer requested to speak with human staff for special requirements",
@@ -86,7 +86,7 @@ export const bookings: Booking[] = [
 		phone: "+1 (555) 123-4567",
 		duration: "1:00",
 		status: "confirmed",
-		tags: ["Haircut", "Color"],
+		tags: ["Haircut", "Confirm"],
 		actionType: "confirm",
 	},
 	{
@@ -99,7 +99,7 @@ export const bookings: Booking[] = [
 		phone: "+1 (555) 123-4567",
 		duration: "1:00",
 		status: "confirmed",
-		tags: ["Haircut", "Color"],
+		tags: ["Haircut", "Confirm"],
 		actionType: "complete",
 	},
 	{
@@ -112,7 +112,7 @@ export const bookings: Booking[] = [
 		phone: "+1 (555) 123-4567",
 		duration: "1:00",
 		status: "confirmed",
-		tags: ["Haircut", "Color"],
+		tags: ["Haircut", "Confirm"],
 		actionType: "confirm",
 	},
 	{
@@ -138,7 +138,7 @@ export const bookings: Booking[] = [
 		phone: "+1 (555) 123-4567",
 		duration: "1:00",
 		status: "confirmed",
-		tags: ["Haircut", "Color"],
+		tags: ["Haircut", "Confirm"],
 		actionType: "confirm",
 	},
 	{
@@ -201,22 +201,22 @@ const getActionButton = (actionType: string) => {
 	}
 };
 
-const getTagColor = (tag: string) => {
+const getTagVariant = (tag: string) => {
 	switch (tag.toLowerCase()) {
 		case "haircut":
-			return "bg-black text-white border-black hover:bg-black/80";
-		case "color":
-			return "bg-olive text-white border-olive hover:bg-olive/80";
+			return "default";
+		case "confirm":
+			return "success";
 		case "pending":
-			return "bg-golden-olive text-white border-golden-olive hover:bg-golden-olive/80";
+			return "secondary";
 		case "cancelled":
-			return "bg-warning text-white border-warning hover:bg-warning/80";
+			return "warning";
 		default:
-			return "bg-primary-gray text-white border-primary-gray hover:bg-primary-gray/80";
+			return "indigo";
 	}
 };
 
-function BookingAddDialog({
+export function BookingAddDialog({
 	onClose,
 }: // onSave,
 {
@@ -701,9 +701,9 @@ export default function Bookings() {
 														(tag, index) => (
 															<Badge
 																key={index}
-																className={`text-xs px-2 py-0.5 font-medium ${getTagColor(
+																variant={getTagVariant(
 																	tag
-																)}`}
+																)}
 															>
 																{tag}
 															</Badge>
