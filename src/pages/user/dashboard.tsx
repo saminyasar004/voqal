@@ -142,7 +142,7 @@ export default function Dashboard() {
 				{dashboardData.map((data, index) => (
 					<DashboardDataCard key={index} data={data} />
 				))}
-				<div className="w-full bg-background border border-primary/10 rounded-lg flex flex-col gap-3 p-5 shadow-md">
+				<div className="w-full bg-white border border-primary/10 rounded-lg flex flex-col gap-3 p-5">
 					<div className="w-full flex items-start justify-between">
 						<div className="flex flex-col gap-1">
 							<h3 className="">AI Calls Today</h3>
@@ -182,7 +182,7 @@ export default function Dashboard() {
 			</div>
 
 			<div className="w-full px-5 grid grid-cols-2 gap-8">
-				<div className="w-full border rounded-lg border-primary/10 my-5 px-5 py-6">
+				<div className="w-full border rounded-lg bg-white border-primary/10 my-5 px-5 py-6">
 					<div className="space-y-4">
 						<div className="w-full flex items-center justify-between">
 							<h3 className="text-primary font-semibold text-2xl">
@@ -202,7 +202,7 @@ export default function Dashboard() {
 					</div>
 				</div>
 
-				<div className="w-full border rounded-lg border-primary/10 my-5 px-5 py-6">
+				<div className="w-full bg-white border rounded-lg border-primary/10 my-5 px-5 py-6">
 					<div className="space-y-4">
 						<h3 className="text-primary font-semibold text-2xl">
 							Top Performing Staff - Today
@@ -211,7 +211,7 @@ export default function Dashboard() {
 						{Array.from({ length: 6 }).map((_, index) => (
 							<div
 								key={index}
-								className="bg-secondary p-4 px-6 rounded-md w-full flex items-center justify-between gap-1 border border-primary-gray/10"
+								className="bg-white p-4 px-6 rounded-md w-full flex items-center justify-between gap-1 border border-primary-gray/10 hover:bg-background transition-all duration-300"
 							>
 								<div className="flex-1 flex gap-3">
 									<div className="w-14 h-14 flex items-center justify-center overflow-hidden">
@@ -242,13 +242,13 @@ export default function Dashboard() {
 					</div>
 				</div>
 
-				<div className="w-full border rounded-lg border-primary/10 px-5 py-6">
+				<div className="w-full bg-white border rounded-lg border-primary/10 px-5 py-6">
 					<div className="space-y-4">
 						<h3 className="text-primary font-semibold text-2xl">
 							Recent Activity Feed
 						</h3>
 
-						<div className="bg-secondary p-4 px-6 rounded-md w-full flex items-start justify-between gap-1 border border-primary-gray/10">
+						<div className="bg-white p-4 px-6 rounded-md w-full flex items-start justify-between gap-1 border border-primary-gray/10 hover:bg-background transition-all duration-300">
 							<div className="flex-1 flex gap-3">
 								<div className="w-12 h-12 flex items-center justify-center overflow-hidden">
 									<div className="w-full h-full flex items-center justify-center overflow-hidden rounded-full border border-primary bg-primary text-primary-foreground p-2">
@@ -277,7 +277,7 @@ export default function Dashboard() {
 							</div>
 						</div>
 
-						<div className="bg-secondary p-4 px-6 rounded-md w-full flex items-start justify-between gap-1 border border-primary-gray/10">
+						<div className="bg-secondary p-4 px-6 rounded-md w-full flex items-start justify-between gap-1 border border-primary-gray/10 hover:bg-background transition-all duration-300">
 							<div className="flex-1 flex gap-3">
 								<div className="w-12 h-12 flex items-center justify-center overflow-hidden">
 									<div className="w-full h-full flex items-center justify-center overflow-hidden rounded-full border border-transparent bg-[#D2F2DD] p-2">
@@ -306,7 +306,7 @@ export default function Dashboard() {
 							</div>
 						</div>
 
-						<div className="bg-secondary p-4 px-6 rounded-md w-full flex items-start justify-between gap-1 border border-primary-gray/10">
+						<div className="bg-secondary p-4 px-6 rounded-md w-full flex items-start justify-between gap-1 border border-primary-gray/10 hover:bg-background transition-all duration-300">
 							<div className="flex-1 flex gap-3">
 								<div className="w-12 h-12 flex items-center justify-center overflow-hidden">
 									<div className="w-full h-full flex items-center justify-center overflow-hidden rounded-full border border-transparent bg-[#FFEDD5] text-[#EC5D14]">
@@ -331,7 +331,7 @@ export default function Dashboard() {
 							</div>
 						</div>
 
-						<div className="bg-secondary p-4 px-6 rounded-md w-full flex items-start justify-between gap-1 border border-primary-gray/10">
+						<div className="bg-secondary p-4 px-6 rounded-md w-full flex items-start justify-between gap-1 border border-primary-gray/10 hover:bg-background transition-all duration-300">
 							<div className="flex-1 flex gap-3">
 								<div className="w-12 h-12 flex items-center justify-center overflow-hidden">
 									<div className="w-full h-full flex items-center justify-center overflow-hidden rounded-full border border-transparent bg-[#FFEDD5] text-[#EC5D14]">
@@ -358,7 +358,7 @@ export default function Dashboard() {
 					</div>
 				</div>
 
-				<div className="w-full border rounded-lg border-primary/10 px-5 py-6">
+				<div className="w-full bg-white border rounded-lg border-primary/10 px-5 py-6">
 					<div className="space-y-4">
 						<h3 className="text-primary font-semibold text-2xl">
 							Quick Actions
@@ -367,7 +367,7 @@ export default function Dashboard() {
 						<div className="grid grid-cols-3 gap-4">
 							<div
 								onClick={() => setShowAddBooking(true)}
-								className="w-full h-full rounded-lg border border-primary-gray/10 flex items-center gap-5 flex-col p-6 cursor-pointer hover:bg-white transition-all duration-300"
+								className="w-full h-full rounded-lg border border-primary-gray/10 flex items-center gap-5 flex-col p-6 cursor-pointer hover:bg-background transition-all duration-300"
 							>
 								<img
 									src={CirclePlusImg}
@@ -378,7 +378,7 @@ export default function Dashboard() {
 								<h5 className="font-semibold">New Booking</h5>
 							</div>
 
-							<div className="w-full h-full rounded-lg border border-primary-gray/10 flex items-center gap-5 flex-col p-6 cursor-pointer hover:bg-white transition-all duration-300">
+							<div className="w-full h-full rounded-lg border border-primary-gray/10 flex items-center gap-5 flex-col p-6 cursor-pointer hover:bg-background transition-all duration-300">
 								<img
 									src={CalendarDaysBlackImg}
 									alt="calendar"
@@ -388,7 +388,7 @@ export default function Dashboard() {
 								<h5 className="font-semibold">Open Calendar</h5>
 							</div>
 
-							<div className="w-full h-full rounded-lg border border-primary-gray/10 flex items-center gap-5 flex-col p-6 cursor-pointer hover:bg-white transition-all duration-300">
+							<div className="w-full h-full rounded-lg border border-primary-gray/10 flex items-center gap-5 flex-col p-6 cursor-pointer hover:bg-background transition-all duration-300">
 								<img
 									src={AIBlackImg}
 									alt="ai"
@@ -398,7 +398,7 @@ export default function Dashboard() {
 								<h5 className="font-semibold">AI Settings</h5>
 							</div>
 
-							<div className="w-full h-full rounded-lg border border-primary-gray/10 flex items-center gap-5 flex-col p-6 cursor-pointer hover:bg-white transition-all duration-300">
+							<div className="w-full h-full rounded-lg border border-primary-gray/10 flex items-center gap-5 flex-col p-6 cursor-pointer hover:bg-background transition-all duration-300">
 								<img
 									src={TeamsImg}
 									alt="teams"
@@ -409,14 +409,14 @@ export default function Dashboard() {
 							</div>
 
 							<Link to={"/user/call-logs"}>
-								<div className="w-full h-full rounded-lg border border-primary-gray/10 flex items-center gap-5 flex-col p-6 cursor-pointer hover:bg-white transition-all duration-300">
+								<div className="w-full h-full rounded-lg border border-primary-gray/10 flex items-center gap-5 flex-col p-6 cursor-pointer hover:bg-background transition-all duration-300">
 									<Phone size={40} />
 
 									<h5 className="font-semibold">Call Logs</h5>
 								</div>
 							</Link>
 
-							<div className="w-full h-full rounded-lg border border-primary-gray/10 flex items-center gap-5 flex-col p-6 cursor-pointer hover:bg-white transition-all duration-300">
+							<div className="w-full h-full rounded-lg border border-primary-gray/10 flex items-center gap-5 flex-col p-6 cursor-pointer hover:bg-background transition-all duration-300">
 								<img
 									src={SubscriptionsImg}
 									alt="subscriptions"
@@ -439,7 +439,7 @@ export default function Dashboard() {
 
 const DashboardDataCard = ({ data }: { data: DashboardItem }) => {
 	return (
-		<div className="w-full bg-background border border-primary/10 rounded-lg flex flex-col gap-3 p-5">
+		<div className="w-full bg-white border border-primary/10 rounded-lg flex flex-col gap-3 p-5">
 			<div className="w-full flex items-start justify-between">
 				<div className="flex flex-col gap-1">
 					<h3 className="">{data.title}</h3>

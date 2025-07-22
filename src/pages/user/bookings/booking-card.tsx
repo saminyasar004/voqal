@@ -5,7 +5,7 @@ import { Sparkles, Users } from "lucide-react";
 
 export default function BookingCard({ data }: { data: BookingItemProps }) {
 	return (
-		<div className="border border-primary-gray/10 rounded-lg p-4 grid grid-cols-6 gap-8">
+		<div className="border bg-white border-primary-gray/10 rounded-lg p-4 grid grid-cols-6 gap-8 hover:bg-background transition-all duration-300">
 			<div className="flex flex-col items-center justify-center gap-1 border-r border-primary-gray/20">
 				<h5 className="text-lg">{data.time}</h5>
 				<span className="text-xs text-primary-gray">{data.date}</span>

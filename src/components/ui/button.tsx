@@ -12,7 +12,7 @@ const buttonVariants = cva(
 				default:
 					"bg-primary text-primary-foreground hover:bg-primary/90",
 				warning:
-					"bg-warning/10 text-warning hover:bg-warning/30 border-transparent",
+					"bg-warning text-white hover:bg-warning/80 border-transparent",
 				transparent:
 					"bg-transparent border border-primary text-primary hover:bg-primary hover:text-primary-foreground",
 				destructive:

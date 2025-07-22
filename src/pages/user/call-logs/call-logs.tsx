@@ -390,7 +390,7 @@ export default function CallLogs() {
 				{callLogsData.map((data, index) => (
 					<div
 						key={index}
-						className="w-full flex items-start justify-between gap-7 border rounded-lg p-4"
+						className="w-full flex items-start justify-between gap-7 border rounded-lg p-4 bg-white"
 					>
 						<div className="flex flex-col gap-1">
 							<h4>{data.title}</h4>
@@ -486,7 +486,7 @@ export default function CallLogs() {
 												<h4 className="text-sm font-medium text-gray-900 mb-2">
 													Transcript Preview:
 												</h4>
-												<div className="bg-gray-100 p-3 rounded text-sm text-gray-700 leading-relaxed">
+												<div className="bg-background p-3 rounded text-sm text-gray-700 leading-relaxed">
 													{call.transcript}
 												</div>
 											</div>

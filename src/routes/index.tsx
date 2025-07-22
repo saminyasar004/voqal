@@ -9,6 +9,8 @@ import Contact from "@/pages/contact";
 import Home from "@/pages/home";
 import Onboarding from "@/pages/on-boarding";
 import PrivacyPolicy from "@/pages/privacy-policy";
+import Staff from "@/pages/staff/staff";
+import TeamManagement from "@/pages/team-management/team-management";
 import Bookings from "@/pages/user/bookings/bookings";
 import CallLogs from "@/pages/user/call-logs/call-logs";
 import Customers from "@/pages/user/customers/customers";
@@ -84,6 +86,16 @@ export const routes = [
 	{
 		path: "/user/customers",
 		element: Customers,
+		layout: UserDashboardLayout,
+	},
+	{
+		path: "/user/staff",
+		element: Staff,
+		layout: UserDashboardLayout,
+	},
+	{
+		path: "/user/team-management",
+		element: TeamManagement,
 		layout: UserDashboardLayout,
 	},
 ];

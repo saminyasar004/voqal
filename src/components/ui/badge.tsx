@@ -33,7 +33,8 @@ const badgeVariants = cva(
 					"border-transparent text-rose-500 hover:bg-rose-500 hover:text-primary-foreground border border-rose-500",
 				destructive:
 					"bg-rose-500 text-white hover:bg-transparent hover:text-rose-500 border border-rose-500",
-				outline: "text-slate-950 dark:text-slate-50",
+				outline:
+					"border border-primary-gray text-slate-950 dark:text-slate-50",
 			},
 		},
 		defaultVariants: {

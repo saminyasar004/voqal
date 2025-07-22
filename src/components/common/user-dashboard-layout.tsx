@@ -1,22 +1,22 @@
-import LogoIconImg from "@/assets/images/voqal-white.svg";
-import LogoBlack from "@/assets/images/voqal-white.svg";
+import {
+	default as LogoBlack,
+	default as LogoIconImg,
+} from "@/assets/images/voqal-white.svg";
+import { Sidebar, SidebarBody, SidebarLink } from "@/components/ui/sidebar";
+import { cn } from "@/lib/utils";
 import {
 	Blocks,
 	BriefcaseBusiness,
-	CalendarDays,
+	CalendarCheck,
 	ChevronsLeftRight,
-	MessageSquareMore,
+	Network,
+	Phone,
 	Settings,
-	Tags,
+	UserCog,
 	Users,
 } from "lucide-react";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Sidebar, SidebarBody, SidebarLink } from "@/components/ui/sidebar";
-import { ScrollArea } from "@radix-ui/react-scroll-area";
-import { Button } from "../ui/button";
-import { cn } from "@/lib/utils";
-import { motion } from "motion/react";
 
 export default function UserDashboardLayout({ children }) {
 	const location = useLocation();
@@ -28,14 +28,14 @@ export default function UserDashboardLayout({ children }) {
 			icon: <Blocks size={20} className="shrink-0" />,
 		},
 		{
-			label: "Conversations",
-			href: "/user/conversations",
-			icon: <MessageSquareMore size={20} className="shrink-0" />,
+			label: "Bookings",
+			href: "/user/bookings",
+			icon: <CalendarCheck size={20} className="shrink-0" />,
 		},
 		{
-			label: "Appointments",
-			href: "/user/appointments",
-			icon: <CalendarDays size={20} className="shrink-0" />,
+			label: "Call Logs",
+			href: "/user/call-logs",
+			icon: <Phone size={20} className="shrink-0" />,
 		},
 		{
 			label: "Customers",
@@ -43,15 +43,25 @@ export default function UserDashboardLayout({ children }) {
 			icon: <Users size={20} className="shrink-0" />,
 		},
 		{
+			label: "Staff",
+			href: "/user/staff",
+			icon: <UserCog size={20} className="shrink-0" />,
+		},
+		{
+			label: "Team Management",
+			href: "/user/team-management",
+			icon: <Network size={20} className="shrink-0" />,
+		},
+		{
 			label: "Business Profile",
 			href: "/user/business-profile",
 			icon: <BriefcaseBusiness size={20} className="shrink-0" />,
 		},
-		{
-			label: "Subscriptions",
-			href: "/user/subscriptions",
-			icon: <Tags size={20} className="shrink-0" />,
-		},
+		// {
+		// 	label: "Subscriptions",
+		// 	href: "/user/subscriptions",
+		// 	icon: <Tags size={20} className="shrink-0" />,
+		// },
 		{
 			label: "Settings",
 			href: "/user/settings",
