@@ -26,6 +26,7 @@ export default {
 				primary: "#141414",
 				"primary-foreground": "#fff",
 				"primary-gray": "#5C5A5A",
+				"theme-gray": "#666666",
 				"secondary-gray": "#B2B2B2",
 				"golden-olive": "#929208",
 				warning: "#F05F5F",
