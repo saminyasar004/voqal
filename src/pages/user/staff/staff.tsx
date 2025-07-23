@@ -651,7 +651,7 @@ export default function Staff() {
 					{/* Header */}
 					<div className="mb-6">
 						<h1 className="text-xl font-semibold text-gray-900">
-							Total Staff (7)
+							Total Staff (6)
 						</h1>
 					</div>
 

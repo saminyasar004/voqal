@@ -365,7 +365,7 @@ export default function TeamManagement() {
 					{/* Header */}
 					<div className="mb-6">
 						<h1 className="text-xl font-semibold text-gray-900">
-							Total Staff (7)
+							Total Team Member (4)
 						</h1>
 					</div>
 

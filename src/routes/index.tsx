@@ -9,12 +9,13 @@ import Contact from "@/pages/contact";
 import Home from "@/pages/home";
 import Onboarding from "@/pages/on-boarding";
 import PrivacyPolicy from "@/pages/privacy-policy";
-import Staff from "@/pages/staff/staff";
-import TeamManagement from "@/pages/team-management/team-management";
+import Staff from "@/pages/user/staff/staff";
+import TeamManagement from "@/pages/user/team-management/team-management";
 import Bookings from "@/pages/user/bookings/bookings";
 import CallLogs from "@/pages/user/call-logs/call-logs";
 import Customers from "@/pages/user/customers/customers";
 import Dashboard from "@/pages/user/dashboard";
+import BusinessProfile from "@/pages/user/business-profile/business-profile";
 
 export interface Route {
 	path: string;
@@ -96,6 +97,11 @@ export const routes = [
 	{
 		path: "/user/team-management",
 		element: TeamManagement,
+		layout: UserDashboardLayout,
+	},
+	{
+		path: "/user/business-profile",
+		element: BusinessProfile,
 		layout: UserDashboardLayout,
 	},
 ];
