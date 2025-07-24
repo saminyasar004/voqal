@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Avatar from "@/assets/images/avatar.jpg";
 import { Bell } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function DashboardHeader() {
 	return (
@@ -20,9 +21,11 @@ export default function DashboardHeader() {
 				<p className="text-sm text-foreground">{description}</p>
 			</div> */}
 				<div className="flex items-center gap-4">
-					<span className="flex items-center cursor-pointer text-[#414141]">
-						<Bell fill="#414141" size={20} />
-					</span>
+					<Link to={"/user/notifications"}>
+						<span className="flex items-center cursor-pointer text-[#414141]">
+							<Bell fill="#414141" size={20} />
+						</span>
+					</Link>
 
 					<DropdownMenu>
 						<DropdownMenuTrigger asChild>

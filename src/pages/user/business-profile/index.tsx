@@ -29,6 +29,7 @@ import {
 } from "@/components/ui/select";
 import DashboardHeader from "@/components/common/dashboard-header";
 import { Separator } from "@/components/ui/separator";
+import { Link } from "react-router-dom";
 
 interface Service {
 	id: number;
@@ -244,6 +245,18 @@ export default function BusinessProfile() {
 						<p className="text-sm text-foreground">
 							Manage your business information and settings
 						</p>
+					</div>
+
+					<div className="flex items-center justify-center">
+						<Link to={"/user/business-profile/edit"}>
+							<Button
+								variant="outline"
+								size="icon"
+								className="rounded-lg p-0"
+							>
+								<Edit />
+							</Button>
+						</Link>
 					</div>
 				</div>
 
@@ -517,7 +530,7 @@ export default function BusinessProfile() {
 										onCheckedChange={() =>
 											toggleSetting("discountManagement")
 										}
-										className="data-[state=checked]:bg-black"
+										className="data-[state=checked]:bg-primary"
 									/>
 								</div>
 								<div className="grid grid-cols-2 gap-4">
@@ -666,7 +679,7 @@ export default function BusinessProfile() {
 											<Button
 												onClick={handleAddService}
 												size="sm"
-												className="bg-black hover:bg-gray-800 text-white"
+												className="bg-primary hover:bg-gray-800 text-white"
 											>
 												Add Service
 											</Button>
@@ -896,7 +909,7 @@ export default function BusinessProfile() {
 											<Button
 												onClick={handleAddStaffService}
 												size="sm"
-												className="bg-black hover:bg-gray-800 text-white"
+												className="bg-primary hover:bg-gray-800 text-white"
 											>
 												Add Staff Service
 											</Button>
@@ -1052,7 +1065,7 @@ export default function BusinessProfile() {
 															})
 														)
 													}
-													className="data-[state=checked]:bg-black"
+													className="data-[state=checked]:bg-primary"
 												/>
 											</div>
 										)
@@ -1064,7 +1077,7 @@ export default function BusinessProfile() {
 						{/* Settings Toggles */}
 						<Card className="bg-white">
 							<CardContent className="p-6 space-y-6">
-								<div className="flex items-center justify-between">
+								<div className="flex items-center justify-between bg-background border rounded-lg p-4">
 									<div>
 										<h4 className="text-sm font-medium text-gray-900">
 											Enable Call Recording
@@ -1079,11 +1092,11 @@ export default function BusinessProfile() {
 										onCheckedChange={() =>
 											toggleSetting("enableCallRecording")
 										}
-										className="data-[state=checked]:bg-black"
+										className="data-[state=checked]:bg-primary cursor-pointer"
 									/>
 								</div>
 
-								<div className="flex items-center justify-between">
+								<div className="flex items-center justify-between bg-background border rounded-lg p-4">
 									<div>
 										<h4 className="text-sm font-medium text-gray-900">
 											Generate Transcripts
@@ -1098,11 +1111,11 @@ export default function BusinessProfile() {
 										onCheckedChange={() =>
 											toggleSetting("generateTranscripts")
 										}
-										className="data-[state=checked]:bg-black"
+										className="data-[state=checked]:bg-primary cursor-pointer"
 									/>
 								</div>
 
-								<div className="flex items-center justify-between">
+								<div className="flex items-center justify-between bg-background border rounded-lg p-4">
 									<div>
 										<h4 className="text-sm font-medium text-gray-900">
 											Prank Call Detection
@@ -1117,11 +1130,11 @@ export default function BusinessProfile() {
 										onCheckedChange={() =>
 											toggleSetting("prankCallDetection")
 										}
-										className="data-[state=checked]:bg-black"
+										className="data-[state=checked]:bg-primary cursor-pointer"
 									/>
 								</div>
 
-								<div className="flex items-center justify-between">
+								<div className="flex items-center justify-between bg-background border rounded-lg p-4">
 									<div>
 										<h4 className="text-sm font-medium text-gray-900">
 											Voicemail Settings
@@ -1136,11 +1149,11 @@ export default function BusinessProfile() {
 										onCheckedChange={() =>
 											toggleSetting("voicemailSettings")
 										}
-										className="data-[state=checked]:bg-black"
+										className="data-[state=checked]:bg-primary cursor-pointer"
 									/>
 								</div>
 
-								<div className="flex items-center justify-between">
+								<div className="flex items-center justify-between bg-background border rounded-lg p-4">
 									<div>
 										<h4 className="text-sm font-medium text-gray-900">
 											Repeat Appointment
@@ -1155,11 +1168,11 @@ export default function BusinessProfile() {
 										onCheckedChange={() =>
 											toggleSetting("repeatAppointment")
 										}
-										className="data-[state=checked]:bg-black"
+										className="data-[state=checked]:bg-primary cursor-pointer"
 									/>
 								</div>
 
-								<div className="flex items-center justify-between">
+								<div className="flex items-center justify-between bg-background border rounded-lg p-4">
 									<div>
 										<h4 className="text-sm font-medium text-gray-900">
 											Call Recording Retention
@@ -1194,7 +1207,7 @@ export default function BusinessProfile() {
 													"callRecordingRetention"
 												)
 											}
-											className="data-[state=checked]:bg-black"
+											className="data-[state=checked]:bg-primary cursor-pointer"
 										/>
 									</div>
 								</div>
@@ -1209,7 +1222,7 @@ export default function BusinessProfile() {
 							>
 								Cancel
 							</Button>
-							<Button className="bg-black hover:bg-gray-800 text-white px-8 py-3">
+							<Button className="bg-primary hover:bg-gray-800 text-white px-8 py-3">
 								Update
 							</Button>
 						</div>

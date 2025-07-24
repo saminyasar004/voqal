@@ -9,6 +9,8 @@ import {
 	BriefcaseBusiness,
 	CalendarCheck,
 	ChevronsLeftRight,
+	HandCoins,
+	MousePointerBan,
 	Network,
 	Phone,
 	Settings,
@@ -56,6 +58,16 @@ export default function UserDashboardLayout({ children }) {
 			label: "Business Profile",
 			href: "/user/business-profile",
 			icon: <BriefcaseBusiness size={20} className="shrink-0" />,
+		},
+		{
+			label: "Billing",
+			href: "/user/billing",
+			icon: <HandCoins size={20} className="shrink-0" />,
+		},
+		{
+			label: "Blacklist",
+			href: "/user/blacklist",
+			icon: <MousePointerBan size={20} className="shrink-0" />,
 		},
 		// {
 		// 	label: "Subscriptions",

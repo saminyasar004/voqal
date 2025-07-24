@@ -2184,13 +2184,13 @@ const StaffAndTeamMembers = ({
 	);
 };
 
-interface DaySchedule {
+export interface DaySchedule {
 	enabled: boolean;
 	open: string;
 	close: string;
 }
 
-interface WeekSchedule {
+export interface WeekSchedule {
 	monday: DaySchedule;
 	tuesday: DaySchedule;
 	wednesday: DaySchedule;

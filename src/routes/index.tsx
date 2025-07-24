@@ -9,13 +9,17 @@ import Contact from "@/pages/contact";
 import Home from "@/pages/home";
 import Onboarding from "@/pages/on-boarding";
 import PrivacyPolicy from "@/pages/privacy-policy";
-import Staff from "@/pages/user/staff/staff";
-import TeamManagement from "@/pages/user/team-management/team-management";
-import Bookings from "@/pages/user/bookings/bookings";
-import CallLogs from "@/pages/user/call-logs/call-logs";
-import Customers from "@/pages/user/customers/customers";
+import Staff from "@/pages/user/staff";
+import TeamManagement from "@/pages/user/team-management";
+import Bookings from "@/pages/user/bookings";
+import CallLogs from "@/pages/user/call-logs";
+import Customers from "@/pages/user/customers";
 import Dashboard from "@/pages/user/dashboard";
-import BusinessProfile from "@/pages/user/business-profile/business-profile";
+import BusinessProfile from "@/pages/user/business-profile";
+import EditBusinessProfile from "@/pages/user/business-profile/edit-business-profile";
+import Billing from "@/pages/user/billing";
+import { Notifications as UserNotifications } from "@/pages/user/notifications";
+import Blacklist from "@/pages/user/blacklist";
 
 export interface Route {
 	path: string;
@@ -70,6 +74,11 @@ export const routes = [
 		layout: Layout,
 	},
 	{
+		path: "/user/notifications",
+		element: UserNotifications,
+		layout: UserDashboardLayout,
+	},
+	{
 		path: "/user/dashboard",
 		element: Dashboard,
 		layout: UserDashboardLayout,
@@ -102,6 +111,21 @@ export const routes = [
 	{
 		path: "/user/business-profile",
 		element: BusinessProfile,
+		layout: UserDashboardLayout,
+	},
+	{
+		path: "/user/business-profile/edit",
+		element: EditBusinessProfile,
+		layout: UserDashboardLayout,
+	},
+	{
+		path: "/user/billing",
+		element: Billing,
+		layout: UserDashboardLayout,
+	},
+	{
+		path: "/user/blacklist",
+		element: Blacklist,
 		layout: UserDashboardLayout,
 	},
 ];

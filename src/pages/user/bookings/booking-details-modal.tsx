@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Booking } from "./bookings";
+import { Booking } from ".";
 import { Button } from "@/components/ui/button";
 import {
 	ArrowLeft,

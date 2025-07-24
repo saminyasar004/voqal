@@ -17,7 +17,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Slider } from "@/components/ui/slider";
-import { StaffMember } from "./staff";
+import { StaffMember } from ".";
 
 interface StaffProfileModalProps {
 	staff: StaffMember;
