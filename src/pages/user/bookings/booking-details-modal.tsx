@@ -18,6 +18,7 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function BookingDetailsModal({
 	booking,
@@ -131,7 +132,6 @@ export default function BookingDetailsModal({
 					<Select
 						value={speed.toString()}
 						onValueChange={(value) => setSpeed(Number(value))}
-						// className="text-sm text-gray-600 bg-transparent"
 					>
 						<SelectTrigger className="w-[70px] border-none outline-none">
 							<SelectValue placeholder="1x" />
@@ -172,438 +172,447 @@ export default function BookingDetailsModal({
 					</h1>
 
 					{/* Tabs */}
-					<div className="flex gap-3">
-						{tabs.map((tab) => (
-							<button
-								key={tab}
-								onClick={() => setActiveTab(tab)}
-								className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
-									activeTab === tab
-										? "bg-black text-white"
-										: "bg-gray-100 text-gray-600 hover:bg-gray-200"
-								}`}
-							>
-								{tab}
-							</button>
-						))}
-					</div>
-				</div>
+					<Tabs
+						value={activeTab}
+						onValueChange={setActiveTab}
+						className="w-full"
+					>
+						<TabsList className="grid w-full grid-cols-5">
+							{tabs.map((tab) => (
+								<TabsTrigger key={tab} value={tab}>
+									{tab}
+								</TabsTrigger>
+							))}
+						</TabsList>
 
-				{/* Content */}
-				<div className="p-6">
-					{activeTab === "Overview" && (
-						<div className="grid grid-cols-2 gap-8">
-							{/* Customer Information */}
-							<div className="bg-gray-50 rounded-lg p-6">
-								<h2 className="text-lg font-semibold text-gray-900 mb-6">
-									Customer Information
-								</h2>
-
-								<div className="space-y-4">
-									<div>
-										<span className="text-sm text-gray-600">
-											Name:{" "}
-										</span>
-										<span className="text-sm font-medium text-gray-900">
-											Sarah Johnson
-										</span>
-									</div>
-
-									<div>
-										<span className="text-sm text-gray-600">
-											Phone:{" "}
-										</span>
-										<span className="text-sm font-medium text-gray-900">
-											+64 21 123 4567
-										</span>
-									</div>
-
-									<div className="flex items-center gap-2">
-										<span className="text-sm text-gray-600">
-											Source:{" "}
-										</span>
-										<Badge className="bg-black text-white text-xs px-2 py-1">
-											AI Assistant
-										</Badge>
-									</div>
-
-									<div>
-										<span className="text-sm text-gray-600">
-											Confirmed By:{" "}
-										</span>
-										<span className="text-sm font-medium text-gray-900">
-											AI Assistant
-										</span>
-									</div>
-
-									<div className="flex items-center gap-2">
-										<span className="text-sm text-gray-600">
-											Problems:{" "}
-										</span>
-										<Badge className="bg-warning border-transparent hover:bg-warning/80 text-white text-xs px-2 py-1">
-											None
-										</Badge>
-									</div>
-								</div>
-							</div>
-
-							{/* Booking Information */}
-							<div className="bg-gray-50 rounded-lg p-6">
-								<h2 className="text-lg font-semibold text-gray-900 mb-6">
-									Booking Information
-								</h2>
-
-								<div className="space-y-4">
-									<div>
-										<span className="text-sm text-gray-600">
-											Service:{" "}
-										</span>
-										<span className="text-sm font-medium text-gray-900">
-											Haircut & Color
-										</span>
-									</div>
-
-									<div>
-										<span className="text-sm text-gray-600">
-											Staff:{" "}
-										</span>
-										<span className="text-sm font-medium text-gray-900">
-											John Smith
-										</span>
-									</div>
-
-									<div>
-										<span className="text-sm text-gray-600">
-											Date:{" "}
-										</span>
-										<span className="text-sm font-medium text-gray-900">
-											2024-01-15
-										</span>
-									</div>
-
-									<div>
-										<span className="text-sm text-gray-600">
-											Duration:{" "}
-										</span>
-										<span className="text-sm font-medium text-gray-900">
-											90 min
-										</span>
-									</div>
-
-									<div>
-										<span className="text-sm text-gray-600">
-											Price:{" "}
-										</span>
-										<span className="text-sm font-medium text-gray-900">
-											$120
-										</span>
-									</div>
-
-									<div className="flex items-center gap-2">
-										<span className="text-sm text-gray-600">
-											Status:{" "}
-										</span>
-										<Badge className="bg-olive border-transparent hover:bg-olive/80 text-white text-xs px-2 py-1">
-											Active
-										</Badge>
-									</div>
-
-									<div>
-										<span className="text-sm text-gray-600">
-											Repeat Frequency Day:{" "}
-										</span>
-										<span className="text-sm font-medium text-gray-900">
-											Monday/Weekly
-										</span>
-									</div>
-
-									<div>
-										<span className="text-sm text-gray-600">
-											Equipment Required:{" "}
-										</span>
-										<span className="text-sm font-medium text-gray-900">
-											Hair Dryer, Styling Chair, Shampoo
-											Bowl
-										</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					)}
-
-					{activeTab === "Note" && (
-						<div>
-							<h2 className="text-lg font-semibold text-gray-900 mb-6">
-								AI Generated Notes
-							</h2>
-							<p className="text-sm text-gray-600 leading-relaxed">
-								Customer Requested Blonde Highlights With
-								Natural Look. Mentioned Sensitive Scalp -
-								Recommend Gentle Products. First-Time Customer,
-								Seems Excited About The Service.
-							</p>
-						</div>
-					)}
-
-					{activeTab === "Recordings" && (
-						<div className="space-y-8">
-							{/* AI Call Recording */}
-							<div>
-								<div className="flex items-center justify-between mb-4">
-									<div>
-										<h2 className="text-lg font-semibold text-gray-900">
-											AI Call Recording
+						{/* Content */}
+						<div className="p-6">
+							<TabsContent value="Overview">
+								<div className="grid grid-cols-2 gap-8">
+									{/* Customer Information */}
+									<div className="bg-gray-50 rounded-lg p-6">
+										<h2 className="text-lg font-semibold text-gray-900 mb-6">
+											Customer Information
 										</h2>
-										<p className="text-sm text-gray-500">
-											2024-01-14 14:30:00 • Duration: 3:24
-										</p>
+
+										<div className="space-y-4">
+											<div>
+												<span className="text-sm text-gray-600">
+													Name:{" "}
+												</span>
+												<span className="text-sm font-medium text-gray-900">
+													Sarah Johnson
+												</span>
+											</div>
+
+											<div>
+												<span className="text-sm text-gray-600">
+													Phone:{" "}
+												</span>
+												<span className="text-sm font-medium text-gray-900">
+													+64 21 123 4567
+												</span>
+											</div>
+
+											<div className="flex items-center gap-2">
+												<span className="text-sm text-gray-600">
+													Source:{" "}
+												</span>
+												<Badge className="bg-black text-white text-xs px-2 py-1">
+													AI Assistant
+												</Badge>
+											</div>
+
+											<div>
+												<span className="text-sm text-gray-600">
+													Confirmed By:{" "}
+												</span>
+												<span className="text-sm font-medium text-gray-900">
+													AI Assistant
+												</span>
+											</div>
+
+											<div className="flex items-center gap-2">
+												<span className="text-sm text-gray-600">
+													Problems:{" "}
+												</span>
+												<Badge className="bg-warning border-transparent hover:bg-warning/80 text-white text-xs px-2 py-1">
+													None
+												</Badge>
+											</div>
+										</div>
 									</div>
-									<Button
-										size="sm"
-										onClick={() =>
-											handlePlayPause("ai-call")
-										}
-										className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 flex items-center gap-2"
-									>
-										{playingRecording === "ai-call" &&
-										isPlaying ? (
-											<Pause className="h-4 w-4" />
-										) : (
-											<Play className="h-4 w-4" />
-										)}
-										{playingRecording === "ai-call" &&
-										isPlaying
-											? "Pause"
-											: "Play"}
-									</Button>
-								</div>
 
-								{playingRecording === "ai-call" && (
-									<>
-										<AudioWaveform />
-										<AudioControls />
-									</>
-								)}
-
-								<div className="mb-4">
-									<h3 className="text-sm font-medium text-gray-900 mb-2">
-										Transcription:
-									</h3>
-									<div className="bg-gray-100 p-4 rounded text-sm text-gray-700">
-										Hello, I'd Like To Book A Haircut And
-										Color Appointment Please. I'm Available
-										This Thursday Afternoon If Possible
-									</div>
-								</div>
-							</div>
-
-							{/* Follow Up Recording */}
-							<div>
-								<div className="flex items-center justify-between mb-4">
-									<div>
-										<h2 className="text-lg font-semibold text-gray-900">
-											Follow Up Recording
+									{/* Booking Information */}
+									<div className="bg-gray-50 rounded-lg p-6">
+										<h2 className="text-lg font-semibold text-gray-900 mb-6">
+											Booking Information
 										</h2>
-										<p className="text-sm text-gray-500">
-											2024-01-14 16:45:00 • Duration: 1:12
-										</p>
+
+										<div className="space-y-4">
+											<div>
+												<span className="text-sm text-gray-600">
+													Service:{" "}
+												</span>
+												<span className="text-sm font-medium text-gray-900">
+													Haircut & Color
+												</span>
+											</div>
+
+											<div>
+												<span className="text-sm text-gray-600">
+													Staff:{" "}
+												</span>
+												<span className="text-sm font-medium text-gray-900">
+													John Smith
+												</span>
+											</div>
+
+											<div>
+												<span className="text-sm text-gray-600">
+													Date:{" "}
+												</span>
+												<span className="text-sm font-medium text-gray-900">
+													2024-01-15
+												</span>
+											</div>
+
+											<div>
+												<span className="text-sm text-gray-600">
+													Duration:{" "}
+												</span>
+												<span className="text-sm font-medium text-gray-900">
+													90 min
+												</span>
+											</div>
+
+											<div>
+												<span className="text-sm text-gray-600">
+													Price:{" "}
+												</span>
+												<span className="text-sm font-medium text-gray-900">
+													$120
+												</span>
+											</div>
+
+											<div className="flex items-center gap-2">
+												<span className="text-sm text-gray-600">
+													Status:{" "}
+												</span>
+												<Badge className="bg-olive border-transparent hover:bg-olive/80 text-white text-xs px-2 py-1">
+													Active
+												</Badge>
+											</div>
+
+											<div>
+												<span className="text-sm text-gray-600">
+													Repeat Frequency Day:{" "}
+												</span>
+												<span className="text-sm font-medium text-gray-900">
+													Monday/Weekly
+												</span>
+											</div>
+
+											<div>
+												<span className="text-sm text-gray-600">
+													Equipment Required:{" "}
+												</span>
+												<span className="text-sm font-medium text-gray-900">
+													Hair Dryer, Styling Chair,
+													Shampoo Bowl
+												</span>
+											</div>
+										</div>
 									</div>
-									<Button
-										size="sm"
-										onClick={() =>
-											handlePlayPause("follow-up")
-										}
-										className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 flex items-center gap-2"
-									>
-										{playingRecording === "follow-up" &&
-										isPlaying ? (
-											<Pause className="h-4 w-4" />
-										) : (
-											<Play className="h-4 w-4" />
+								</div>
+							</TabsContent>
+
+							<TabsContent value="Note">
+								<div>
+									<h2 className="text-lg font-semibold text-gray-900 mb-6">
+										AI Generated Notes
+									</h2>
+									<p className="text-sm text-gray-600 leading-relaxed">
+										Customer Requested Blonde Highlights
+										With Natural Look. Mentioned Sensitive
+										Scalp - Recommend Gentle Products.
+										First-Time Customer, Seems Excited About
+										The Service.
+									</p>
+								</div>
+							</TabsContent>
+
+							<TabsContent value="Recordings">
+								<div className="space-y-8">
+									{/* AI Call Recording */}
+									<div>
+										<div className="flex items-center justify-between mb-4">
+											<div>
+												<h2 className="text-lg font-semibold text-gray-900">
+													AI Call Recording
+												</h2>
+												<p className="text-sm text-gray-500">
+													2024-01-14 14:30:00 •
+													Duration: 3:24
+												</p>
+											</div>
+											<Button
+												size="sm"
+												onClick={() =>
+													handlePlayPause("ai-call")
+												}
+												className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 flex items-center gap-2"
+											>
+												{playingRecording ===
+													"ai-call" && isPlaying ? (
+													<Pause className="h-4 w-4" />
+												) : (
+													<Play className="h-4 w-4" />
+												)}
+												{playingRecording ===
+													"ai-call" && isPlaying
+													? "Pause"
+													: "Play"}
+											</Button>
+										</div>
+
+										{playingRecording === "ai-call" && (
+											<>
+												<AudioWaveform />
+												<AudioControls />
+											</>
 										)}
-										{playingRecording === "follow-up" &&
-										isPlaying
-											? "Pause"
-											: "Play"}
-									</Button>
-								</div>
 
-								{playingRecording === "follow-up" && (
-									<>
-										<AudioWaveform />
-										<AudioControls />
-									</>
-								)}
+										<div className="mb-4">
+											<h3 className="text-sm font-medium text-gray-900 mb-2">
+												Transcription:
+											</h3>
+											<div className="bg-gray-100 p-4 rounded text-sm text-gray-700">
+												Hello, I'd Like To Book A
+												Haircut And Color Appointment
+												Please. I'm Available This
+												Thursday Afternoon If Possible
+											</div>
+										</div>
+									</div>
 
-								<div className="mb-4">
-									<h3 className="text-sm font-medium text-gray-900 mb-2">
-										Transcription:
-									</h3>
-									<div className="bg-gray-100 p-4 rounded text-sm text-gray-700">
-										Hi, This Is Sarah. I Just Wanted To
-										Confirm My Appointment Tomorrow At 10
-										AM. Thank You!
+									{/* Follow Up Recording */}
+									<div>
+										<div className="flex items-center justify-between mb-4">
+											<div>
+												<h2 className="text-lg font-semibold text-gray-900">
+													Follow Up Recording
+												</h2>
+												<p className="text-sm text-gray-500">
+													2024-01-14 16:45:00 •
+													Duration: 1:12
+												</p>
+											</div>
+											<Button
+												size="sm"
+												onClick={() =>
+													handlePlayPause("follow-up")
+												}
+												className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 flex items-center gap-2"
+											>
+												{playingRecording ===
+													"follow-up" && isPlaying ? (
+													<Pause className="h-4 w-4" />
+												) : (
+													<Play className="h-4 w-4" />
+												)}
+												{playingRecording ===
+													"follow-up" && isPlaying
+													? "Pause"
+													: "Play"}
+											</Button>
+										</div>
+
+										{playingRecording === "follow-up" && (
+											<>
+												<AudioWaveform />
+												<AudioControls />
+											</>
+										)}
+
+										<div className="mb-4">
+											<h3 className="text-sm font-medium text-gray-900 mb-2">
+												Transcription:
+											</h3>
+											<div className="bg-gray-100 p-4 rounded text-sm text-gray-700">
+												Hi, This Is Sarah. I Just Wanted
+												To Confirm My Appointment
+												Tomorrow At 10 AM. Thank You!
+											</div>
+										</div>
 									</div>
 								</div>
-							</div>
+							</TabsContent>
+
+							<TabsContent value="Call Logs">
+								<div className="grid grid-cols-2 gap-6">
+									{/* First Call Log */}
+									<div className="border border-gray-200 rounded-lg p-4">
+										<div className="flex items-center justify-between mb-4">
+											<h3 className="text-lg font-semibold text-gray-900">
+												Incoming Call
+											</h3>
+											<Badge variant="success">
+												Confirm
+											</Badge>
+										</div>
+
+										<div className="space-y-3 mb-4">
+											<p className="text-sm text-gray-500">
+												2024-01-14 14:30:00 • Duration:
+												3:24
+											</p>
+
+											<div>
+												<span className="text-sm text-gray-600">
+													Handled By:{" "}
+												</span>
+												<span className="text-sm font-medium text-gray-900">
+													AI Assistant
+												</span>
+											</div>
+
+											<div>
+												<span className="text-sm text-gray-600">
+													Outcome:{" "}
+												</span>
+												<span className="text-sm font-medium text-gray-900">
+													Booking Created
+												</span>
+											</div>
+										</div>
+
+										<div>
+											<p className="text-sm font-medium text-gray-900 mb-2">
+												Notes:
+											</p>
+											<div className="bg-gray-100 p-3 rounded text-sm text-gray-700">
+												Successfully Booked Appointment,
+												Customer Satisfied With AI
+												Interaction
+											</div>
+										</div>
+									</div>
+
+									{/* Second Call Log */}
+									<div className="border border-gray-200 rounded-lg p-4">
+										<div className="flex items-center justify-between mb-4">
+											<h3 className="text-lg font-semibold text-gray-900">
+												Incoming Call
+											</h3>
+											<Badge variant="indigo">
+												Confirmation
+											</Badge>
+										</div>
+
+										<div className="space-y-3 mb-4">
+											<p className="text-sm text-gray-500">
+												2024-01-14 14:30:00 • Duration:
+												3:24
+											</p>
+
+											<div>
+												<span className="text-sm text-gray-600">
+													Handled By:{" "}
+												</span>
+												<span className="text-sm font-medium text-gray-900">
+													Lisa (Receptionist)
+												</span>
+											</div>
+
+											<div>
+												<span className="text-sm text-gray-600">
+													Outcome:{" "}
+												</span>
+												<span className="text-sm font-medium text-gray-900">
+													Confirmation
+												</span>
+											</div>
+										</div>
+
+										<div>
+											<p className="text-sm font-medium text-gray-900 mb-2">
+												Notes:
+											</p>
+											<div className="bg-gray-100 p-3 rounded text-sm text-gray-700">
+												Customer Called To Confirm
+												Appointment Time
+											</div>
+										</div>
+									</div>
+								</div>
+							</TabsContent>
+
+							<TabsContent value="History">
+								<div>
+									<h2 className="text-lg font-semibold text-gray-900 mb-6">
+										Customer History
+									</h2>
+
+									<div className="grid grid-cols-2 gap-8 mb-6">
+										<div>
+											<div className="mb-4">
+												<span className="text-sm text-gray-600">
+													Total Bookings:{" "}
+												</span>
+												<span className="text-sm font-medium text-gray-900">
+													2
+												</span>
+											</div>
+											<div>
+												<span className="text-sm text-gray-600">
+													Last Visit:{" "}
+												</span>
+												<span className="text-sm font-medium text-gray-900">
+													First Time Customer
+												</span>
+											</div>
+										</div>
+
+										<div>
+											<div className="mb-4">
+												<span className="text-sm text-gray-600">
+													Total Spent:{" "}
+												</span>
+												<span className="text-sm font-medium text-gray-900">
+													$240
+												</span>
+											</div>
+											<div>
+												<span className="text-sm text-gray-600">
+													Customer Type:{" "}
+												</span>
+												<span className="text-sm font-medium text-gray-900">
+													New Customer
+												</span>
+											</div>
+										</div>
+									</div>
+
+									<div>
+										<div className="flex items-center gap-2 mb-3">
+											<span className="text-sm text-gray-600">
+												Services:{" "}
+											</span>
+											<div className="flex gap-2">
+												<Badge className="bg-gray-200 text-gray-800 text-xs px-3 py-1 rounded-full border border-gray-300">
+													Sensitive Scalp
+												</Badge>
+												<Badge className="bg-gray-200 text-gray-800 text-xs px-3 py-1 rounded-full border border-gray-300">
+													Natural Blonde Highlights
+												</Badge>
+											</div>
+										</div>
+									</div>
+								</div>
+							</TabsContent>
 						</div>
-					)}
-
-					{activeTab === "Call Logs" && (
-						<div className="grid grid-cols-2 gap-6">
-							{/* First Call Log */}
-							<div className="border border-gray-200 rounded-lg p-4">
-								<div className="flex items-center justify-between mb-4">
-									<h3 className="text-lg font-semibold text-gray-900">
-										Incoming Call
-									</h3>
-									<Badge variant="success">Confirm</Badge>
-								</div>
-
-								<div className="space-y-3 mb-4">
-									<p className="text-sm text-gray-500">
-										2024-01-14 14:30:00 • Duration: 3:24
-									</p>
-
-									<div>
-										<span className="text-sm text-gray-600">
-											Handled By:{" "}
-										</span>
-										<span className="text-sm font-medium text-gray-900">
-											AI Assistant
-										</span>
-									</div>
-
-									<div>
-										<span className="text-sm text-gray-600">
-											Outcome:{" "}
-										</span>
-										<span className="text-sm font-medium text-gray-900">
-											Booking Created
-										</span>
-									</div>
-								</div>
-
-								<div>
-									<p className="text-sm font-medium text-gray-900 mb-2">
-										Notes:
-									</p>
-									<div className="bg-gray-100 p-3 rounded text-sm text-gray-700">
-										Successfully Booked Appointment,
-										Customer Satisfied With AI Interaction
-									</div>
-								</div>
-							</div>
-
-							{/* Second Call Log */}
-							<div className="border border-gray-200 rounded-lg p-4">
-								<div className="flex items-center justify-between mb-4">
-									<h3 className="text-lg font-semibold text-gray-900">
-										Incoming Call
-									</h3>
-									<Badge variant="indigo">Confirmation</Badge>
-								</div>
-
-								<div className="space-y-3 mb-4">
-									<p className="text-sm text-gray-500">
-										2024-01-14 14:30:00 • Duration: 3:24
-									</p>
-
-									<div>
-										<span className="text-sm text-gray-600">
-											Handled By:{" "}
-										</span>
-										<span className="text-sm font-medium text-gray-900">
-											Lisa (Receptionist)
-										</span>
-									</div>
-
-									<div>
-										<span className="text-sm text-gray-600">
-											Outcome:{" "}
-										</span>
-										<span className="text-sm font-medium text-gray-900">
-											Confirmation
-										</span>
-									</div>
-								</div>
-
-								<div>
-									<p className="text-sm font-medium text-gray-900 mb-2">
-										Notes:
-									</p>
-									<div className="bg-gray-100 p-3 rounded text-sm text-gray-700">
-										Customer Called To Confirm Appointment
-										Time
-									</div>
-								</div>
-							</div>
-						</div>
-					)}
-
-					{activeTab === "History" && (
-						<div>
-							<h2 className="text-lg font-semibold text-gray-900 mb-6">
-								Customer History
-							</h2>
-
-							<div className="grid grid-cols-2 gap-8 mb-6">
-								<div>
-									<div className="mb-4">
-										<span className="text-sm text-gray-600">
-											Total Bookings:{" "}
-										</span>
-										<span className="text-sm font-medium text-gray-900">
-											2
-										</span>
-									</div>
-									<div>
-										<span className="text-sm text-gray-600">
-											Last Visit:{" "}
-										</span>
-										<span className="text-sm font-medium text-gray-900">
-											First Time Customer
-										</span>
-									</div>
-								</div>
-
-								<div>
-									<div className="mb-4">
-										<span className="text-sm text-gray-600">
-											Total Spent:{" "}
-										</span>
-										<span className="text-sm font-medium text-gray-900">
-											$240
-										</span>
-									</div>
-									<div>
-										<span className="text-sm text-gray-600">
-											Customer Type:{" "}
-										</span>
-										<span className="text-sm font-medium text-gray-900">
-											New Customer
-										</span>
-									</div>
-								</div>
-							</div>
-
-							<div>
-								<div className="flex items-center gap-2 mb-3">
-									<span className="text-sm text-gray-600">
-										Services:{" "}
-									</span>
-									<div className="flex gap-2">
-										<Badge className="bg-gray-200 text-gray-800 text-xs px-3 py-1 rounded-full border border-gray-300">
-											Sensitive Scalp
-										</Badge>
-										<Badge className="bg-gray-200 text-gray-800 text-xs px-3 py-1 rounded-full border border-gray-300">
-											Natural Blonde Highlights
-										</Badge>
-									</div>
-								</div>
-							</div>
-						</div>
-					)}
+					</Tabs>
 				</div>
 
 				{/* Action Buttons */}

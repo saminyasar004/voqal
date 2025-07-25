@@ -20,6 +20,9 @@ import EditBusinessProfile from "@/pages/user/business-profile/edit-business-pro
 import Billing from "@/pages/user/billing";
 import { Notifications as UserNotifications } from "@/pages/user/notifications";
 import Blacklist from "@/pages/user/blacklist";
+import Calendar from "@/pages/user/calendar";
+import BusinessOwnerProfile from "@/pages/user/profile";
+import Analytics from "@/pages/user/analytics";
 
 export interface Route {
 	path: string;
@@ -74,6 +77,11 @@ export const routes = [
 		layout: Layout,
 	},
 	{
+		path: "/user/profile",
+		element: BusinessOwnerProfile,
+		layout: UserDashboardLayout,
+	},
+	{
 		path: "/user/notifications",
 		element: UserNotifications,
 		layout: UserDashboardLayout,
@@ -81,6 +89,11 @@ export const routes = [
 	{
 		path: "/user/dashboard",
 		element: Dashboard,
+		layout: UserDashboardLayout,
+	},
+	{
+		path: "/user/analytics",
+		element: Analytics,
 		layout: UserDashboardLayout,
 	},
 	{
@@ -126,6 +139,11 @@ export const routes = [
 	{
 		path: "/user/blacklist",
 		element: Blacklist,
+		layout: UserDashboardLayout,
+	},
+	{
+		path: "/user/calendar",
+		element: Calendar,
 		layout: UserDashboardLayout,
 	},
 ];

@@ -477,28 +477,14 @@ export default function EditBusinessProfile() {
 						className="w-full"
 					>
 						<TabsList className="grid w-full grid-cols-4 mb-6">
-							<TabsTrigger
-								value="basic-informations"
-								className="data-[state=active]:bg-black data-[state=active]:text-white"
-							>
+							<TabsTrigger value="basic-informations">
 								Basic Informations
 							</TabsTrigger>
-							<TabsTrigger
-								value="services"
-								className="data-[state=active]:bg-black data-[state=active]:text-white"
-							>
-								Services
-							</TabsTrigger>
-							<TabsTrigger
-								value="business-hours"
-								className="data-[state=active]:bg-black data-[state=active]:text-white"
-							>
+							<TabsTrigger value="services">Services</TabsTrigger>
+							<TabsTrigger value="business-hours">
 								Business Hours
 							</TabsTrigger>
-							<TabsTrigger
-								value="ai-settings"
-								className="data-[state=active]:bg-black data-[state=active]:text-white"
-							>
+							<TabsTrigger value="ai-settings">
 								AI Settings
 							</TabsTrigger>
 						</TabsList>

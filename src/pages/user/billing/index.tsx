@@ -1,35 +1,5 @@
-import BusinessProfileAvatarImg from "@/assets/images/business-profile-avatar.svg";
-import { useState } from "react";
-import {
-	Edit,
-	FileText,
-	ChevronDown,
-	ChevronUp,
-	User,
-	Plus,
-	X,
-	Users,
-	UserCog,
-	Network,
-	Wallet,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { Switch } from "@/components/ui/switch";
-import { Card, CardContent } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-	SelectValue,
-} from "@/components/ui/select";
 import DashboardHeader from "@/components/common/dashboard-header";
-import { Separator } from "@/components/ui/separator";
-import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 export default function Billing() {
 	return (

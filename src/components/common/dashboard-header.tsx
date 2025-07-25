@@ -40,7 +40,9 @@ export default function DashboardHeader() {
 						<DropdownMenuContent className="w-56" align="start">
 							<DropdownMenuLabel>My Account</DropdownMenuLabel>
 							<DropdownMenuGroup>
-								<DropdownMenuItem>Profile</DropdownMenuItem>
+								<Link to={"/user/profile"}>
+									<DropdownMenuItem>Profile</DropdownMenuItem>
+								</Link>
 							</DropdownMenuGroup>
 
 							<DropdownMenuSeparator />

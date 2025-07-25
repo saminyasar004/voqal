@@ -8,6 +8,8 @@ import {
 	Blocks,
 	BriefcaseBusiness,
 	CalendarCheck,
+	CalendarClock,
+	ChartSpline,
 	ChevronsLeftRight,
 	HandCoins,
 	MousePointerBan,
@@ -30,9 +32,19 @@ export default function UserDashboardLayout({ children }) {
 			icon: <Blocks size={20} className="shrink-0" />,
 		},
 		{
+			label: "Analytics",
+			href: "/user/analytics",
+			icon: <ChartSpline size={20} className="shrink-0" />,
+		},
+		{
 			label: "Bookings",
 			href: "/user/bookings",
 			icon: <CalendarCheck size={20} className="shrink-0" />,
+		},
+		{
+			label: "Calendar",
+			href: "/user/calendar",
+			icon: <CalendarClock size={20} className="shrink-0" />,
 		},
 		{
 			label: "Call Logs",

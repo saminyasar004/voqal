@@ -342,29 +342,11 @@ export default function StaffProfileModal({
 						onValueChange={setActiveTab}
 						className="w-full"
 					>
-						<TabsList className="grid w-full grid-cols-4 bg-gray-100 p-1 rounded-lg mb-6">
-							<TabsTrigger
-								value="schedule"
-								className="data-[state=active]:bg-primary data-[state=active]:text-white rounded-md"
-							>
-								Schedule
-							</TabsTrigger>
-							<TabsTrigger
-								value="services"
-								className="data-[state=active]:bg-primary data-[state=active]:text-white rounded-md"
-							>
-								Services
-							</TabsTrigger>
-							<TabsTrigger
-								value="bookings"
-								className="data-[state=active]:bg-primary data-[state=active]:text-white rounded-md"
-							>
-								Bookings
-							</TabsTrigger>
-							<TabsTrigger
-								value="recording"
-								className="data-[state=active]:bg-primary data-[state=active]:text-white rounded-md"
-							>
+						<TabsList className="grid w-full grid-cols-4 p-1 rounded-lg mb-6">
+							<TabsTrigger value="schedule">Schedule</TabsTrigger>
+							<TabsTrigger value="services">Services</TabsTrigger>
+							<TabsTrigger value="bookings">Bookings</TabsTrigger>
+							<TabsTrigger value="recording">
 								Recording
 							</TabsTrigger>
 						</TabsList>
