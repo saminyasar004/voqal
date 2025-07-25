@@ -19,7 +19,7 @@ import {
 	UserCog,
 	Users,
 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 export default function UserDashboardLayout({ children }) {
@@ -81,18 +81,17 @@ export default function UserDashboardLayout({ children }) {
 			href: "/user/blacklist",
 			icon: <MousePointerBan size={20} className="shrink-0" />,
 		},
-		// {
-		// 	label: "Subscriptions",
-		// 	href: "/user/subscriptions",
-		// 	icon: <Tags size={20} className="shrink-0" />,
-		// },
 		{
 			label: "Settings",
 			href: "/user/settings",
 			icon: <Settings size={20} className="shrink-0" />,
 		},
 	];
-	const [open, setOpen] = useState(false);
+	const [open, setOpen] = useState(true);
+
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, [location]);
 
 	return (
 		<div className="w-full h-screen flex flex-1 rounded-md bg-background relative">
@@ -118,9 +117,6 @@ export default function UserDashboardLayout({ children }) {
 						open
 							? "top-[5.5rem] left-0 translate-x-[14.5rem]"
 							: "top-[5.5rem] left-0 translate-x-[2.6rem]"
-						// open
-						// 	? "top-[5.5rem] left-[14.5rem]"
-						// 	: "top-[5.5rem] left-[2.7rem]"
 					)}
 				>
 					<ChevronsLeftRight />
@@ -139,19 +135,11 @@ export const Logo = () => {
 			to="/"
 			className="relative z-20 flex items-center justify-center space-x-2 py-1 text-sm font-normal text-black pl-1"
 		>
-			{/* <div className="h-5 w-6 shrink-0 rounded-tl-lg rounded-tr-sm rounded-br-lg rounded-bl-sm bg-black dark:bg-white" /> */}
 			<img
 				src={LogoBlack}
 				alt="Voqal"
 				className="max-w-full h-20 transition-all duration-300"
 			/>
-			{/* <motion.span
-				initial={{ opacity: 0 }}
-				animate={{ opacity: 1 }}
-				className="font-medium whitespace-pre text-primary"
-			>
-				Voqal
-			</motion.span> */}
 		</Link>
 	);
 };
@@ -161,7 +149,6 @@ export const LogoIcon = () => {
 			to="/"
 			className="relative z-20 flex items-center space-x-2 py-1 text-sm font-normal text-black pl-1"
 		>
-			{/* <div className="h-5 w-6 shrink-0 rounded-tl-lg rounded-tr-sm rounded-br-lg rounded-bl-sm bg-black dark:bg-white" /> */}
 			<img
 				src={LogoIconImg}
 				alt="Voqal"

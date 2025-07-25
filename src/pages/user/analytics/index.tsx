@@ -112,7 +112,7 @@ export default function Analytics() {
 					<CardContent>
 						<ChartContainer
 							config={bookingChartConfig}
-							className="h-80"
+							className="h-96 w-full"
 						>
 							<BarChart
 								data={monthlyBookingData}
@@ -230,7 +230,7 @@ export default function Analytics() {
 					<CardContent>
 						<ChartContainer
 							config={revenueChartConfig}
-							className="h-80"
+							className="h-96 w-full"
 						>
 							<AreaChart
 								data={revenueData}
@@ -306,7 +306,7 @@ export default function Analytics() {
 							<div className="flex-1">
 								<ChartContainer
 									config={{}}
-									className="h-80 w-80"
+									className="h-96 w-80"
 								>
 									<PieChart>
 										<Pie
