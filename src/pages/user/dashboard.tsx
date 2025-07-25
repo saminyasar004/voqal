@@ -36,6 +36,7 @@ const dashboardData: DashboardItem[] = [
 		value: 14,
 		suffix: "Today",
 		icon: CalendarDaysWhiteImg,
+		iconType: "image",
 	},
 	{
 		id: 2,
@@ -43,6 +44,7 @@ const dashboardData: DashboardItem[] = [
 		value: 89,
 		suffix: "Today",
 		icon: CheckImg,
+		iconType: "image",
 	},
 	{
 		id: 3,
@@ -50,6 +52,7 @@ const dashboardData: DashboardItem[] = [
 		value: "$12,450",
 		suffix: "Today",
 		icon: GrowthImg,
+		iconType: "image",
 	},
 ];
 
@@ -450,7 +453,15 @@ const DashboardDataCard = ({ data }: { data: DashboardItem }) => {
 				</div>
 
 				<div className="w-10 h-10 flex items-center justify-center bg-secondary rounded-lg p-1 bg-primary text-primary-foreground">
-					<img src={data.icon} alt="icon" className="max-w-full" />
+					{data.iconType === "image" ? (
+						<img
+							src={data.icon as string}
+							alt="icon"
+							className="max-w-full"
+						/>
+					) : (
+						<data.icon className="max-w-full" />
+					)}
 				</div>
 			</div>
 		</div>
