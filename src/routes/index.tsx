@@ -1,5 +1,5 @@
 import Layout from "@/components/common/layout";
-import UserDashboardLayout from "@/components/common/user-dashboard-layout";
+import AdminDashboardLayout from "@/components/common/admin-dashboard-layout";
 import ForgotPassword from "@/pages/auth/forgot-password";
 import Login from "@/pages/auth/login";
 import ResetPassword from "@/pages/auth/reset-password";
@@ -27,6 +27,9 @@ import AdminLogin from "@/pages/admin/auth/login";
 import AdminForgotPassword from "@/pages/admin/auth/forgot-password";
 import AdminVerifyOtp from "@/pages/admin/auth/verify-otp";
 import AdminResetPassword from "@/pages/admin/auth/reset-password";
+import AdminDashboard from "@/pages/admin/dashboard";
+import BusinessCategoryAnalytics from "@/pages/admin/business-category-analytics";
+import AdminBilling from "@/pages/admin/billing";
 
 export interface Route {
 	path: string;
@@ -85,72 +88,72 @@ export const routes = [
 	{
 		path: "/user/profile",
 		element: BusinessOwnerProfile,
-		layout: UserDashboardLayout,
+		layout: AdminDashboardLayout,
 	},
 	{
 		path: "/user/notifications",
 		element: UserNotifications,
-		layout: UserDashboardLayout,
+		layout: AdminDashboardLayout,
 	},
 	{
 		path: "/user/dashboard",
 		element: Dashboard,
-		layout: UserDashboardLayout,
+		layout: AdminDashboardLayout,
 	},
 	{
 		path: "/user/analytics",
 		element: Analytics,
-		layout: UserDashboardLayout,
+		layout: AdminDashboardLayout,
 	},
 	{
 		path: "/user/bookings",
 		element: Bookings,
-		layout: UserDashboardLayout,
+		layout: AdminDashboardLayout,
 	},
 	{
 		path: "/user/call-logs",
 		element: CallLogs,
-		layout: UserDashboardLayout,
+		layout: AdminDashboardLayout,
 	},
 	{
 		path: "/user/customers",
 		element: Customers,
-		layout: UserDashboardLayout,
+		layout: AdminDashboardLayout,
 	},
 	{
 		path: "/user/staff",
 		element: Staff,
-		layout: UserDashboardLayout,
+		layout: AdminDashboardLayout,
 	},
 	{
 		path: "/user/team-management",
 		element: TeamManagement,
-		layout: UserDashboardLayout,
+		layout: AdminDashboardLayout,
 	},
 	{
 		path: "/user/business-profile",
 		element: BusinessProfile,
-		layout: UserDashboardLayout,
+		layout: AdminDashboardLayout,
 	},
 	{
 		path: "/user/business-profile/edit",
 		element: EditBusinessProfile,
-		layout: UserDashboardLayout,
+		layout: AdminDashboardLayout,
 	},
 	{
 		path: "/user/billing",
 		element: Billing,
-		layout: UserDashboardLayout,
+		layout: AdminDashboardLayout,
 	},
 	{
 		path: "/user/blacklist",
 		element: Blacklist,
-		layout: UserDashboardLayout,
+		layout: AdminDashboardLayout,
 	},
 	{
 		path: "/user/calendar",
 		element: Calendar,
-		layout: UserDashboardLayout,
+		layout: AdminDashboardLayout,
 	},
 
 	// Admin Dashboard Routes
@@ -173,5 +176,20 @@ export const routes = [
 		path: "/admin/reset-password",
 		element: AdminResetPassword,
 		layout: Layout,
+	},
+	{
+		path: "/admin/dashboard",
+		element: AdminDashboard,
+		layout: AdminDashboardLayout,
+	},
+	{
+		path: "/admin/business-category-analytics",
+		element: BusinessCategoryAnalytics,
+		layout: AdminDashboardLayout,
+	},
+	{
+		path: "/admin/billing",
+		element: AdminBilling,
+		layout: AdminDashboardLayout,
 	},
 ];

@@ -1,9 +1,16 @@
+import { LucideProps } from "lucide-react";
+
 export interface DashboardItem {
 	id: number;
 	title: string;
 	value: number | string;
 	suffix?: string;
-	icon?: string; // Optional for the main stat icon
+	icon?:
+		| string
+		| React.ForwardRefExoticComponent<
+				Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>
+		  >;
+	iconType: "image" | "icon";
 }
 
 export interface BookingItemProps {
@@ -27,4 +34,15 @@ export interface NavItemProps {
 	name: string;
 	link: string;
 	type: "route" | "hash";
+}
+
+export interface BusinessDataProps {
+	date: string;
+	client: string;
+	type: string;
+	phone: string;
+	duration: string;
+	price: number;
+	status: string;
+	confirmed: boolean;
 }
