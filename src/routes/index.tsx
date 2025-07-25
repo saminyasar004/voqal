@@ -23,6 +23,10 @@ import Blacklist from "@/pages/user/blacklist";
 import Calendar from "@/pages/user/calendar";
 import BusinessOwnerProfile from "@/pages/user/profile";
 import Analytics from "@/pages/user/analytics";
+import AdminLogin from "@/pages/admin/auth/login";
+import AdminForgotPassword from "@/pages/admin/auth/forgot-password";
+import AdminVerifyOtp from "@/pages/admin/auth/verify-otp";
+import AdminResetPassword from "@/pages/admin/auth/reset-password";
 
 export interface Route {
 	path: string;
@@ -76,6 +80,8 @@ export const routes = [
 		element: ResetPassword,
 		layout: Layout,
 	},
+
+	// User Dashboard Routes
 	{
 		path: "/user/profile",
 		element: BusinessOwnerProfile,
@@ -145,5 +151,27 @@ export const routes = [
 		path: "/user/calendar",
 		element: Calendar,
 		layout: UserDashboardLayout,
+	},
+
+	// Admin Dashboard Routes
+	{
+		path: "/admin/login",
+		element: AdminLogin,
+		layout: Layout,
+	},
+	{
+		path: "/admin/forgot-password",
+		element: AdminForgotPassword,
+		layout: Layout,
+	},
+	{
+		path: "/admin/verify-otp",
+		element: AdminVerifyOtp,
+		layout: Layout,
+	},
+	{
+		path: "/admin/reset-password",
+		element: AdminResetPassword,
+		layout: Layout,
 	},
 ];
