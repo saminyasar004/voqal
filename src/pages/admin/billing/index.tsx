@@ -634,10 +634,7 @@ export default function AdminBilling() {
 					className="w-full"
 				>
 					<TabsList className="grid w-full grid-cols-4 mb-6">
-						<TabsTrigger
-							value="all-subscriptions"
-							className="data-[state=active]:bg-black data-[state=active]:text-white"
-						>
+						<TabsTrigger value="all-subscriptions">
 							All Subscriptions
 						</TabsTrigger>
 						<TabsTrigger value="billing-history">
