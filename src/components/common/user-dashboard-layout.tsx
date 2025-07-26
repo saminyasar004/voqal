@@ -81,11 +81,11 @@ export default function UserDashboardLayout({ children }) {
 			href: "/user/blacklist",
 			icon: <MousePointerBan size={20} className="shrink-0" />,
 		},
-		{
-			label: "Settings",
-			href: "/user/settings",
-			icon: <Settings size={20} className="shrink-0" />,
-		},
+		// {
+		// 	label: "Settings",
+		// 	href: "/user/settings",
+		// 	icon: <Settings size={20} className="shrink-0" />,
+		// },
 	];
 	const [open, setOpen] = useState(true);
 

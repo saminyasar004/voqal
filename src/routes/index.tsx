@@ -30,6 +30,7 @@ import AdminResetPassword from "@/pages/admin/auth/reset-password";
 import AdminDashboard from "@/pages/admin/dashboard";
 import BusinessCategoryAnalytics from "@/pages/admin/business-category-analytics";
 import AdminBilling from "@/pages/admin/billing";
+import UserDashboardLayout from "@/components/common/user-dashboard-layout";
 
 export interface Route {
 	path: string;
@@ -88,72 +89,72 @@ export const routes = [
 	{
 		path: "/user/profile",
 		element: BusinessOwnerProfile,
-		layout: AdminDashboardLayout,
+		layout: UserDashboardLayout,
 	},
 	{
 		path: "/user/notifications",
 		element: UserNotifications,
-		layout: AdminDashboardLayout,
+		layout: UserDashboardLayout,
 	},
 	{
 		path: "/user/dashboard",
 		element: Dashboard,
-		layout: AdminDashboardLayout,
+		layout: UserDashboardLayout,
 	},
 	{
 		path: "/user/analytics",
 		element: Analytics,
-		layout: AdminDashboardLayout,
+		layout: UserDashboardLayout,
 	},
 	{
 		path: "/user/bookings",
 		element: Bookings,
-		layout: AdminDashboardLayout,
+		layout: UserDashboardLayout,
 	},
 	{
 		path: "/user/call-logs",
 		element: CallLogs,
-		layout: AdminDashboardLayout,
+		layout: UserDashboardLayout,
 	},
 	{
 		path: "/user/customers",
 		element: Customers,
-		layout: AdminDashboardLayout,
+		layout: UserDashboardLayout,
 	},
 	{
 		path: "/user/staff",
 		element: Staff,
-		layout: AdminDashboardLayout,
+		layout: UserDashboardLayout,
 	},
 	{
 		path: "/user/team-management",
 		element: TeamManagement,
-		layout: AdminDashboardLayout,
+		layout: UserDashboardLayout,
 	},
 	{
 		path: "/user/business-profile",
 		element: BusinessProfile,
-		layout: AdminDashboardLayout,
+		layout: UserDashboardLayout,
 	},
 	{
 		path: "/user/business-profile/edit",
 		element: EditBusinessProfile,
-		layout: AdminDashboardLayout,
+		layout: UserDashboardLayout,
 	},
 	{
 		path: "/user/billing",
 		element: Billing,
-		layout: AdminDashboardLayout,
+		layout: UserDashboardLayout,
 	},
 	{
 		path: "/user/blacklist",
 		element: Blacklist,
-		layout: AdminDashboardLayout,
+		layout: UserDashboardLayout,
 	},
 	{
 		path: "/user/calendar",
 		element: Calendar,
-		layout: AdminDashboardLayout,
+		layout: UserDashboardLayout,
 	},
 
 	// Admin Dashboard Routes
