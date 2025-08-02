@@ -31,6 +31,7 @@ import AdminDashboard from "@/pages/admin/dashboard";
 import BusinessCategoryAnalytics from "@/pages/admin/business-category-analytics";
 import AdminBilling from "@/pages/admin/billing";
 import UserDashboardLayout from "@/components/common/user-dashboard-layout";
+import BusinessManagement from "@/pages/admin/business-management";
 
 export interface Route {
   path: string;
@@ -186,6 +187,11 @@ export const routes = [
   {
     path: "/admin/business-category-analytics",
     element: BusinessCategoryAnalytics,
+    layout: AdminDashboardLayout,
+  },
+  {
+    path: "/admin/business-management",
+    element: BusinessManagement,
     layout: AdminDashboardLayout,
   },
   {
