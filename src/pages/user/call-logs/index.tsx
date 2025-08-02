@@ -26,6 +26,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { Slider } from "@/components/ui/slider";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 interface CallLog {
     id: number;
@@ -67,9 +68,11 @@ const callLogsData = [
 ];
 
 function CallDetailsDialog({
+    isOpen,
     callData,
     onClose,
 }: {
+    isOpen: boolean;
     callData: {
         id: number;
         callerName: string;
@@ -196,27 +199,10 @@ function CallDetailsDialog({
     );
 
     return (
-        <div
-            className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50"
-            onClick={onClose}
-        >
-            <Card
-                className="max-w-2xl w-full max-h-[90vh] overflow-y-auto"
-                onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                }}
-            >
+        <Dialog open={isOpen} onOpenChange={onClose}>
+            <DialogContent className="max-w-2xl w-full max-h-[90vh] overflow-y-auto">
                 {/* Header */}
-                <CardHeader
-                    className="pb-4"
-                    tabIndex={0}
-                    onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>): void => {
-                        console.log("HELLO");
-                        console.log(e.key);
-                    }}
-                >
-                    <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center justify-between mt-4">
                         <Button
                             variant="outline"
                             size="sm"
@@ -242,7 +228,6 @@ function CallDetailsDialog({
                     <h1 className="text-lg font-semibold text-gray-900">
                         Call Details - {callData.callerName}
                     </h1>
-                </CardHeader>
 
                 {/* Content */}
                 <CardContent className="space-y-6">
@@ -295,8 +280,8 @@ function CallDetailsDialog({
                         </div>
                     </div>
                 </CardContent>
-            </Card>
-        </div>
+            </DialogContent>
+        </Dialog>
     );
 }
 
@@ -503,7 +488,7 @@ export default function CallLogs() {
                 </div>
             </div>
 
-            {showCallDetails && selectedCall && (
+            {selectedCall && (
                 <CallDetailsDialog
                     callData={{
                         id: selectedCall.id,
@@ -514,6 +499,7 @@ export default function CallLogs() {
                         service: selectedCall.service,
                         transcript: selectedCall.transcript,
                     }}
+                    isOpen={showCallDetails}
                     onClose={() => {
                         setShowCallDetails(false);
                         setSelectedCall(null);

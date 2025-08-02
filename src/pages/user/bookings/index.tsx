@@ -11,13 +11,13 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select";
-import { Separator } from "@/components/ui/separator";
 import { Calendar, Clock, Plus, Search } from "lucide-react";
 import { useState } from "react";
 import BookingDetailsModal from "./booking-details-modal";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 export interface Booking {
     id: number;
@@ -211,12 +211,13 @@ const getTagVariant = (tag: string) => {
 };
 
 export function BookingAddDialog({
+    isOpen,
     onClose,
-}: // onSave,
-    {
-        onClose: () => void;
-        // onSave: (bookingData: any) => void;
-    }) {
+}: {
+    onClose: () => void;
+    isOpen: boolean;
+    // onSave: (bookingData: any) => void;
+}) {
     const [formData, setFormData] = useState({
         customerName: "",
         phone: "",
@@ -248,23 +249,11 @@ export function BookingAddDialog({
     };
 
     return (
-        <div
-            className="fixed inset-0 bg-primary/80 flex items-center justify-center p-4 z-50"
-            onClick={onClose}
-        >
-            <div
-                className="bg-white rounded-lg shadow-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto"
-                onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                }}
-            >
-                {/* Header */}
-                <div className="p-6 border-b border-gray-200">
-                    <h1 className="text-lg font-semibold text-gray-900">
-                        Create New Booking
-                    </h1>
-                </div>
+        <Dialog open={isOpen} onOpenChange={onClose}>
+            <DialogContent className="bg-white rounded-lg shadow-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
+                <h1 className="text-lg font-semibold text-gray-900">
+                    Create New Booking
+                </h1>
 
                 {/* Form Content */}
                 <div className="p-6 space-y-6">
@@ -535,8 +524,8 @@ export function BookingAddDialog({
                         Create Booking
                     </Button>
                 </div>
-            </div>
-        </div>
+            </DialogContent>
+        </Dialog>
     );
 }
 
@@ -677,20 +666,19 @@ export default function Bookings() {
                 </div>
             </div>
 
-            {showBookingDetails && selectedBooking && (
-                <BookingDetailsModal
-                    booking={selectedBooking}
-                    isOpen={showBookingDetails}
-                    onClose={() => {
-                        setShowBookingDetails(false);
-                        setSelectedBooking(null);
-                    }}
-                />
-            )}
+            <BookingDetailsModal
+                booking={selectedBooking}
+                isOpen={showBookingDetails}
+                onClose={() => {
+                    setShowBookingDetails(false);
+                    setSelectedBooking(null);
+                }}
+            />
 
-            {showAddBooking && (
-                <BookingAddDialog onClose={() => setShowAddBooking(false)} />
-            )}
+            <BookingAddDialog
+                isOpen={showAddBooking}
+                onClose={() => setShowAddBooking(false)}
+            />
         </section>
     );
 }
