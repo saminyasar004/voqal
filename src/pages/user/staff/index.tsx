@@ -1,5 +1,6 @@
 import AvatarImg from "@/assets/images/avatar.jpg";
 import DashboardHeader from "@/components/common/dashboard-header";
+import StaffProfileModal from "@/components/modals/staff-profile";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
@@ -31,7 +32,6 @@ import {
     Volume2,
 } from "lucide-react";
 import { useState } from "react";
-import StaffProfileModal from "./staff-profile-modal";
 
 export interface StaffMember {
     id: number;

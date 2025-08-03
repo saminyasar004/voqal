@@ -13,28 +13,15 @@ import {
 } from "@/components/ui/select";
 import { Calendar, Clock, Plus, Search } from "lucide-react";
 import { useState } from "react";
-import BookingDetailsModal from "./booking-details-modal";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 import type { Customer } from "../customers";
+import { Booking } from "@/interfaces";
+import BookingDetailsModal from "@/components/modals/booking-details";
 
-export interface Booking {
-  id: number;
-  time: string;
-  date: string;
-  customerName: string;
-  service: string;
-  serviceProvider: string;
-  phone: string;
-  duration: string;
-  status: "confirmed" | "pending" | "completed" | "cancelled";
-  tags: string[];
-  specialNote?: string;
-  actionType: "complete" | "confirm";
-}
 
 export const bookings: Booking[] = [
   {
