@@ -47,6 +47,7 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { BillingHistory } from "./billing-history";
+import { Invoice } from "./invoice";
 
 export interface SubscriptionItem {
     id: number;
@@ -503,17 +504,9 @@ export default function AdminBilling() {
                     {/* Billing History Tab */}
                     <BillingHistory />
 
-                    {/* Invoice Tab */}
-                    <TabsContent value="invoice">
-                        <Card className="bg-white">
-                            <CardContent className="p-6">
-                                <div className="text-center text-gray-500">
-                                    Invoice content will be added here
-                                </div>
-                            </CardContent>
-                        </Card>
-                    </TabsContent>
+                    <Invoice />
 
+                    {/* Invoice Tab */}
                     {/* Subscription Plans Tab */}
                     <TabsContent value="subscription-plans">
                         <Card className="bg-white">

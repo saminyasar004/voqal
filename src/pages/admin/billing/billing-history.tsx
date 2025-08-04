@@ -35,10 +35,11 @@ import {
     PaginationPrevious,
 } from "@/components/ui/pagination";
 import { Button } from "@/components/ui/button";
-import { MoreHorizontal } from "lucide-react";
+import { MoreHorizontal, Search } from "lucide-react";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import { PaymentDetailsModal } from "@/components/modals/payment-details";
 import { useEffect, useState } from "react";
+import { Input } from "@/components/ui/input";
 
 export interface BillingHistoryItem {
     id: number;
@@ -274,6 +275,14 @@ export function BillingHistory() {
     return (
         <TabsContent value="billing-history" className="space-y-6">
             <Card className="bg-white">
+                <CardContent className="p-4">
+                    <div className="relative">
+                        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+                        <Input placeholder="Search" className="pl-10 border-gray-200" />
+                    </div>
+                </CardContent>
+            </Card>
+            <Card className="bg-white">
                 <CardContent className="p-0">
                     <div className="flex items-center justify-between p-6 border-b">
                         <h2 className="text-lg font-semibold text-gray-900">
@@ -353,10 +362,11 @@ export function BillingHistory() {
                                     </TableCell>
                                     <TableCell>
                                         <DropdownMenu>
-                                            <DropdownMenuTrigger asChild>
-                                                <Button variant="ghost" size="sm">
-                                                    <MoreHorizontal className="h-4 w-4" />
-                                                </Button>
+                                            <DropdownMenuTrigger
+                                                asChild
+                                                className="cursor-pointer"
+                                            >
+                                                <MoreHorizontal className="!h-8 !w-8 opacity-60" />
                                             </DropdownMenuTrigger>
                                             <DropdownMenuContent>
                                                 <Dialog>
