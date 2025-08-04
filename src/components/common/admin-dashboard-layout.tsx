@@ -25,15 +25,17 @@ export default function AdminDashboardLayout({ children }) {
     },
 
     {
-      label: "Business Management",
-      href: "/admin/business-management",
-      icon: <BriefcaseBusiness size={20} className="shrink-0" />,
-    },
-    {
       label: "Detail Analytics",
       href: "/admin/business-category-analytics",
       icon: <ChartSpline size={20} className="shrink-0" />,
     },
+
+    {
+      label: "Business Management",
+      href: "/admin/business-management",
+      icon: <BriefcaseBusiness size={20} className="shrink-0" />,
+    },
+
     {
       label: "Billing Management",
       href: "/admin/billing",
