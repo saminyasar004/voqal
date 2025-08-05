@@ -4,23 +4,22 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { TeamMember } from "@/interfaces";
+import { StaffMember } from "@/interfaces";
 
-export default function TeamMemberModal({
+export default function CompactStaffMember({
     isOpen,
     member,
     editable,
     onClose,
 }: {
     isOpen: boolean;
-    member: TeamMember;
+    member: StaffMember;
     editable: boolean;
     onClose: () => void;
 }) {
     return (
         <Dialog open={isOpen} onOpenChange={onClose}>
             <DialogContent className="bg-white rounded-lg shadow-xl max-w-2xl w-full">
-                {/* Header */}
                 <div className="mb-4">
                     <Button
                         variant="outline"
@@ -53,46 +52,40 @@ export default function TeamMemberModal({
                             </h2>
 
                             <div className="flex flex-col *:w-max items-center gap-2">
-                                <Badge variant="outline">{member.role}</Badge>
-
-                                {editable && (
-                                    <Badge
-                                        variant={member.status === "active" ? "success" : "warning"}
-                                    >
-                                        {member.status === "active" ? "Active" : "Inactive"}
-                                    </Badge>
-                                )}
+                                <Badge variant="outline"> {member.role} </Badge>
                             </div>
                         </div>
 
-                        {/* Right side - Contact details */}
                         <div className="flex-1 space-y-4">
                             <div>
-                                <span className="text-gray-600">Email: </span>
+                                <span className="text-gray-600"> Email: </span>
                                 <span className="text-gray-900 font-medium">
                                     {member.email}
                                 </span>
                             </div>
 
                             <div>
-                                <span className="text-gray-600">Phone number: </span>
+                                <span className="text-gray-600"> Phone number: </span>
                                 <span className="text-gray-900 font-medium">
                                     {member.phone}
                                 </span>
                             </div>
 
                             <div>
-                                <span className="text-gray-600">Address: </span>
+                                <span className="text-gray-600"> License Number: </span>
+                                <span className="text-gray-900 font-medium">SP664353</span>
+                            </div>
+
+                            <div>
+                                <span className="text-gray-600"> Address: </span>
                                 <span className="text-gray-900 font-medium">
-                                    {member.address}
+                                    321 George Street, Auckland 1010
                                 </span>
                             </div>
 
                             <div>
-                                <span className="text-gray-600">Permission level: </span>
-                                <span className="text-gray-900 font-medium">
-                                    {member.permissionLevel}
-                                </span>
+                                <span className="text-gray-600"> Experience: </span>
+                                <span className="text-gray-900 font-medium">5 Years</span>
                             </div>
                         </div>
                     </div>
@@ -100,8 +93,8 @@ export default function TeamMemberModal({
 
                 {editable && (
                     <div className="flex gap-4 justify-start">
-                        <Button variant="outline">Edit Member</Button>
-                        <Button variant="warning">Delete Member</Button>
+                        <Button variant="outline"> Edit Member </Button>
+                        <Button variant="warning"> Delete Member </Button>
                     </div>
                 )}
             </DialogContent>

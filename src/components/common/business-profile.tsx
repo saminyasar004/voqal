@@ -31,8 +31,8 @@ import DashboardHeader from "@/components/common/dashboard-header";
 import { Separator } from "@/components/ui/separator";
 import { Link } from "react-router-dom";
 import { StaffMember, TeamMember } from "@/interfaces";
-import { Badge } from "../ui/badge";
 import TeamMemberModal from "../modals/team-member-details";
+import CompactStaffMember from "../modals/compact-staff-member-details";
 
 interface Service {
     id: number;
@@ -55,7 +55,7 @@ export default function CommonBusinessProfile({
     isAdmin,
     businessId,
     teamMembers = [],
-    // staffMembers = [],
+    staffMembers = [],
 }: {
     isAdmin: boolean;
     businessId: string;
@@ -64,6 +64,11 @@ export default function CommonBusinessProfile({
 }) {
     const [showMemberDetails, setShowMemberDetails] = useState<boolean>(false);
     const [selectedMember, setSelectedMember] = useState<null | TeamMember>(null);
+
+    const [showStaffMemberDetails, setShowStaffMemberDetails] =
+        useState<boolean>(false);
+    const [selectedStaffMember, setStaffSelectedMember] =
+        useState<null | StaffMember>(null);
 
     const [servicesExpanded, setServicesExpanded] = useState(true);
     const [staffServicesExpanded, setStaffServicesExpanded] = useState(true);
@@ -162,14 +167,6 @@ export default function CommonBusinessProfile({
         saturday: { open: "08:00", close: "18:00", enabled: false },
         sunday: { open: "08:00", close: "18:00", enabled: false },
     });
-
-    const staffMembers = [
-        "Lisa Taylor",
-        "Emma Wilson",
-        "James Rodriguez",
-        "Sophie Anderson",
-        "Mike Chen",
-    ];
 
     const updateBusinessHour = (
         day: keyof typeof businessHours,
@@ -822,8 +819,8 @@ export default function CommonBusinessProfile({
                                                         </SelectTrigger>
                                                         <SelectContent>
                                                             {staffMembers.map((staff) => (
-                                                                <SelectItem key={staff} value={staff}>
-                                                                    {staff}
+                                                                <SelectItem key={staff.id} value={staff.name}>
+                                                                    {staff.name}
                                                                 </SelectItem>
                                                             ))}
                                                         </SelectContent>
@@ -981,6 +978,64 @@ export default function CommonBusinessProfile({
                                                     onClick={() => {
                                                         setShowMemberDetails(true);
                                                         setSelectedMember(teamMember);
+                                                    }}
+                                                >
+                                                    View Details
+                                                </Button>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </CardContent>
+                            </Card>
+                        )}
+
+                        {isAdmin && staffMembers.length > 0 && (
+                            <Card className="bg-white">
+                                <CardContent className="p-6">
+                                    <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                                        Staff Members({staffMembers.length})
+                                    </h3>
+
+                                    <div className="space-y-4">
+                                        {staffMembers.map((staffMember) => (
+                                            <div
+                                                key={staffMember.id}
+                                                className="flex items-center justify-between p-3 bg-gray-50 rounded-lg"
+                                            >
+                                                <div className="flex items-center gap-4">
+                                                    <Avatar className="h-16 w-16">
+                                                        <AvatarImage src={AvatarImg} />
+                                                        <AvatarFallback className="bg-gray-100 text-gray-600 text-lg font-semibold">
+                                                            {staffMember.name
+                                                                .split(" ")
+                                                                .map((n) => n[0])
+                                                                .join("")}
+                                                        </AvatarFallback>
+                                                    </Avatar>
+                                                    <div className="flex flex-col justify-start space-y-1">
+                                                        <h6 className="text-lg font-semibold flex items-center gap-2">
+                                                            {staffMember.name}{" "}
+                                                            <span className="text-xs opacity-40">
+                                                                {" "}
+                                                                ({staffMember.role})
+                                                            </span>
+                                                        </h6>
+                                                        <p className="text-sm flex items-center gap-2">
+                                                            <span className="opacity-80">Phone number: </span>{" "}
+                                                            {staffMember.phone}
+                                                        </p>
+
+                                                        <p className="text-sm flex items-center gap-2">
+                                                            <span className="opacity-80">Email: </span>{" "}
+                                                            {staffMember.email}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <Button
+                                                    size="sm"
+                                                    onClick={() => {
+                                                        setShowStaffMemberDetails(true);
+                                                        setStaffSelectedMember(staffMember);
                                                     }}
                                                 >
                                                     View Details
@@ -1200,8 +1255,21 @@ export default function CommonBusinessProfile({
                 </div>
             </section>
 
+            {selectedStaffMember && (
+                <CompactStaffMember
+                    editable={!isAdmin}
+                    isOpen={showStaffMemberDetails}
+                    member={selectedStaffMember}
+                    onClose={() => {
+                        setShowStaffMemberDetails(false);
+                        setStaffSelectedMember(null);
+                    }}
+                />
+            )}
+
             {selectedMember && (
                 <TeamMemberModal
+                    editable={!isAdmin}
                     onClose={() => {
                         setShowMemberDetails(false);
                         setSelectedMember(null);

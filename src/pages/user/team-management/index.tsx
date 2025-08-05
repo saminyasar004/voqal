@@ -28,7 +28,6 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { TeamMember } from "@/interfaces";
 import TeamMemberModal from "@/components/modals/team-member-details";
 
-
 function AddTeamMemberModal({
     onClose,
     isOpen,
@@ -418,6 +417,7 @@ export default function TeamManagement() {
             {/* Team Member Modal */}
             {selectedMember && (
                 <TeamMemberModal
+                    editable={true}
                     isOpen={showMemberModal}
                     member={selectedMember}
                     onClose={() => {

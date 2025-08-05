@@ -1,5 +1,5 @@
 import CommonBusinessProfile from "@/components/common/business-profile";
-import { TeamMember } from "@/interfaces";
+import { StaffMember, TeamMember } from "@/interfaces";
 import { useParams } from "react-router-dom";
 
 export default function BusinessProfilePreview() {
@@ -50,12 +50,404 @@ export default function BusinessProfilePreview() {
         },
     ];
 
+    const staffMembers: StaffMember[] = [
+        {
+            id: 1,
+            name: "Lisa Taylor",
+            role: "Senior Stylist",
+            status: "available",
+            avatar: "/placeholder.svg?height=60&width=60",
+            email: "lisa.taylor@salon.co.nz",
+            phone: "+64 21 555 0123",
+            license: "SP67890",
+            experience: "5 Years",
+            serviceFee: "$150",
+            joinDate: "2-10-2025",
+            qualifications: "Active - Medical Council of New Zealand",
+            totalAppointments: 10,
+            revenueGenerated: "$1500",
+            specializations: ["Hair Color", "Styling", "Treatments"],
+            availableDays: ["Tue", "Wed", "Thu", "Fri", "Sat"],
+            breaks: ["Lunch Break: 12:00-13:00", "Afternoon Break: 15:00-15:15"],
+            services: [
+                {
+                    name: "General Consultation",
+                    description: "Standard medical consultation",
+                    duration: "30 min",
+                    price: "$30",
+                },
+                {
+                    name: "Extended Consultation",
+                    description: "Comprehensive health assessment",
+                    duration: "45 minutes",
+                    price: "$120",
+                },
+            ],
+            schedule: [
+                {
+                    day: "Monday",
+                    hours: "08:00 - 17:00",
+                    breaks: ["Lunch Break: 12:00-13:00", "Afternoon Break: 15:00-15:15"],
+                },
+                {
+                    day: "Tuesday",
+                    hours: "08:00 - 17:00",
+                    breaks: ["Lunch Break: 12:00-13:00", "Afternoon Break: 15:00-15:15"],
+                },
+                {
+                    day: "Wednesday",
+                    hours: "08:00 - 17:00",
+                    breaks: ["Lunch Break: 12:00-13:00", "Afternoon Break: 15:00-15:15"],
+                },
+                {
+                    day: "Thursday",
+                    hours: "08:00 - 17:00",
+                    breaks: ["Lunch Break: 12:00-13:00", "Afternoon Break: 15:00-15:15"],
+                },
+                {
+                    day: "Friday",
+                    hours: "08:00 - 17:00",
+                    breaks: ["Lunch Break: 12:00-13:00", "Afternoon Break: 15:00-15:15"],
+                },
+                {
+                    day: "Saturday",
+                    hours: "08:00 - 17:00",
+                    breaks: ["Lunch Break: 12:00-13:00", "Afternoon Break: 15:00-15:15"],
+                },
+                { day: "Sunday", hours: "off", breaks: [] },
+            ],
+        },
+        {
+            id: 2,
+            name: "Dr. Sarah Johnson",
+            role: "Senior Stylist",
+            status: "available",
+            avatar: "/placeholder.svg?height=60&width=60",
+            email: "lisa.taylor@salon.co.nz",
+            phone: "+64 21 555 0123",
+            license: "SP67890",
+            experience: "5 Years",
+            serviceFee: "$150",
+            joinDate: "2-10-2025",
+            qualifications: "Active - Medical Council of New Zealand",
+            totalAppointments: 10,
+            revenueGenerated: "$1020",
+            specializations: ["Family Medicine", "Preventive Care"],
+            availableDays: ["Tue", "Wed", "Thu", "Fri", "Sat"],
+            breaks: ["Lunch Break: 12:00-13:00", "Afternoon Break: 15:00-15:15"],
+            services: [
+                {
+                    name: "General Consultation",
+                    description: "Standard medical consultation",
+                    duration: "30 min",
+                    price: "$30",
+                },
+                {
+                    name: "Extended Consultation",
+                    description: "Comprehensive health assessment",
+                    duration: "45 minutes",
+                    price: "$120",
+                },
+            ],
+            schedule: [
+                {
+                    day: "Monday",
+                    hours: "08:00 - 17:00",
+                    breaks: ["Lunch Break: 12:00-13:00", "Afternoon Break: 15:00-15:15"],
+                },
+                {
+                    day: "Tuesday",
+                    hours: "08:00 - 17:00",
+                    breaks: ["Lunch Break: 12:00-13:00", "Afternoon Break: 15:00-15:15"],
+                },
+                {
+                    day: "Wednesday",
+                    hours: "08:00 - 17:00",
+                    breaks: ["Lunch Break: 12:00-13:00", "Afternoon Break: 15:00-15:15"],
+                },
+                {
+                    day: "Thursday",
+                    hours: "08:00 - 17:00",
+                    breaks: ["Lunch Break: 12:00-13:00", "Afternoon Break: 15:00-15:15"],
+                },
+                {
+                    day: "Friday",
+                    hours: "08:00 - 17:00",
+                    breaks: ["Lunch Break: 12:00-13:00", "Afternoon Break: 15:00-15:15"],
+                },
+                {
+                    day: "Saturday",
+                    hours: "08:00 - 17:00",
+                    breaks: ["Lunch Break: 12:00-13:00", "Afternoon Break: 15:00-15:15"],
+                },
+                { day: "Sunday", hours: "off", breaks: [] },
+            ],
+        },
+        {
+            id: 3,
+            name: "Mike Chen",
+            role: "Hair Specialist",
+            status: "busy",
+            avatar: "/placeholder.svg?height=60&width=60",
+            email: "mike.chen@salon.co.nz",
+            phone: "+64 21 555 0124",
+            license: "SP67891",
+            experience: "3 Years",
+            serviceFee: "$120",
+            joinDate: "15-03-2023",
+            qualifications: "Certified Hair Specialist",
+            totalAppointments: 8,
+            revenueGenerated: "$960",
+            specializations: ["Hair Cutting", "Beard Styling"],
+            availableDays: ["Mon", "Tue", "Wed", "Thu", "Fri"],
+            breaks: ["Lunch Break: 12:00-13:00"],
+            services: [
+                {
+                    name: "Hair Cut",
+                    description: "Professional hair cutting service",
+                    duration: "45 min",
+                    price: "$40",
+                },
+                {
+                    name: "Beard Styling",
+                    description: "Complete beard grooming",
+                    duration: "30 minutes",
+                    price: "$25",
+                },
+            ],
+            schedule: [
+                {
+                    day: "Monday",
+                    hours: "09:00 - 18:00",
+                    breaks: ["Lunch Break: 12:00-13:00"],
+                },
+                {
+                    day: "Tuesday",
+                    hours: "09:00 - 18:00",
+                    breaks: ["Lunch Break: 12:00-13:00"],
+                },
+                {
+                    day: "Wednesday",
+                    hours: "09:00 - 18:00",
+                    breaks: ["Lunch Break: 12:00-13:00"],
+                },
+                {
+                    day: "Thursday",
+                    hours: "09:00 - 18:00",
+                    breaks: ["Lunch Break: 12:00-13:00"],
+                },
+                {
+                    day: "Friday",
+                    hours: "09:00 - 18:00",
+                    breaks: ["Lunch Break: 12:00-13:00"],
+                },
+                { day: "Saturday", hours: "off", breaks: [] },
+                { day: "Sunday", hours: "off", breaks: [] },
+            ],
+        },
+        {
+            id: 4,
+            name: "Emma Wilson",
+            role: "Massage Therapist",
+            status: "available",
+            avatar: "/placeholder.svg?height=60&width=60",
+            email: "emma.wilson@salon.co.nz",
+            phone: "+64 21 555 0125",
+            license: "MT12345",
+            experience: "7 Years",
+            serviceFee: "$180",
+            joinDate: "10-01-2022",
+            qualifications: "Licensed Massage Therapist",
+            totalAppointments: 12,
+            revenueGenerated: "$2160",
+            specializations: ["Deep Tissue", "Relaxation", "Sports Massage"],
+            availableDays: ["Mon", "Wed", "Thu", "Fri", "Sat"],
+            breaks: ["Lunch Break: 13:00-14:00", "Afternoon Break: 16:00-16:15"],
+            services: [
+                {
+                    name: "Deep Tissue Massage",
+                    description: "Therapeutic deep tissue massage",
+                    duration: "60 min",
+                    price: "$80",
+                },
+                {
+                    name: "Relaxation Massage",
+                    description: "Full body relaxation massage",
+                    duration: "90 minutes",
+                    price: "$120",
+                },
+            ],
+            schedule: [
+                {
+                    day: "Monday",
+                    hours: "10:00 - 19:00",
+                    breaks: ["Lunch Break: 13:00-14:00", "Afternoon Break: 16:00-16:15"],
+                },
+                { day: "Tuesday", hours: "off", breaks: [] },
+                {
+                    day: "Wednesday",
+                    hours: "10:00 - 19:00",
+                    breaks: ["Lunch Break: 13:00-14:00", "Afternoon Break: 16:00-16:15"],
+                },
+                {
+                    day: "Thursday",
+                    hours: "10:00 - 19:00",
+                    breaks: ["Lunch Break: 13:00-14:00", "Afternoon Break: 16:00-16:15"],
+                },
+                {
+                    day: "Friday",
+                    hours: "10:00 - 19:00",
+                    breaks: ["Lunch Break: 13:00-14:00", "Afternoon Break: 16:00-16:15"],
+                },
+                {
+                    day: "Saturday",
+                    hours: "09:00 - 17:00",
+                    breaks: ["Lunch Break: 13:00-14:00"],
+                },
+                { day: "Sunday", hours: "off", breaks: [] },
+            ],
+        },
+        {
+            id: 5,
+            name: "James Rodriguez",
+            role: "Nail Technician",
+            status: "on-leave",
+            avatar: "/placeholder.svg?height=60&width=60",
+            email: "james.rodriguez@salon.co.nz",
+            phone: "+64 21 555 0126",
+            license: "NT98765",
+            experience: "4 Years",
+            serviceFee: "$90",
+            joinDate: "20-06-2023",
+            qualifications: "Certified Nail Technician",
+            totalAppointments: 15,
+            revenueGenerated: "$1350",
+            specializations: ["Manicure", "Pedicure", "Nail Art"],
+            availableDays: ["Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+            breaks: ["Lunch Break: 12:30-13:30"],
+            services: [
+                {
+                    name: "Manicure",
+                    description: "Complete hand and nail care",
+                    duration: "45 min",
+                    price: "$35",
+                },
+                {
+                    name: "Pedicure",
+                    description: "Complete foot and nail care",
+                    duration: "60 minutes",
+                    price: "$45",
+                },
+            ],
+            schedule: [
+                { day: "Monday", hours: "off", breaks: [] },
+                {
+                    day: "Tuesday",
+                    hours: "09:00 - 17:00",
+                    breaks: ["Lunch Break: 12:30-13:30"],
+                },
+                {
+                    day: "Wednesday",
+                    hours: "09:00 - 17:00",
+                    breaks: ["Lunch Break: 12:30-13:30"],
+                },
+                {
+                    day: "Thursday",
+                    hours: "09:00 - 17:00",
+                    breaks: ["Lunch Break: 12:30-13:30"],
+                },
+                {
+                    day: "Friday",
+                    hours: "09:00 - 17:00",
+                    breaks: ["Lunch Break: 12:30-13:30"],
+                },
+                {
+                    day: "Saturday",
+                    hours: "10:00 - 18:00",
+                    breaks: ["Lunch Break: 12:30-13:30"],
+                },
+                {
+                    day: "Sunday",
+                    hours: "10:00 - 16:00",
+                    breaks: ["Lunch Break: 12:30-13:30"],
+                },
+            ],
+        },
+        {
+            id: 6,
+            name: "Sophie Anderson",
+            role: "Esthetician",
+            status: "busy",
+            avatar: "/placeholder.svg?height=60&width=60",
+            email: "sophie.anderson@salon.co.nz",
+            phone: "+64 21 555 0127",
+            license: "ES54321",
+            experience: "6 Years",
+            serviceFee: "$200",
+            joinDate: "05-09-2021",
+            qualifications: "Licensed Esthetician & Skincare Specialist",
+            totalAppointments: 9,
+            revenueGenerated: "$1800",
+            specializations: [
+                "Facial Treatments",
+                "Chemical Peels",
+                "Microdermabrasion",
+            ],
+            availableDays: ["Mon", "Tue", "Thu", "Fri", "Sat"],
+            breaks: ["Lunch Break: 12:00-13:00", "Afternoon Break: 15:30-15:45"],
+            services: [
+                {
+                    name: "Classic Facial",
+                    description: "Deep cleansing facial treatment",
+                    duration: "60 min",
+                    price: "$70",
+                },
+                {
+                    name: "Chemical Peel",
+                    description: "Professional chemical peel treatment",
+                    duration: "75 minutes",
+                    price: "$150",
+                },
+            ],
+            schedule: [
+                {
+                    day: "Monday",
+                    hours: "08:30 - 17:30",
+                    breaks: ["Lunch Break: 12:00-13:00", "Afternoon Break: 15:30-15:45"],
+                },
+                {
+                    day: "Tuesday",
+                    hours: "08:30 - 17:30",
+                    breaks: ["Lunch Break: 12:00-13:00", "Afternoon Break: 15:30-15:45"],
+                },
+                { day: "Wednesday", hours: "off", breaks: [] },
+                {
+                    day: "Thursday",
+                    hours: "08:30 - 17:30",
+                    breaks: ["Lunch Break: 12:00-13:00", "Afternoon Break: 15:30-15:45"],
+                },
+                {
+                    day: "Friday",
+                    hours: "08:30 - 17:30",
+                    breaks: ["Lunch Break: 12:00-13:00", "Afternoon Break: 15:30-15:45"],
+                },
+                {
+                    day: "Saturday",
+                    hours: "09:00 - 16:00",
+                    breaks: ["Lunch Break: 12:00-13:00"],
+                },
+                { day: "Sunday", hours: "off", breaks: [] },
+            ],
+        },
+    ];
+
     const { businessId } = useParams();
     return (
         <CommonBusinessProfile
             isAdmin={true}
             businessId={businessId}
             teamMembers={teamMembers}
+            staffMembers={staffMembers}
         />
     );
 }
