@@ -36,6 +36,7 @@ import { Notifications } from "@/pages/admin/notification";
 import { Profile } from "@/pages/admin/profile";
 import { ComponentType, ReactNode } from "react";
 import BusinessProfilePreview from "@/pages/admin/business-management/business-profile";
+import PrivacyPolicyEdit from "@/pages/admin/privacy-policy";
 
 export interface Route {
     path: string;
@@ -199,7 +200,6 @@ export const routes = [
         layout: AdminDashboardLayout,
     },
 
-
     {
         path: "/admin/business-management/business-profile/:businessId",
         element: BusinessProfilePreview,
@@ -212,10 +212,15 @@ export const routes = [
         layout: AdminDashboardLayout,
     },
 
-
     {
         path: "/admin/profile",
         element: Profile,
+        layout: AdminDashboardLayout,
+    },
+
+    {
+        path: "/admin/privacy-policy",
+        element: PrivacyPolicyEdit,
         layout: AdminDashboardLayout,
     },
 

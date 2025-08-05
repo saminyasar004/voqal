@@ -48,10 +48,12 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { BillingHistory } from "./billing-history";
 import { Invoice } from "./invoice";
+import { Link } from "react-router-dom";
 
 export interface SubscriptionItem {
     id: number;
     owner: string;
+    businessId: string;
     location: string;
     joinDate: string;
     contact: string;
@@ -70,6 +72,7 @@ export default function AdminBilling() {
     const subscriptionData: SubscriptionItem[] = [
         {
             id: 1,
+            businessId: "a1b2c3d4-e5f6-7890-abcd-1234567890ab",
             owner: "Glow Beauty Spa",
             location: "Auckland, NZ",
             joinDate: "2024-01-15",
@@ -84,6 +87,7 @@ export default function AdminBilling() {
         },
         {
             id: 2,
+            businessId: "b2c3d4e5-f6a7-8901-bcde-2345678901bc",
             owner: "Glow Beauty Spa",
             location: "Auckland, NZ",
             joinDate: "2024-01-15",
@@ -98,6 +102,7 @@ export default function AdminBilling() {
         },
         {
             id: 3,
+            businessId: "c3d4e5f6-a7b8-9012-cdef-3456789012cd",
             owner: "Glow Beauty Spa",
             location: "Auckland, NZ",
             joinDate: "2024-01-15",
@@ -112,6 +117,7 @@ export default function AdminBilling() {
         },
         {
             id: 4,
+            businessId: "d4e5f6a7-b8c9-0123-def0-4567890123de",
             owner: "Glow Beauty Spa",
             location: "Auckland, NZ",
             joinDate: "2024-01-15",
@@ -126,6 +132,7 @@ export default function AdminBilling() {
         },
         {
             id: 5,
+            businessId: "e5f6a7b8-c9d0-1234-ef01-5678901234ef",
             owner: "Glow Beauty Spa",
             location: "Auckland, NZ",
             joinDate: "2024-01-15",
@@ -140,6 +147,7 @@ export default function AdminBilling() {
         },
         {
             id: 6,
+            businessId: "f6a7b8c9-d0e1-2345-f012-6789012345f0",
             owner: "Glow Beauty Spa",
             location: "Auckland, NZ",
             joinDate: "2024-01-15",
@@ -154,6 +162,7 @@ export default function AdminBilling() {
         },
         {
             id: 7,
+            businessId: "a7b8c9d0-e1f2-3456-0123-7890123456a1",
             owner: "Glow Beauty Spa",
             location: "Auckland, NZ",
             joinDate: "2024-01-15",
@@ -168,6 +177,7 @@ export default function AdminBilling() {
         },
         {
             id: 8,
+            businessId: "b8c9d0e1-f2a3-4567-1234-8901234567b2",
             owner: "Glow Beauty Spa",
             location: "Auckland, NZ",
             joinDate: "2024-01-15",
@@ -182,6 +192,7 @@ export default function AdminBilling() {
         },
         {
             id: 9,
+            businessId: "c9d0e1f2-a3b4-5678-2345-9012345678c3",
             owner: "Glow Beauty Spa",
             location: "Auckland, NZ",
             joinDate: "2024-01-15",
@@ -196,6 +207,7 @@ export default function AdminBilling() {
         },
         {
             id: 10,
+            businessId: "d0e1f2a3-b4c5-6789-3456-0123456789d4",
             owner: "Glow Beauty Spa",
             location: "Auckland, NZ",
             joinDate: "2024-01-15",
@@ -455,7 +467,13 @@ export default function AdminBilling() {
                                                             <MoreHorizontal className="!h-8 !w-8 opacity-60" />
                                                         </DropdownMenuTrigger>
                                                         <DropdownMenuContent className="space-y-2">
-                                                            <DropdownMenuItem>View Details</DropdownMenuItem>
+                                                            <Link
+                                                                to={`/admin/business-management/business-profile/${subscription.businessId}`}
+                                                            >
+                                                                <DropdownMenuItem>
+                                                                    View Details
+                                                                </DropdownMenuItem>
+                                                            </Link>
                                                             <DropdownMenuItem className="bg-warning text-primary-foreground hover:bg-warning/90">
                                                                 Cancel Subscription
                                                             </DropdownMenuItem>
