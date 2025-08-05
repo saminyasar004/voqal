@@ -47,6 +47,7 @@ import {
     Wallet,
 } from "lucide-react";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 interface CardValue {
     title: string;
@@ -473,7 +474,9 @@ const BusinessManagement = () => {
                                                         <MoreHorizontal className="!h-8 !w-8 opacity-60" />
                                                     </DropdownMenuTrigger>
                                                     <DropdownMenuContent>
-                                                        <DropdownMenuItem>View Details</DropdownMenuItem>
+                                                        <Link to={`/admin/business-management/business-profile/${business.id}`}>
+                                                            <DropdownMenuItem>View Details</DropdownMenuItem>
+                                                        </Link>
                                                         <DropdownMenuItem>Edit</DropdownMenuItem>
                                                         <DropdownMenuItem>Cancel</DropdownMenuItem>
                                                     </DropdownMenuContent>

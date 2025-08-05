@@ -14,6 +14,7 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
+import { StaffMember } from "@/interfaces";
 import {
     ArrowLeft,
     BookmarkCheck,
@@ -33,36 +34,6 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 
-export interface StaffMember {
-    id: number;
-    name: string;
-    role: string;
-    status: "available" | "busy" | "on-leave";
-    avatar: string;
-    email: string;
-    phone: string;
-    license: string;
-    experience: string;
-    serviceFee: string;
-    joinDate: string;
-    qualifications: string;
-    totalAppointments: number;
-    revenueGenerated: string;
-    specializations: string[];
-    availableDays: string[];
-    breaks: string[];
-    services: Array<{
-        name: string;
-        description: string;
-        duration: string;
-        price: string;
-    }>;
-    schedule: Array<{
-        day: string;
-        hours: string;
-        breaks: string[];
-    }>;
-}
 
 interface StaffDataProps {
     title: string;

@@ -43,8 +43,8 @@ export const CreateInvoice = ({
                     </Button>
                 </div>
 
-                <h1 className="text-xl font-semibold text-gray-900 mb-6">
-                    Booking Details - Sarah Johnson
+                <h1 className="text-xl font-semibold text-gray-900 mb-4">
+                    Generate Invoice 
                 </h1>
                 <div className="border rounded-lg p-6 grid grid-cols-2 gap-4">
                     <h1 className="col-span-2 text-xl font-semibold text-gray-900 mb-6">
@@ -129,7 +129,7 @@ export const CreateInvoice = ({
                             <Popover>
                                 <PopoverTrigger asChild>
                                     <span className="flex items-center justify-between w-full cursor-pointer">
-                                        {issueDate ? (
+                                        {dueDate ? (
                                             format(dueDate, "PPP")
                                         ) : (
                                             <span className="opacity-60">Pick a date</span>

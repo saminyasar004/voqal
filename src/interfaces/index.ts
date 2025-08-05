@@ -76,3 +76,46 @@ export interface Notification {
     badge: string;
     badgeVariant: "default" | "secondary" | "destructive" | "outline";
 }
+
+export interface TeamMember {
+    id: number;
+    name: string;
+    role: string;
+    status: "active" | "inactive";
+    avatar: string;
+    email: string;
+    phone: string;
+    address: string;
+    permissionLevel: string;
+}
+
+export interface StaffMember {
+    id: number;
+    name: string;
+    role: string;
+    status: "available" | "busy" | "on-leave";
+    avatar: string;
+    email: string;
+    phone: string;
+    license: string;
+    experience: string;
+    serviceFee: string;
+    joinDate: string;
+    qualifications: string;
+    totalAppointments: number;
+    revenueGenerated: string;
+    specializations: string[];
+    availableDays: string[];
+    breaks: string[];
+    services: Array<{
+        name: string;
+        description: string;
+        duration: string;
+        price: string;
+    }>;
+    schedule: Array<{
+        day: string;
+        hours: string;
+        breaks: string[];
+    }>;
+}

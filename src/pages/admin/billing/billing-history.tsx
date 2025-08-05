@@ -391,7 +391,7 @@ export function BillingHistory() {
 
                     {/* Pagination */}
                     <div className="p-6 border-t">
-                        <Pagination>
+                                    <Pagination className="flex items-center justify-end">
                             <PaginationContent>
                                 <PaginationItem>
                                     <PaginationPrevious href="#" />

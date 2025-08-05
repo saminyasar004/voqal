@@ -35,6 +35,7 @@ import BusinessManagement from "@/pages/admin/business-management";
 import { Notifications } from "@/pages/admin/notification";
 import { Profile } from "@/pages/admin/profile";
 import { ComponentType, ReactNode } from "react";
+import BusinessProfilePreview from "@/pages/admin/business-management/business-profile";
 
 export interface Route {
     path: string;
@@ -195,6 +196,13 @@ export const routes = [
     {
         path: "/admin/business-management",
         element: BusinessManagement,
+        layout: AdminDashboardLayout,
+    },
+
+
+    {
+        path: "/admin/business-management/business-profile/:businessId",
+        element: BusinessProfilePreview,
         layout: AdminDashboardLayout,
     },
 

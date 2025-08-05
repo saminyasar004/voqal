@@ -23,21 +23,11 @@ import {
     Users,
 } from "lucide-react";
 import { useState } from "react";
-import TeamMemberModal from "./team-member-modal";
 import { Label } from "@/components/ui/label";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { TeamMember } from "@/interfaces";
+import TeamMemberModal from "@/components/modals/team-member-details";
 
-export interface TeamMember {
-    id: number;
-    name: string;
-    role: string;
-    status: "active" | "inactive";
-    avatar: string;
-    email: string;
-    phone: string;
-    address: string;
-    permissionLevel: string;
-}
 
 function AddTeamMemberModal({
     onClose,
