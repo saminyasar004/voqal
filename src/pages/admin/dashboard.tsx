@@ -226,7 +226,7 @@ export default function AdminDashboard() {
                 Recently Created Business
               </h3>
 
-              <Link to={"/user/bookings"}>
+              <Link to={"/admin/business-management"}>
                 <Button variant="transparent" size="sm">
                   View All
                 </Button>

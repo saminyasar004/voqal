@@ -119,3 +119,13 @@ export interface StaffMember {
         breaks: string[];
     }>;
 }
+
+
+export interface PricingPlan {
+    title: string;
+    subtitle: string;
+    price: string;
+    features: string[];
+    isPopular?: boolean;
+    buttonText: string;
+}

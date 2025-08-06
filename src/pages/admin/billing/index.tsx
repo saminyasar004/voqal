@@ -2,7 +2,6 @@ import AvatarImg from "@/assets/images/avatar.jpg";
 import { useEffect, useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -35,20 +34,13 @@ import {
     PaginationNext,
     PaginationPrevious,
 } from "@/components/ui/pagination";
-import { Search, MoreHorizontal, Wallet, ArrowLeft } from "lucide-react";
+import { Search, MoreHorizontal, Wallet } from "lucide-react";
 import DashboardHeader from "@/components/common/dashboard-header";
-import {
-    Dialog,
-    DialogContent,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-} from "@/components/ui/dialog";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { BillingHistory } from "./billing-history";
 import { Invoice } from "./invoice";
 import { Link } from "react-router-dom";
+import Subscription from "./subscription";
 
 export interface SubscriptionItem {
     id: number;
@@ -325,7 +317,6 @@ export default function AdminBilling() {
                         </TabsTrigger>
                     </TabsList>
 
-                    {/* All Subscriptions Tab */}
                     <TabsContent value="all-subscriptions" className="space-y-6">
                         {/* Search Bar */}
                         <Card className="bg-white">
@@ -518,23 +509,14 @@ export default function AdminBilling() {
                             </CardContent>
                         </Card>
                     </TabsContent>
+                    {/* All Subscriptions Tab */}
 
                     {/* Billing History Tab */}
                     <BillingHistory />
 
                     <Invoice />
 
-                    {/* Invoice Tab */}
-                    {/* Subscription Plans Tab */}
-                    <TabsContent value="subscription-plans">
-                        <Card className="bg-white">
-                            <CardContent className="p-6">
-                                <div className="text-center text-gray-500">
-                                    Subscription plans content will be added here
-                                </div>
-                            </CardContent>
-                        </Card>
-                    </TabsContent>
+                    <Subscription />
                 </Tabs>
             </div>
         </section>
