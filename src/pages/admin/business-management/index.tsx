@@ -292,7 +292,7 @@ const BusinessManagement = () => {
                 </div>
 
                 <div className="p-6 space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-6">
                         {cards.map((card, i) => (
                             <Card className="bg-white" key={i}>
                                 <CardContent className="p-6">
@@ -474,7 +474,9 @@ const BusinessManagement = () => {
                                                         <MoreHorizontal className="!h-8 !w-8 opacity-60" />
                                                     </DropdownMenuTrigger>
                                                     <DropdownMenuContent>
-                                                        <Link to={`/admin/business-management/business-profile/${business.id}`}>
+                                                        <Link
+                                                            to={`/admin/business-management/business-profile/${business.id}`}
+                                                        >
                                                             <DropdownMenuItem>View Details</DropdownMenuItem>
                                                         </Link>
                                                         <DropdownMenuItem>Edit</DropdownMenuItem>

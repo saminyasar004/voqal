@@ -251,7 +251,7 @@ export default function AdminBilling() {
 
             <div className="p-6">
                 {/* Plan Statistics Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-6 mb-8">
                     <Card className="bg-white">
                         <CardContent className="p-6">
                             <div className="flex items-start justify-between">
