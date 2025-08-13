@@ -6,23 +6,30 @@ export default function Faq() {
 		{
 			id: 0,
 			question:
-				"can the Ai work 24/7  and handle multiple call simultaneously?",
+				"Can the AI work 24/7 and handle multiple calls simultaneously?",
 			answer: "Yes! Voqal AI works 24/7 and can handle multiple calls simultaneously. You can configure business hours and set different behaviors for after-hours calls. The system scales automatically to handle peak call volumes.",
 		},
 		{
 			id: 1,
 			question: "How Do I Cancel My Subscription?",
-			answer: "To cancel your subscription, please visit the account settings on the platform where you subscribed (e.g., grok.com or x.com) and follow the cancellation instructions provided.",
+			answer: "To cancel your subscription, please visit your account page and follow the cancellation instructions provided.",
 		},
 		{
 			id: 2,
-			question: "How Do Affiliate Links Work?",
-			answer: "Affiliate links are used to track referrals. When you click an affiliate link and make a purchase, the merchant may share a small commission with us, at no extra cost to you.",
+			question: "What happens if I run out of minutes?",
+			answer: "Extra minutes above your plan allocation are charged at 20c per minute (approx 40-60c per booking call). Alternatively, if you are on the Starter plan you can upgrade to the Professional plan",
 		},
 		{
 			id: 3,
-			question: "What Happens If A Recommended Product Is Unavailable?",
-			answer: "If a recommended product is unavailable, we will suggest alternative products that match your preferences or notify you when the product becomes available again.",
+			question:
+				"Do you have a range of NZ and AU voices to choose from for our AI to use?",
+			answer: "Yes you can select from a range of NZ, AU, UK and other accents. These can be changed at any time.",
+		},
+		{
+			id: 4,
+			question:
+				"I'm not technical, can you help me set the system up and do you provide support?",
+			answer: "Yes for clients on the professional plan we offer one on one, step by step set up support and ongoing phone and email support",
 		},
 	];
 

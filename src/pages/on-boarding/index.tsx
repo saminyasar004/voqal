@@ -5,6 +5,11 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
+	Tooltip,
+	TooltipContent,
+	TooltipTrigger,
+} from "@/components/ui/tooltip";
+import {
 	Select,
 	SelectContent,
 	SelectItem,
@@ -19,6 +24,7 @@ import {
 	ArrowRight,
 	BriefcaseBusiness,
 	CalendarDays,
+	CircleQuestionMark,
 	Download,
 	Edit,
 	Eye,
@@ -229,6 +235,9 @@ const BusinessInfo = ({
 										</SelectItem>
 										<SelectItem value="pet_salon">
 											Pet Salon
+										</SelectItem>
+										<SelectItem value="other">
+											Other
 										</SelectItem>
 									</SelectContent>
 								</Select>
@@ -680,17 +689,71 @@ const Services = ({
 															<SelectValue />
 														</SelectTrigger>
 														<SelectContent>
+															<SelectItem value="10">
+																10
+															</SelectItem>
+															<SelectItem value="15">
+																15
+															</SelectItem>
+															<SelectItem value="20">
+																20
+															</SelectItem>
+															<SelectItem value="25">
+																25
+															</SelectItem>
 															<SelectItem value="30">
 																30
+															</SelectItem>
+															<SelectItem value="35">
+																35
+															</SelectItem>
+															<SelectItem value="40">
+																40
 															</SelectItem>
 															<SelectItem value="45">
 																45
 															</SelectItem>
+															<SelectItem value="50">
+																50
+															</SelectItem>
+															<SelectItem value="55">
+																55
+															</SelectItem>
 															<SelectItem value="60">
 																60
 															</SelectItem>
+															<SelectItem value="65">
+																65
+															</SelectItem>
+															<SelectItem value="70">
+																70
+															</SelectItem>
+															<SelectItem value="75">
+																75
+															</SelectItem>
+															<SelectItem value="80">
+																80
+															</SelectItem>
+															<SelectItem value="85">
+																85
+															</SelectItem>
 															<SelectItem value="90">
 																90
+															</SelectItem>
+															<SelectItem value="95">
+																95
+															</SelectItem>
+															<SelectItem value="100">
+																100
+															</SelectItem>
+															<SelectItem value="105">
+																105
+															</SelectItem>
+															<SelectItem value="110">
+																110
+															</SelectItem>
+															<SelectItem value="115">
+																115
 															</SelectItem>
 															<SelectItem value="120">
 																120
@@ -845,16 +908,17 @@ const Services = ({
 
 											<div className="space-y-2">
 												<Label className="text-sm font-medium text-gray-700">
-													Equipment Comments:
+													Equipment Constraints:
 												</Label>
-												<p className="text-xs text-gray-600 leading-relaxed">
+												<p className="text-xs text-gray-600 mt-1">
 													The System Checks Equipment
 													Availability During Booking.
-													If A Service Requires A
-													Specific Equipment And It's
-													Not Available At The
-													Selected Time, The Booking
-													Cannot Be Confirmed.
+													If a your new service
+													requires specific equipment
+													and that specific equipment
+													is not available at the
+													selected time, the booking
+													cannot be confirmed.
 												</p>
 											</div>
 										</CardContent>
@@ -1277,10 +1341,29 @@ const StaffAndTeamMembers = ({
 								<SelectValue placeholder="60" />
 							</SelectTrigger>
 							<SelectContent>
+								<SelectItem value="10">10</SelectItem>
+								<SelectItem value="15">15</SelectItem>
+								<SelectItem value="20">20</SelectItem>
+								<SelectItem value="25">25</SelectItem>
 								<SelectItem value="30">30</SelectItem>
+								<SelectItem value="35">35</SelectItem>
+								<SelectItem value="40">40</SelectItem>
 								<SelectItem value="45">45</SelectItem>
+								<SelectItem value="50">50</SelectItem>
+								<SelectItem value="55">55</SelectItem>
 								<SelectItem value="60">60</SelectItem>
+								<SelectItem value="65">65</SelectItem>
+								<SelectItem value="70">70</SelectItem>
+								<SelectItem value="75">75</SelectItem>
+								<SelectItem value="80">80</SelectItem>
+								<SelectItem value="85">85</SelectItem>
 								<SelectItem value="90">90</SelectItem>
+								<SelectItem value="95">95</SelectItem>
+								<SelectItem value="100">100</SelectItem>
+								<SelectItem value="105">105</SelectItem>
+								<SelectItem value="110">110</SelectItem>
+								<SelectItem value="115">115</SelectItem>
+								<SelectItem value="120">120</SelectItem>
 							</SelectContent>
 						</Select>
 					</div>
@@ -1344,13 +1427,13 @@ const StaffAndTeamMembers = ({
 
 				<div>
 					<Label className="text-sm font-medium text-gray-700">
-						Equipment Comments:
+						Equipment Constraints:
 					</Label>
 					<p className="text-xs text-gray-600 mt-1">
 						The System Checks Equipment Availability During Booking.
-						If A Service Requires A Specific Equipment And It's Not
-						Available At The Selected Time, The Booking Cannot Be
-						Confirmed.
+						If a your new service requires specific equipment and
+						that specific equipment is not available at the selected
+						time, the booking cannot be confirmed.
 					</p>
 				</div>
 			</CardContent>
@@ -1949,6 +2032,28 @@ const StaffAndTeamMembers = ({
 									</div>
 								)}
 
+								<div className="mb-4">
+									<Label className="text-sm font-medium text-gray-700">
+										Add Services
+									</Label>
+									<Select>
+										<SelectTrigger className="mt-1">
+											<SelectValue placeholder="Women's Cut & Style" />
+										</SelectTrigger>
+										<SelectContent>
+											<SelectItem value="women's-cut-and-style">
+												Women's Cut & Style
+											</SelectItem>
+											<SelectItem value="men's-cut-and-style">
+												Men's Cut & Style
+											</SelectItem>
+											<SelectItem value="men's-cut-and-style">
+												Beuty Spa
+											</SelectItem>
+										</SelectContent>
+									</Select>
+								</div>
+
 								<Button
 									variant="outline"
 									size="sm"
@@ -2403,9 +2508,13 @@ const AIConfiguration = ({
 					{/* Voice & Tone */}
 					<Card>
 						<CardContent className="p-6">
-							<h2 className="text-lg font-medium text-gray-900 mb-4">
-								Voice & Tone
-							</h2>
+							<div className="w-full flex items-center justify-between">
+								<h2 className="text-lg font-medium text-gray-900 mb-4">
+									Voice & Tone
+								</h2>
+
+								<Button size="sm">Test Play</Button>
+							</div>
 
 							<div className="space-y-4">
 								<div>
@@ -2464,7 +2573,10 @@ const AIConfiguration = ({
 							</h2>
 							<p className="text-sm text-gray-600 mb-4">
 								Provide information about your business through
-								multiple sources for comprehensive AI knowledge
+								multiple sources for comprehensive AI knowledge.
+								AI will use this information in its
+								conversations with clients as hairdressers won't
+								understand this.
 							</p>
 
 							<div className="space-y-6">
@@ -2528,9 +2640,27 @@ const AIConfiguration = ({
 							</h2>
 
 							<div>
-								<Label className="text-sm font-medium text-gray-700 mb-2 block">
-									Custom Greeting
-								</Label>
+								<div className="w-full flex items-start gap-1">
+									<Label className="text-sm font-medium text-gray-700 mb-2 block">
+										Custom Greeting
+									</Label>
+									<Tooltip>
+										<TooltipTrigger asChild>
+											<span className="w-4 h-4 bg-primary rounded-full flex items-center justify-center cursor-pointer">
+												<CircleQuestionMark
+													className="text-white"
+													size={16}
+												/>
+											</span>
+										</TooltipTrigger>
+										<TooltipContent>
+											<p>
+												This is what will be used when
+												the AI answers the phone
+											</p>
+										</TooltipContent>
+									</Tooltip>
+								</div>
 								<Textarea
 									className="min-h-[80px] resize-none"
 									placeholder="G'Day! Thanks For Calling [Business Name]. I'm Your AI Assistant And I'm Here To Help You Book An Appointment. How Can I Help You Today? Let [Business Name] To Assist"

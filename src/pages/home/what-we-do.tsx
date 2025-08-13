@@ -29,7 +29,7 @@ const WhatWeDo: React.FC = () => {
 				<div className="text-center mb-8 flex items-center justify-center flex-col gap-8">
 					<h2 className="text-5xl font-semibold">What We Do</h2>
 					<p className="lg:w-[50%] text-[#373737] text-sm mt-2">
-						Voqual provides AI voice assistants that handle your
+						Voqal provides AI voice assistants that handle your
 						phone calls and bookings automatically, so you can focus
 						on your customers.
 					</p>
@@ -37,20 +37,20 @@ const WhatWeDo: React.FC = () => {
 				<div className="w-full grid grid-cols-1 md:grid-cols-3 gap-5 py-6">
 					<FeatureCard
 						title="AI-Powered Phone Assistant"
-						description="Natural kiwi & aussie accents with human-like conversation"
+						description="Natural Kiwi & Aussie accents"
 						items={[
-							"Selection of kiwi and aussie voices",
-							"Natural conversation with small talk",
-							"Customizable personality & tone",
+							"Choose natural Kiwi or Aussie voices",
+							"Engage customers with friendly, human-like conversation",
+							"Add small talk and personality that matches your brand",
 						]}
 					/>
 					<FeatureCard
 						title="Real-Time Booking System"
-						description="Instant Availability Checking With Conflict Resolution"
+						description="Instant Availability Checking"
 						items={[
-							"Multi-service bookings in one call",
-							"Staff & equipment management",
-							"Calendar Integrations",
+							"Instantly check availability and prevent double bookings",
+							"Allocate staff based on skill and availability",
+							"Integrate with your existing calendar and booking tools",
 						]}
 					/>
 					<FeatureCard
@@ -66,9 +66,9 @@ const WhatWeDo: React.FC = () => {
 						title="Works Outside Business Hours"
 						description="24/7 Availability With Smart Scheduling"
 						items={[
-							"After-Hours Booking",
-							"Configurable Availability",
-							"Human Transfer When Needed",
+							"Answer calls after hours, weekends, and holidays",
+							"Smart scheduling to fit your business rules",
+							"Transfer the call to a real person when needed",
 						]}
 					/>
 					<FeatureCard

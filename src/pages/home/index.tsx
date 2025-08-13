@@ -11,8 +11,8 @@ export default function Home() {
 		<>
 			<Hero />
 			<CountingGlimps />
-			<About />
 			<WhatWeDo />
+			<About />
 			<HowVoqualWorks />
 			<Pricing />
 			<Faq />

@@ -19,7 +19,14 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
-import { Upload, Plus, Eye, ChevronUp, ChevronDown } from "lucide-react";
+import {
+	Upload,
+	Plus,
+	Eye,
+	ChevronUp,
+	ChevronDown,
+	CircleQuestionMark,
+} from "lucide-react";
 import {
 	Dialog,
 	DialogContent,
@@ -29,6 +36,11 @@ import {
 } from "@/components/ui/dialog";
 import DashboardHeader from "@/components/common/dashboard-header";
 import { DaySchedule, WeekSchedule } from "@/pages/on-boarding";
+import {
+	Tooltip,
+	TooltipContent,
+	TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 function AddStaffServiceForm({
 	onClose,
@@ -204,9 +216,9 @@ function AddStaffServiceForm({
 				<p className="text-sm text-gray-600">
 					<span className="font-medium">Equipment Constraints:</span>{" "}
 					The System Checks Equipment Availability During Booking. If
-					A Service Requires A Specific Equipment And It's Not
-					Available At The Selected Time, The Booking Cannot Be
-					Confirmed.
+					a your new service requires specific equipment and that
+					specific equipment is not available at the selected time,
+					the booking cannot be confirmed.
 				</p>
 			</div>
 
@@ -370,9 +382,9 @@ function AddServiceForm({
 				<p className="text-sm text-gray-600">
 					<span className="font-medium">Equipment Constraints:</span>{" "}
 					The System Checks Equipment Availability During Booking. If
-					A Service Requires A Specific Equipment And It's Not
-					Available At The Selected Time, The Booking Cannot Be
-					Confirmed.
+					a your new service requires specific equipment and that
+					specific equipment is not available at the selected time,
+					the booking cannot be confirmed.
 				</p>
 			</div>
 
@@ -528,6 +540,9 @@ export default function EditBusinessProfile() {
 													</SelectItem>
 													<SelectItem value="barbershop">
 														Barbershop
+													</SelectItem>
+													<SelectItem value="other">
+														Other
 													</SelectItem>
 												</SelectContent>
 											</Select>
@@ -1030,14 +1045,74 @@ export default function EditBusinessProfile() {
 															<SelectValue />
 														</SelectTrigger>
 														<SelectContent>
+															<SelectItem value="10">
+																10
+															</SelectItem>
+															<SelectItem value="15">
+																15
+															</SelectItem>
+															<SelectItem value="20">
+																20
+															</SelectItem>
+															<SelectItem value="25">
+																25
+															</SelectItem>
 															<SelectItem value="30">
 																30
+															</SelectItem>
+															<SelectItem value="35">
+																35
+															</SelectItem>
+															<SelectItem value="40">
+																40
+															</SelectItem>
+															<SelectItem value="45">
+																45
+															</SelectItem>
+															<SelectItem value="50">
+																50
+															</SelectItem>
+															<SelectItem value="55">
+																55
 															</SelectItem>
 															<SelectItem value="60">
 																60
 															</SelectItem>
+															<SelectItem value="65">
+																65
+															</SelectItem>
+															<SelectItem value="70">
+																70
+															</SelectItem>
+															<SelectItem value="75">
+																75
+															</SelectItem>
+															<SelectItem value="80">
+																80
+															</SelectItem>
+															<SelectItem value="85">
+																85
+															</SelectItem>
 															<SelectItem value="90">
 																90
+															</SelectItem>
+															<SelectItem value="95">
+																95
+															</SelectItem>
+															<SelectItem value="100">
+																100
+															</SelectItem>
+															<SelectItem value="105">
+																105
+															</SelectItem>
+															<SelectItem value="110">
+																110
+															</SelectItem>
+															<SelectItem value="115">
+																115
+															</SelectItem>
+															<SelectItem value="120">
+																120
 															</SelectItem>
 														</SelectContent>
 													</Select>
@@ -1060,9 +1135,13 @@ export default function EditBusinessProfile() {
 								</CardHeader>
 								<CardContent className="space-y-6">
 									<div>
-										<h3 className="text-lg font-semibold mb-4">
-											Voice & Tone
-										</h3>
+										<div className="w-full flex items-center justify-between">
+											<h2 className="text-lg font-medium text-gray-900 mb-4">
+												Voice & Tone
+											</h2>
+
+											<Button size="sm">Test Play</Button>
+										</div>
 										<div className="space-y-4">
 											<div>
 												<Label className="text-sm font-medium">
@@ -1114,7 +1193,10 @@ export default function EditBusinessProfile() {
 										<p className="text-sm text-gray-600 mb-4">
 											Provide information about your
 											business through multiple sources
-											for comprehensive AI knowledge
+											for comprehensive AI knowledge. AI
+											will use this information in its
+											conversations with clients as
+											hairdressers won't understand this.
 										</p>
 
 										<div className="space-y-4">
@@ -1128,9 +1210,36 @@ export default function EditBusinessProfile() {
 												/>
 											</div>
 											<div>
-												<Label className="text-sm font-medium">
-													Custom Messages
-												</Label>
+												<div className="w-full flex items-start gap-1">
+													<Label className="text-sm font-medium text-gray-700 mb-2 block">
+														Custom Messages
+													</Label>
+													<Tooltip>
+														<TooltipContent>
+															<TooltipTrigger
+																asChild
+															>
+																<span className="w-4 h-4 bg-primary rounded-full flex items-center justify-center cursor-pointer">
+																	<CircleQuestionMark
+																		className="text-white"
+																		size={
+																			16
+																		}
+																	/>
+																</span>
+															</TooltipTrigger>
+															<TooltipContent>
+																<p>
+																	This is what
+																	will be used
+																	when the AI
+																	answers the
+																	phone
+																</p>
+															</TooltipContent>
+														</TooltipContent>
+													</Tooltip>
+												</div>
 												<Textarea
 													className="mt-2 min-h-[100px]"
 													placeholder="G'day! Thanks For Calling [Business Name]. I'm Your AI Assistant And I'm Here To Help You Book An Appointment. How Can I Help You Today?

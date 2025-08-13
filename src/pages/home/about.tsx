@@ -37,6 +37,31 @@ export default function About() {
 							Zealand and Australia capture every opportunity and
 							grow their revenue.
 						</p>
+						<p>
+							Voqal is based in Mount Maunganui, New Zealand and
+							is owned and run by Bryce Moller. You can contact
+							Bryce directly on{" "}
+							<a
+								className="underline font-bold text-primary"
+								href="mailto:bryce@voqal.com.nz"
+							>
+								bryce@voqal.com.nz
+							</a>
+							,{" "}
+							<a
+								className="underline font-bold text-primary"
+								href="mailto:bryce@voqal.com.au"
+							>
+								bryce@voqal.com.au
+							</a>{" "}
+							or on his mobile phone number is{" "}
+							<a
+								className="underline font-bold text-primary"
+								href="tel:+64272942186"
+							>
+								+64272942186
+							</a>
+						</p>
 					</div>
 					<div className="py-50">
 						<Button size="lg">Learn more</Button>
