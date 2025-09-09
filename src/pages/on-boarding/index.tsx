@@ -29,6 +29,7 @@ import {
 	Edit,
 	Eye,
 	FileText,
+	Play,
 	Plus,
 	Sparkles,
 	Upload,
@@ -479,8 +480,7 @@ const Services = ({
 							Services
 						</CardTitle>
 						<p className="text-sm text-gray-600">
-							Add your services so customers can book the right
-							appointments
+							Add all the services that your busienss offers
 						</p>
 					</CardHeader>
 					<CardContent>
@@ -792,7 +792,8 @@ const Services = ({
 
 											<div className="space-y-3">
 												<Label className="text-sm font-medium text-gray-700">
-													Equipment required Add
+													Add any equipment required
+													for this service here
 												</Label>
 												<div className="space-y-2">
 													{service.equipmentItems.map(
@@ -911,14 +912,12 @@ const Services = ({
 													Equipment Constraints:
 												</Label>
 												<p className="text-xs text-gray-600 mt-1">
-													The System Checks Equipment
-													Availability During Booking.
-													If a your new service
-													requires specific equipment
-													and that specific equipment
-													is not available at the
-													selected time, the booking
-													cannot be confirmed.
+													If your new service requires
+													specific equipment and that
+													equipment is not available
+													at the selected time then
+													the booking cannot be
+													confirmed.
 												</p>
 											</div>
 										</CardContent>
@@ -2512,8 +2511,6 @@ const AIConfiguration = ({
 								<h2 className="text-lg font-medium text-gray-900 mb-4">
 									Voice & Tone
 								</h2>
-
-								<Button size="sm">Test Play</Button>
 							</div>
 
 							<div className="space-y-4">
@@ -2521,23 +2518,35 @@ const AIConfiguration = ({
 									<Label className="text-sm font-medium text-gray-700 mb-2 block">
 										AI Voice
 									</Label>
-									<Select defaultValue="kiwi-female">
-										<SelectTrigger>
-											<SelectValue placeholder="Select voice" />
-										</SelectTrigger>
-										<SelectContent>
-											<SelectItem value="kiwi-female">
-												Kiwi Female - Friendly &
-												Professional
-											</SelectItem>
-											<SelectItem value="american-male">
-												American Male - Professional
-											</SelectItem>
-											<SelectItem value="british-female">
-												British Female - Elegant
-											</SelectItem>
-										</SelectContent>
-									</Select>
+									<div className="flex flex-row items-center justify-between gap-5">
+										<Select defaultValue="kiwi-female">
+											<SelectTrigger>
+												<SelectValue placeholder="Select voice" />
+											</SelectTrigger>
+											<SelectContent>
+												<SelectItem value="kiwi-female">
+													Kiwi Female - Friendly &
+													Professional
+												</SelectItem>
+												<SelectItem value="american-male">
+													American Male - Professional
+												</SelectItem>
+												<SelectItem value="british-female">
+													British Female - Elegant
+												</SelectItem>
+											</SelectContent>
+										</Select>
+
+										<Button size="sm">
+											Test Voice
+											<Play size={16} />
+										</Button>
+									</div>
+
+									<p className="text-[#DF6C2E] text-xs mt-3">
+										Click "Test Voice" to hear how each
+										voice sounds before selecting.
+									</p>
 								</div>
 
 								<div>
@@ -2851,6 +2860,25 @@ const AIConfiguration = ({
 												Users Based On Their
 												Preferences, Helping Increase
 												Sales Automatically
+											</p>
+										</div>
+										<Switch
+											checked={settings.aiUpselling}
+											onCheckedChange={() =>
+												toggleSetting("aiUpselling")
+											}
+											className="data-[state=checked]:bg-black"
+										/>
+									</div>
+
+									<div className="flex items-center justify-between border rounded-lg p-4">
+										<div>
+											<Label className="text-sm font-medium text-gray-700">
+												Enable Payment Processing
+											</Label>
+											<p className="text-xs text-gray-500">
+												Allow customers to pay deposits
+												or full amounts when booking
 											</p>
 										</div>
 										<Switch
@@ -3394,23 +3422,7 @@ const ReviewAndLaunch = ({
 								</div>
 								<div className="flex justify-between text-sm">
 									<span className="text-gray-600">
-										Generate Transcripts:
-									</span>
-									<span className="text-green-600 text-xs">
-										on
-									</span>
-								</div>
-								<div className="flex justify-between text-sm">
-									<span className="text-gray-600">
-										Prank Call Detection:
-									</span>
-									<span className="text-green-600 text-xs">
-										on
-									</span>
-								</div>
-								<div className="flex justify-between text-sm">
-									<span className="text-gray-600">
-										Voicemail Settings:
+										Enable Call Transcripts:
 									</span>
 									<span className="text-green-600 text-xs">
 										on
@@ -3426,7 +3438,23 @@ const ReviewAndLaunch = ({
 								</div>
 								<div className="flex justify-between text-sm">
 									<span className="text-gray-600">
-										AI Upselling:
+										Voicemail Settings:
+									</span>
+									<span className="text-green-600 text-xs">
+										on
+									</span>
+								</div>
+								<div className="flex justify-between text-sm">
+									<span className="text-gray-600">
+										Appointment Payments:
+									</span>
+									<span className="text-green-600 text-xs">
+										on
+									</span>
+								</div>
+								<div className="flex justify-between text-sm">
+									<span className="text-gray-600">
+										Prank Call Detection:
 									</span>
 									<span className="text-green-600 text-xs">
 										on
@@ -3461,10 +3489,18 @@ const ReviewAndLaunch = ({
 								</div>
 								<div className="flex justify-between text-sm">
 									<span className="text-gray-600">
-										Call Handling Schedule:
+										Call Duration (minutes):
 									</span>
 									<span className="text-blue-600 cursor-pointer text-xs">
-										See All
+										Not Set
+									</span>
+								</div>
+								<div className="flex justify-between text-sm">
+									<span className="text-gray-600">
+										Additional Languages:
+									</span>
+									<span className="text-gray-900 text-xs">
+										Chinese (Mandarin)
 									</span>
 								</div>
 							</div>

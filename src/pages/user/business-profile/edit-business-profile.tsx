@@ -26,6 +26,7 @@ import {
 	ChevronUp,
 	ChevronDown,
 	CircleQuestionMark,
+	Play,
 } from "lucide-react";
 import {
 	Dialog,
@@ -1139,31 +1140,43 @@ export default function EditBusinessProfile() {
 											<h2 className="text-lg font-medium text-gray-900 mb-4">
 												Voice & Tone
 											</h2>
-
-											<Button size="sm">Test Play</Button>
 										</div>
 										<div className="space-y-4">
 											<div>
 												<Label className="text-sm font-medium">
 													AI Voice
 												</Label>
-												<Select defaultValue="kiwi-female">
-													<SelectTrigger className="mt-2">
-														<SelectValue />
-													</SelectTrigger>
-													<SelectContent>
-														<SelectItem value="kiwi-female">
-															Kiwi Female -
-															Friendly &
-															Professional
-														</SelectItem>
-														<SelectItem value="aussie-male">
-															Aussie Male - Casual
-															& Friendly
-														</SelectItem>
-													</SelectContent>
-												</Select>
+												<div className="flex flex-row items-center justify-between gap-5">
+													<Select defaultValue="kiwi-female">
+														<SelectTrigger className="mt-2">
+															<SelectValue />
+														</SelectTrigger>
+														<SelectContent>
+															<SelectItem value="kiwi-female">
+																Kiwi Female -
+																Friendly &
+																Professional
+															</SelectItem>
+															<SelectItem value="aussie-male">
+																Aussie Male -
+																Casual &
+																Friendly
+															</SelectItem>
+														</SelectContent>
+													</Select>
+													<Button size="sm">
+														Test Voice
+														<Play size={16} />
+													</Button>
+												</div>
+
+												<p className="text-[#DF6C2E] text-xs mt-3">
+													Click "Test Voice" to hear
+													how each voice sounds before
+													selecting.
+												</p>
 											</div>
+
 											<div>
 												<Label className="text-sm font-medium">
 													Conversation Tone

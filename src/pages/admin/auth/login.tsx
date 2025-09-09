@@ -82,9 +82,11 @@ export default function AdminLogin() {
 					</div>
 
 					<div className="form-group flex gap-3 items-center">
-						<Button className="w-full" size="lg">
-							Login
-						</Button>
+						<Link to={"/admin/dashboard"} className="w-full">
+							<Button className="w-full" size="lg">
+								Login
+							</Button>
+						</Link>
 					</div>
 				</div>
 			</div>

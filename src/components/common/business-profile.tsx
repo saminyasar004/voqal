@@ -3,16 +3,18 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import BusinessProfileAvatarImg from "@/assets/images/business-profile-avatar.svg";
 import { useState } from "react";
 import {
-    Edit,
-    FileText,
-    ChevronDown,
-    ChevronUp,
-    Plus,
-    X,
-    Users,
-    UserCog,
-    Network,
-    Wallet,
+	Edit,
+	FileText,
+	ChevronDown,
+	ChevronUp,
+	Plus,
+	X,
+	Users,
+	UserCog,
+	Network,
+	Wallet,
+	Bug,
+	BanknoteArrowDown,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -21,11 +23,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
 import { Card, CardContent } from "@/components/ui/card";
 import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
+	Select,
+	SelectContent,
+	SelectItem,
+	SelectTrigger,
+	SelectValue,
 } from "@/components/ui/select";
 import DashboardHeader from "@/components/common/dashboard-header";
 import { Separator } from "@/components/ui/separator";
@@ -33,218 +35,221 @@ import { Link } from "react-router-dom";
 import { StaffMember, TeamMember } from "@/interfaces";
 import TeamMemberModal from "../modals/team-member-details";
 import CompactStaffMember from "../modals/compact-staff-member-details";
+import { cn } from "@/lib/utils";
 
 interface Service {
-    id: number;
-    name: string;
-    price: string;
-    duration?: string;
-    description?: string;
+	id: number;
+	name: string;
+	price: string;
+	duration?: string;
+	description?: string;
 }
 
 interface StaffService {
-    id: number;
-    name: string;
-    price: string;
-    staffMember: string;
-    duration?: string;
-    description?: string;
+	id: number;
+	name: string;
+	price: string;
+	staffMember: string;
+	duration?: string;
+	description?: string;
 }
 
 export default function CommonBusinessProfile({
-    isAdmin,
-    businessId,
-    teamMembers = [],
-    staffMembers = [],
+	isAdmin,
+	businessId,
+	teamMembers = [],
+	staffMembers = [],
 }: {
-    isAdmin: boolean;
-    businessId: string;
-    teamMembers?: TeamMember[];
-    staffMembers?: StaffMember[];
+	isAdmin: boolean;
+	businessId: string;
+	teamMembers?: TeamMember[];
+	staffMembers?: StaffMember[];
 }) {
-    const [showMemberDetails, setShowMemberDetails] = useState<boolean>(false);
-    const [selectedMember, setSelectedMember] = useState<null | TeamMember>(null);
+	const [showMemberDetails, setShowMemberDetails] = useState<boolean>(false);
+	const [selectedMember, setSelectedMember] = useState<null | TeamMember>(
+		null
+	);
 
-    const [showStaffMemberDetails, setShowStaffMemberDetails] =
-        useState<boolean>(false);
-    const [selectedStaffMember, setStaffSelectedMember] =
-        useState<null | StaffMember>(null);
+	const [showStaffMemberDetails, setShowStaffMemberDetails] =
+		useState<boolean>(false);
+	const [selectedStaffMember, setStaffSelectedMember] =
+		useState<null | StaffMember>(null);
 
-    const [servicesExpanded, setServicesExpanded] = useState(true);
-    const [staffServicesExpanded, setStaffServicesExpanded] = useState(true);
-    const [showAddService, setShowAddService] = useState(false);
-    const [showAddStaffService, setShowAddStaffService] = useState(false);
+	const [servicesExpanded, setServicesExpanded] = useState(true);
+	const [staffServicesExpanded, setStaffServicesExpanded] = useState(true);
+	const [showAddService, setShowAddService] = useState(false);
+	const [showAddStaffService, setShowAddStaffService] = useState(false);
 
-    const [services, setServices] = useState<Service[]>([
-        {
-            id: 1,
-            name: "Women Cut & Style",
-            price: "$30",
-            duration: "60 min",
-            description: "Professional haircut and styling",
-        },
-        {
-            id: 2,
-            name: "Men's Haircut",
-            price: "$25",
-            duration: "45 min",
-            description: "Classic men's haircut",
-        },
-        {
-            id: 3,
-            name: "Hair Color",
-            price: "$80",
-            duration: "120 min",
-            description: "Full hair coloring service",
-        },
-        {
-            id: 4,
-            name: "Facial Treatment",
-            price: "$45",
-            duration: "75 min",
-            description: "Deep cleansing facial",
-        },
-    ]);
+	const [services, setServices] = useState<Service[]>([
+		{
+			id: 1,
+			name: "Women Cut & Style",
+			price: "$30",
+			duration: "60 min",
+			description: "Professional haircut and styling",
+		},
+		{
+			id: 2,
+			name: "Men's Haircut",
+			price: "$25",
+			duration: "45 min",
+			description: "Classic men's haircut",
+		},
+		{
+			id: 3,
+			name: "Hair Color",
+			price: "$80",
+			duration: "120 min",
+			description: "Full hair coloring service",
+		},
+		{
+			id: 4,
+			name: "Facial Treatment",
+			price: "$45",
+			duration: "75 min",
+			description: "Deep cleansing facial",
+		},
+	]);
 
-    const [staffServices, setStaffServices] = useState<StaffService[]>([
-        {
-            id: 1,
-            name: "Facial Spa",
-            price: "$30",
-            staffMember: "Lisa Taylor",
-            duration: "60 min",
-            description: "Relaxing facial spa treatment",
-        },
-        {
-            id: 2,
-            name: "Massage Therapy",
-            price: "$65",
-            staffMember: "Emma Wilson",
-            duration: "90 min",
-            description: "Full body massage",
-        },
-        {
-            id: 3,
-            name: "Manicure",
-            price: "$25",
-            staffMember: "James Rodriguez",
-            duration: "45 min",
-            description: "Professional nail care",
-        },
-    ]);
+	const [staffServices, setStaffServices] = useState<StaffService[]>([
+		{
+			id: 1,
+			name: "Facial Spa",
+			price: "$30",
+			staffMember: "Lisa Taylor",
+			duration: "60 min",
+			description: "Relaxing facial spa treatment",
+		},
+		{
+			id: 2,
+			name: "Massage Therapy",
+			price: "$65",
+			staffMember: "Emma Wilson",
+			duration: "90 min",
+			description: "Full body massage",
+		},
+		{
+			id: 3,
+			name: "Manicure",
+			price: "$25",
+			staffMember: "James Rodriguez",
+			duration: "45 min",
+			description: "Professional nail care",
+		},
+	]);
 
-    const [newService, setNewService] = useState({
-        name: "",
-        price: "",
-        duration: "",
-        description: "",
-    });
+	const [newService, setNewService] = useState({
+		name: "",
+		price: "",
+		duration: "",
+		description: "",
+	});
 
-    const [newStaffService, setNewStaffService] = useState({
-        name: "",
-        price: "",
-        staffMember: "",
-        duration: "",
-        description: "",
-    });
+	const [newStaffService, setNewStaffService] = useState({
+		name: "",
+		price: "",
+		staffMember: "",
+		duration: "",
+		description: "",
+	});
 
-    const [settings, setSettings] = useState({
-        discountManagement: true,
-        enableCallRecording: true,
-        generateTranscripts: true,
-        prankCallDetection: true,
-        voicemailSettings: true,
-        repeatAppointment: true,
-        callRecordingRetention: true,
-    });
+	const [settings, setSettings] = useState({
+		discountManagement: true,
+		enableCallRecording: true,
+		generateTranscripts: true,
+		prankCallDetection: true,
+		voicemailSettings: true,
+		repeatAppointment: true,
+		callRecordingRetention: true,
+	});
 
-    const [businessHours, setBusinessHours] = useState({
-        monday: { open: "08:00", close: "18:00", enabled: true },
-        tuesday: { open: "08:00", close: "18:00", enabled: true },
-        wednesday: { open: "08:00", close: "18:00", enabled: true },
-        thursday: { open: "08:00", close: "18:00", enabled: true },
-        friday: { open: "08:00", close: "18:00", enabled: true },
-        saturday: { open: "08:00", close: "18:00", enabled: false },
-        sunday: { open: "08:00", close: "18:00", enabled: false },
-    });
+	const [businessHours, setBusinessHours] = useState({
+		monday: { open: "08:00", close: "18:00", enabled: true },
+		tuesday: { open: "08:00", close: "18:00", enabled: true },
+		wednesday: { open: "08:00", close: "18:00", enabled: true },
+		thursday: { open: "08:00", close: "18:00", enabled: true },
+		friday: { open: "08:00", close: "18:00", enabled: true },
+		saturday: { open: "08:00", close: "18:00", enabled: false },
+		sunday: { open: "08:00", close: "18:00", enabled: false },
+	});
 
-    const updateBusinessHour = (
-        day: keyof typeof businessHours,
-        field: "open" | "close",
-        value: string,
-    ) => {
-        setBusinessHours((prev) => ({
-            ...prev,
-            [day]: {
-                ...prev[day],
-                [field]: value,
-            },
-        }));
-    };
+	const updateBusinessHour = (
+		day: keyof typeof businessHours,
+		field: "open" | "close",
+		value: string
+	) => {
+		setBusinessHours((prev) => ({
+			...prev,
+			[day]: {
+				...prev[day],
+				[field]: value,
+			},
+		}));
+	};
 
-    const handleAddService = () => {
-        if (newService.name && newService.price) {
-            const service: Service = {
-                id: services.length + 1,
-                name: newService.name,
-                price: newService.price.startsWith("$")
-                    ? newService.price
-                    : `$${newService.price}`,
-                duration: newService.duration,
-                description: newService.description,
-            };
-            setServices([...services, service]);
-            setNewService({
-                name: "",
-                price: "",
-                duration: "",
-                description: "",
-            });
-            setShowAddService(false);
-        }
-    };
+	const handleAddService = () => {
+		if (newService.name && newService.price) {
+			const service: Service = {
+				id: services.length + 1,
+				name: newService.name,
+				price: newService.price.startsWith("$")
+					? newService.price
+					: `$${newService.price}`,
+				duration: newService.duration,
+				description: newService.description,
+			};
+			setServices([...services, service]);
+			setNewService({
+				name: "",
+				price: "",
+				duration: "",
+				description: "",
+			});
+			setShowAddService(false);
+		}
+	};
 
-    const handleAddStaffService = () => {
-        if (
-            newStaffService.name &&
-            newStaffService.price &&
-            newStaffService.staffMember
-        ) {
-            const staffService: StaffService = {
-                id: staffServices.length + 1,
-                name: newStaffService.name,
-                price: newStaffService.price.startsWith("$")
-                    ? newStaffService.price
-                    : `$${newStaffService.price}`,
-                staffMember: newStaffService.staffMember,
-                duration: newStaffService.duration,
-                description: newStaffService.description,
-            };
-            setStaffServices([...staffServices, staffService]);
-            setNewStaffService({
-                name: "",
-                price: "",
-                staffMember: "",
-                duration: "",
-                description: "",
-            });
-            setShowAddStaffService(false);
-        }
-    };
+	const handleAddStaffService = () => {
+		if (
+			newStaffService.name &&
+			newStaffService.price &&
+			newStaffService.staffMember
+		) {
+			const staffService: StaffService = {
+				id: staffServices.length + 1,
+				name: newStaffService.name,
+				price: newStaffService.price.startsWith("$")
+					? newStaffService.price
+					: `$${newStaffService.price}`,
+				staffMember: newStaffService.staffMember,
+				duration: newStaffService.duration,
+				description: newStaffService.description,
+			};
+			setStaffServices([...staffServices, staffService]);
+			setNewStaffService({
+				name: "",
+				price: "",
+				staffMember: "",
+				duration: "",
+				description: "",
+			});
+			setShowAddStaffService(false);
+		}
+	};
 
-    const removeService = (id: number) => {
-        setServices(services.filter((service) => service.id !== id));
-    };
+	const removeService = (id: number) => {
+		setServices(services.filter((service) => service.id !== id));
+	};
 
-    const removeStaffService = (id: number) => {
-        setStaffServices(staffServices.filter((service) => service.id !== id));
-    };
+	const removeStaffService = (id: number) => {
+		setStaffServices(staffServices.filter((service) => service.id !== id));
+	};
 
-    const toggleSetting = (key: keyof typeof settings) => {
-        setSettings((prev) => ({ ...prev, [key]: !prev[key] }));
-    };
+	const toggleSetting = (key: keyof typeof settings) => {
+		setSettings((prev) => ({ ...prev, [key]: !prev[key] }));
+	};
 
-    return (
+	return (
 		<>
 			<section className="w-full pb-8 bg-[#F5F5F5]">
 				{/* dashboard header */}
@@ -367,13 +372,33 @@ export default function CommonBusinessProfile({
 											luxurious and hygienic environment.
 										</p>
 									</div>
+
+									{!isAdmin && (
+										<div className="flex flex-col gap-2 items-start">
+											<h4 className="text-sm text-black font-medium">
+												Twilio:{" "}
+											</h4>
+											<h4 className="text-sm text-[#C0842F] font-medium">
+												+44 20-7123-4567
+											</h4>
+											<Button>
+												Troubleshooting
+												<Bug size={16} />
+											</Button>
+										</div>
+									)}
 								</div>
 							</CardContent>
 						</Card>
 
 						<Separator orientation="horizontal" />
 
-						<div className="grid grid-cols-4 gap-8">
+						<div
+							className={cn(
+								"grid gap-8",
+								isAdmin ? "grid-cols-5" : "grid-cols-4"
+							)}
+						>
 							<Card className="bg-white">
 								<CardContent className="p-6 flex items-start justify-between gap-8">
 									<div className="flex flex-col gap-5">
@@ -437,6 +462,24 @@ export default function CommonBusinessProfile({
 									</div>
 								</CardContent>
 							</Card>
+
+							{isAdmin && (
+								<Card className="bg-warning/40">
+									<CardContent className="p-6 flex items-start justify-between gap-8">
+										<div className="flex flex-col gap-5">
+											<h3 className="font-semibold text-3xl text-primary">
+												$147,509
+											</h3>
+											<span className="text-primary-gray text-sm">
+												Operational Cost
+											</span>
+										</div>
+										<div className="w-14 h-14 bg-warning text-primary-foreground rounded-lg flex items-center justify-center">
+											<BanknoteArrowDown size={24} />
+										</div>
+									</CardContent>
+								</Card>
+							)}
 						</div>
 
 						{/* AI Personality */}

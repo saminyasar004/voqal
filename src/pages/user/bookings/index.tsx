@@ -26,53 +26,57 @@ export const bookings: Booking[] = [
 	{
 		id: 1,
 		time: "09:00 AM",
-		date: "Today",
+		date: "2.10.2024",
 		customerName: "David Brown",
 		service: "Haircut & Color with John Smith",
 		serviceProvider: "John Smith",
 		phone: "+1 (555) 123-4567",
-		duration: "1:00",
+		duration: "90 min",
+		price: "120$",
 		status: "confirmed",
-		tags: ["Haircut", "Confirm"],
+		tags: ["Haircut", "Confirm", "Paid"],
 		actionType: "complete",
 	},
 	{
 		id: 2,
 		time: "09:00 AM",
-		date: "Today",
+		date: "2.10.2024",
 		customerName: "Mike Chen",
 		service: "Haircut & Color with John Smith",
 		serviceProvider: "John Smith",
 		phone: "+1 (555) 123-4567",
-		duration: "1:00",
+		duration: "90 min",
+		price: "120$",
 		status: "confirmed",
-		tags: ["Haircut", "Confirm"],
+		tags: ["Haircut", "Confirm", "Paid"],
 		actionType: "confirm",
 		specialNote:
-			"Rescheduled to: Live (Postponed) / Reason: Customer requested to speak with human staff for special requirements",
+			"Escalated to: Lisa (Receptionist) • Reason: Customer requested to speak with human staff for special requirements",
 	},
 	{
 		id: 3,
 		time: "09:00 AM",
-		date: "Today",
+		date: "2.10.2024",
 		customerName: "Emma Wilson",
 		service: "Haircut & Color with John Smith",
 		serviceProvider: "John Smith",
 		phone: "+1 (555) 123-4567",
-		duration: "1:00",
+		duration: "90 min",
+		price: "120$",
 		status: "pending",
-		tags: ["Haircut", "Pending"],
+		tags: ["Haircut", "Pending", "Paid"],
 		actionType: "confirm",
 	},
 	{
 		id: 4,
 		time: "09:00 AM",
-		date: "Today",
+		date: "2.10.2024",
 		customerName: "Emma Wilson",
 		service: "Haircut & Color with John Smith",
 		serviceProvider: "John Smith",
 		phone: "+1 (555) 123-4567",
-		duration: "1:00",
+		duration: "90 min",
+		price: "120$",
 		status: "confirmed",
 		tags: ["Haircut", "Confirm"],
 		actionType: "confirm",
@@ -80,12 +84,13 @@ export const bookings: Booking[] = [
 	{
 		id: 5,
 		time: "09:00 AM",
-		date: "Today",
+		date: "2.10.2024",
 		customerName: "David Brown",
 		service: "Haircut & Color with John Smith",
 		serviceProvider: "John Smith",
 		phone: "+1 (555) 123-4567",
-		duration: "1:00",
+		duration: "90 min",
+		price: "120$",
 		status: "confirmed",
 		tags: ["Haircut", "Confirm"],
 		actionType: "complete",
@@ -93,12 +98,13 @@ export const bookings: Booking[] = [
 	{
 		id: 6,
 		time: "09:00 AM",
-		date: "Today",
+		date: "2.10.2024",
 		customerName: "Emma Wilson",
 		service: "Haircut & Color with John Smith",
 		serviceProvider: "John Smith",
 		phone: "+1 (555) 123-4567",
-		duration: "1:00",
+		duration: "90 min",
+		price: "120$",
 		status: "confirmed",
 		tags: ["Haircut", "Confirm"],
 		actionType: "confirm",
@@ -106,12 +112,13 @@ export const bookings: Booking[] = [
 	{
 		id: 7,
 		time: "09:00 AM",
-		date: "Today",
+		date: "2.10.2024",
 		customerName: "David Brown",
 		service: "Haircut & Color with John Smith",
 		serviceProvider: "John Smith",
 		phone: "+1 (555) 123-4567",
-		duration: "1:00",
+		duration: "90 min",
+		price: "120$",
 		status: "cancelled",
 		tags: ["Haircut", "Cancelled"],
 		actionType: "confirm",
@@ -119,12 +126,13 @@ export const bookings: Booking[] = [
 	{
 		id: 8,
 		time: "09:00 AM",
-		date: "Today",
+		date: "2.10.2024",
 		customerName: "Emma Wilson",
 		service: "Haircut & Color with John Smith",
 		serviceProvider: "John Smith",
 		phone: "+1 (555) 123-4567",
-		duration: "1:00",
+		duration: "90 min",
+		price: "120$",
 		status: "confirmed",
 		tags: ["Haircut", "Confirm"],
 		actionType: "confirm",
@@ -132,12 +140,13 @@ export const bookings: Booking[] = [
 	{
 		id: 9,
 		time: "09:00 AM",
-		date: "Today",
+		date: "2.10.2024",
 		customerName: "Emma Wilson",
 		service: "Haircut & Color with John Smith",
 		serviceProvider: "John Smith",
 		phone: "+1 (555) 123-4567",
-		duration: "1:00",
+		duration: "90 min",
+		price: "120$",
 		status: "confirmed",
 		tags: ["Haircut"],
 		actionType: "confirm",
@@ -145,12 +154,13 @@ export const bookings: Booking[] = [
 	{
 		id: 10,
 		time: "09:00 AM",
-		date: "Today",
+		date: "2.10.2024",
 		customerName: "Emma Wilson",
 		service: "Haircut & Color with John Smith",
 		serviceProvider: "John Smith",
 		phone: "+1 (555) 123-4567",
-		duration: "1:00",
+		duration: "90 min",
+		price: "120$",
 		status: "confirmed",
 		tags: ["Haircut"],
 		actionType: "confirm",
@@ -683,11 +693,14 @@ export default function Bookings() {
 									<div className="w-full h-full flex items-start gap-4">
 										{/* Time Section */}
 										<div className="flex flex-col items-center min-w-[80px] h-full">
-											<div className="text-sm font-medium text-gray-900">
+											<div className="text-base font-medium text-gray-900">
 												{booking.time}
 											</div>
-											<div className="text-xs text-gray-500">
+											<div className="text-xs text-gray-500 pt-2">
 												{booking.date}
+											</div>
+											<div className="text-xs text-gray-500 pt-2">
+												{booking.duration}
 											</div>
 										</div>
 
@@ -720,7 +733,7 @@ export default function Bookings() {
 												{booking.phone}
 											</div>
 											<div className="text-sm text-gray-600">
-												{booking.duration}
+												{booking.price}
 											</div>
 
 											{booking.specialNote && (

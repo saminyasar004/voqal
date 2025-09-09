@@ -100,9 +100,11 @@ export default function Login() {
 					</div>
 
 					<div className="form-group flex gap-3 items-center">
-						<Button className="w-full" size="lg">
-							Login
-						</Button>
+						<Link to={"/user/dashboard"} className="w-full">
+							<Button className="w-full" size="lg">
+								Login
+							</Button>
+						</Link>
 					</div>
 
 					<div className="form-group text-center">
