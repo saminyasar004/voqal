@@ -1,6 +1,12 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+	Card,
+	CardContent,
+	CardFooter,
+	CardHeader,
+	CardTitle,
+} from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -24,24 +30,39 @@ import {
 	ArrowRight,
 	BriefcaseBusiness,
 	CalendarDays,
+	ChartSpline,
+	CheckCircle,
 	CircleQuestionMark,
+	CreditCard,
 	Download,
 	Edit,
 	Eye,
 	FileText,
+	Globe,
 	Play,
 	Plus,
+	Shield,
 	Sparkles,
 	Upload,
 	Users,
+	Wallet,
 	X,
 } from "lucide-react";
 import { useState } from "react";
+import {
+	Dialog,
+	DialogContent,
+	DialogDescription,
+	DialogFooter,
+	DialogHeader,
+	DialogTitle,
+	DialogTrigger,
+} from "@/components/ui/dialog";
 
 export default function Onboarding() {
 	const [active, setActive] = useState(0);
 	const nextStep = () =>
-		setActive((current) => (current < 5 ? current + 1 : current));
+		setActive((current) => (current < 6 ? current + 1 : current));
 	const prevStep = () =>
 		setActive((current) => (current > 0 ? current - 1 : current));
 
@@ -56,8 +77,7 @@ export default function Onboarding() {
 					<Stepper
 						active={active}
 						onStepClick={setActive}
-						color="rgba(30, 30, 30, 1)
-"
+						color="rgba(30, 30, 30, 1)"
 						className="w-full"
 						allowNextStepsSelect={false}
 					>
@@ -98,6 +118,15 @@ export default function Onboarding() {
 							/>
 						</Stepper.Step>
 						<Stepper.Step
+							icon={<CreditCard size={18} />}
+							label="Connect Stripe"
+						>
+							<ConnectStripe
+								previousStep={prevStep}
+								nextStep={nextStep}
+							/>
+						</Stepper.Step>
+						<Stepper.Step
 							icon={<Sparkles size={18} />}
 							label="AI Configuration"
 						>
@@ -115,19 +144,6 @@ export default function Onboarding() {
 								nextStep={nextStep}
 							/>
 						</Stepper.Step>
-						{/* <Stepper.Step
-							icon={<BotMessageSquare size={18} />}
-							label="AI Configuration"
-						>
-							<AIConfiguration
-								previousStep={prevStep}
-								nextStep={nextStep}
-							/>
-						</Stepper.Step>
-						<Stepper.Completed
-						>
-							<AllSet previousStep={prevStep} />
-						</Stepper.Completed> */}
 					</Stepper>
 				</div>
 			</div>
@@ -2450,6 +2466,141 @@ const ScheduleAvailability = ({
 						</div>
 					</div>
 				</div>
+			</div>
+
+			<div className="w-full flex items-center justify-between pt-8">
+				<Button variant="secondary" onClick={previousStep}>
+					<ArrowLeft size={12} />
+					Previous
+				</Button>
+				<Button onClick={nextStep}>
+					Continue
+					<ArrowRight size={12} />
+				</Button>
+			</div>
+		</>
+	);
+};
+
+const ConnectStripe = ({
+	previousStep,
+	nextStep,
+}: {
+	previousStep: () => void;
+	nextStep: () => void;
+}) => {
+	const [isOpen, setIsOpen] = useState(false);
+
+	return (
+		<>
+			<div className="w-full p-4 bg[#B3B3B3]">
+				<Card className="w-full">
+					<CardHeader className="pb-6">
+						<CardTitle className="text-2xl font-semibold text-gray-900">
+							Start Accepting Payments
+						</CardTitle>
+						<p className="text-sm text-gray-600 mt-1">
+							Connect your Stripe account to securely accept
+							online payments from your customers for their
+							bookings.
+						</p>
+					</CardHeader>
+					<CardContent className="space-y-6">
+						<div className="w-full flex flex-row gap-6 bg-[#1E1E1E] rounded-lg p-6 items-center">
+							<Shield className="text-white" size={52} />
+
+							<div className="flex flex-col gap-2">
+								<h2 className="text-white font-semibold text-lg">
+									Secure & Trusted Partnership
+								</h2>
+								<p className="text-sm text-white">
+									Voqal partners with Stripe for fast, secure,
+									and reliable payment processing. We use
+									Stripe Connect, which means your sensitive
+									financial information is never stored on our
+									servers.
+								</p>
+							</div>
+						</div>
+
+						<div className="w-full grid grid-cols-2 gap-6">
+							<div className="w-full flex flex-row gap-6 bg-neutral-100 border border-primary-gray/20 rounded-lg p-6 items-center">
+								<Globe className="text-primary" size={52} />
+
+								<div className="flex flex-col gap-2">
+									<h2 className="text-primary font-semibold text-lg">
+										Global Payment Support
+									</h2>
+									<p className="text-sm text-primary">
+										Accept payments from customers worldwide
+										in multiple currencies
+									</p>
+								</div>
+							</div>
+
+							<div className="w-full flex flex-row gap-6 bg-neutral-100 border border-primary-gray/20 rounded-lg p-6 items-center">
+								<Shield className="text-primary" size={52} />
+
+								<div className="flex flex-col gap-2">
+									<h2 className="text-primary font-semibold text-lg">
+										Bank-Level Security
+									</h2>
+									<p className="text-sm text-primary">
+										Your financial data is protected with
+										industry-leading encryption
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div className="w-full grid grid-cols-2 gap-6">
+							<div className="w-full flex flex-row gap-6 bg-neutral-100 border border-primary-gray/20 rounded-lg p-6 items-center">
+								<ChartSpline
+									className="text-primary"
+									size={52}
+								/>
+
+								<div className="flex flex-col gap-2">
+									<h2 className="text-primary font-semibold text-lg">
+										Advanced Analytics
+									</h2>
+									<p className="text-sm text-primary">
+										Track revenue, refunds, and payment
+										trends with detailed reporting
+									</p>
+								</div>
+							</div>
+						</div>
+					</CardContent>
+
+					<CardFooter className="p-6">
+						<Dialog open={isOpen} onOpenChange={setIsOpen}>
+							<DialogTrigger asChild>
+								<Button className="w-full" size="lg">
+									Connect with Stripe{" "}
+									<Wallet size={16} className="ml-2" />
+								</Button>
+							</DialogTrigger>
+							<DialogContent className="sm:max-w-[580px] h-auto">
+								<DialogHeader>
+									<CheckCircle
+										size={84}
+										className="text-green-500 mx-auto my-5"
+									/>
+									<DialogTitle className="text-center">
+										Webhook Connection Active
+									</DialogTitle>
+									<DialogDescription className="text-center py-5">
+										Your Stripe account is successfully
+										connected! We have automatically set up
+										a secure webhook to keep your booking
+										statuses in sync with payments.
+									</DialogDescription>
+								</DialogHeader>
+							</DialogContent>
+						</Dialog>
+					</CardFooter>
+				</Card>
 			</div>
 
 			<div className="w-full flex items-center justify-between pt-8">
