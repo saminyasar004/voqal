@@ -1,13 +1,21 @@
 import LogoImg from "@/assets/images/voqal-black.svg";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useResendOtpMutation, useVerifyOtpMutation } from "@/redux/baseApi";
 import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 export default function VerifyOtp() {
 	const length = 6;
 	const [otp, setOtp] = useState<string[]>(new Array(length).fill(""));
 	const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
+	const navigate = useNavigate();
+	const location = useLocation();
+
+	const [verifyOtp, { isLoading, isError, error, isSuccess }] =
+		useVerifyOtpMutation();
+	const [resendOtp, { isLoading: isResending }] = useResendOtpMutation();
 
 	useEffect(() => {
 		inputRefs.current = inputRefs.current.slice(0, length);
@@ -92,6 +100,61 @@ export default function VerifyOtp() {
 		inputRefs.current[index]?.select();
 	};
 
+	const handleSubmit = async () => {
+		try {
+			const otpString = otp.join("");
+			if (otpString.length === length) {
+				console.log("OTP Submitted: ", otpString);
+
+				const response = await verifyOtp({
+					email: location.state?.email,
+					otp: otpString,
+				});
+				console.log("Response: ", response);
+
+				if (
+					response.data?.refresh_token &&
+					response.data?.access_token
+				) {
+					localStorage.setItem(
+						"refresh_token",
+						response.data.refresh_token
+					);
+					localStorage.setItem(
+						"access_token",
+						response.data.access_token
+					);
+					localStorage.setItem(
+						"email",
+						response.data?.profile_data?.email
+					);
+					toast.success("OTP verified successfully!");
+					navigate("/on-boarding", {
+						state: { email: location.state?.email },
+					});
+				}
+			} else {
+				console.log("Incomplete OTP");
+			}
+		} catch (err) {
+			console.log(err.message);
+			toast.error(
+				err.message || "OTP verification failed. Please try again."
+			);
+		}
+	};
+
+	const handleResend = async () => {
+		try {
+			const response = await resendOtp({ email: location.state?.email });
+			console.log("Resend OTP Response: ", response);
+			toast.success(response.data?.message || "OTP resent successfully!");
+		} catch (err) {
+			console.log(err.message);
+			toast.error(err.message || "Resend OTP failed. Please try again.");
+		}
+	};
+
 	return (
 		<section className="min-h-screen h-max bg-hero bg-no-repeat bg-center bg-cover py-10">
 			<div className="max-w-2xl lg:w-[calc(100%-6rem)] mx-auto flex flex-col gap-4 border border-primary-gray/20 rounded-lg p-8 lg:p-12 bg-white text-center">
@@ -107,7 +170,7 @@ export default function VerifyOtp() {
 				<h6 className="text-xs md:text-sm">
 					Enter the code sent to <br />
 					<span className="text-primary underline">
-						jef@gmail.com
+						{location.state?.email}
 					</span>
 				</h6>
 
@@ -138,17 +201,25 @@ export default function VerifyOtp() {
 				</div>
 
 				<div className="form-group w-full flex items-center justify-center py-5">
-					<Link to="/reset-password" className="w-full">
-						<Button className="w-full" size="lg">
-							Confirm
-						</Button>
-					</Link>
+					<Button
+						type="submit"
+						onClick={handleSubmit}
+						disabled={isLoading}
+						className="w-full"
+						size="lg"
+					>
+						{isLoading ? "Verifying..." : "Confirm"}
+					</Button>
 				</div>
 
 				<div className="form-group flex items-center justify-center py-5">
 					<p>
 						Didn"t receive the otp?{" "}
-						<Button variant="link" className="px-0">
+						<Button
+							onClick={handleResend}
+							variant="link"
+							className="px-0"
+						>
 							Resend
 						</Button>
 					</p>
