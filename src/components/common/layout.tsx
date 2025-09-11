@@ -2,6 +2,7 @@ import Header from "@/components/common/header";
 import Footer from "@/components/common/footer";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { Toaster } from "@/components/ui/sonner";
 
 export default function Layout({ children }) {
 	const location = useLocation();
@@ -19,6 +20,7 @@ export default function Layout({ children }) {
 		<>
 			<Header />
 			{children}
+			<Toaster />
 			<Footer />
 		</>
 	);

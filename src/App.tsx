@@ -5,36 +5,40 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NotFound from "./pages/NotFound";
 import { routes } from "./routes";
 import { MantineProvider } from "@mantine/core";
+import { Provider } from "react-redux";
 
 import "@mantine/core/styles.css";
+import { store } from "./app/store";
 
 const queryClient = new QueryClient();
 
 const App = () => (
-    <MantineProvider>
-        <QueryClientProvider client={queryClient}>
-            <TooltipProvider>
-                {/* <Toaster /> */}
-                <Sonner />
-                <BrowserRouter>
-                    <Routes>
-                        {routes.map((route, index) => (
-                            <Route
-                                key={index}
-                                path={route.path}
-                                element={
-                                    <route.layout>
-                                        <route.element />
-                                    </route.layout>
-                                }
-                            />
-                        ))}
-                        <Route path="*" element={<NotFound />} />
-                    </Routes>
-                </BrowserRouter>
-            </TooltipProvider>
-        </QueryClientProvider>
-    </MantineProvider>
+	<Provider store={store}>
+		<MantineProvider>
+			<QueryClientProvider client={queryClient}>
+				<TooltipProvider>
+					{/* <Toaster /> */}
+					<Sonner />
+					<BrowserRouter>
+						<Routes>
+							{routes.map((route, index) => (
+								<Route
+									key={index}
+									path={route.path}
+									element={
+										<route.layout>
+											<route.element />
+										</route.layout>
+									}
+								/>
+							))}
+							<Route path="*" element={<NotFound />} />
+						</Routes>
+					</BrowserRouter>
+				</TooltipProvider>
+			</QueryClientProvider>
+		</MantineProvider>
+	</Provider>
 );
 
 export default App;
